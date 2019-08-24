@@ -2,9 +2,10 @@
 
 ### 脑图包括 
 
-Tips⏰：脑图格式为`.xmind`，需下载[XMind](https://www.xmind.cn)
+Tips⏰：脑图格式为`.xmind`，需下载 [XMind](https://www.xmind.cn)
 
 ![XMind](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566627798554&di=27a976b0200f12cfb6f525627b97cd8c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180929%2Fb5c6b39dcbdc4afaa62fe15d9f08848d.jpeg)
+<img style="width:100px;height:36px" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566627798554&di=27a976b0200f12cfb6f525627b97cd8c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180929%2Fb5c6b39dcbdc4afaa62fe15d9f08848d.jpeg">
 
 * CSS基础
 * HTML基础
