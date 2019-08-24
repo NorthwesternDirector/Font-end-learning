@@ -10,11 +10,15 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 脑图内容包括8个方面：
 * CSS基础 / HTML基础 / JS基础 / 设计模式 / 前端进阶 / 前端核心 / 网络 / 算法与数据结构
 -------------------
-[TOC]
+
 #### day31
 
 1. `sum(1,2,3).valueOf()` 与 `sum(1)(2)(3).valueOf()` 输出相同
 2. 🌟JS `函数防抖` 与 `函数节流`，多熟悉一下代码
+3. `<meta>标签` 学习
+4. `深浅拷贝` 代码学习
+5. 脑图知识回顾 结合 [PDD二面经验](https://www.nowcoder.com/discuss/143035?type=0&order=0&pos=6&page=1)
+6. `git pull` && `git fetch`
 
 
 
