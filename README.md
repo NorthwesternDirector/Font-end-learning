@@ -1,6 +1,6 @@
 ## 学习前端的乐趣
 
-### 前端面试脑图整理 
+### 前端面试题脑图整理 
 
 Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 
@@ -20,5 +20,11 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 5. 脑图知识回顾 结合 [PDD二面经验](https://www.nowcoder.com/discuss/143035?type=0&order=0&pos=6&page=1)
 6. `git pull` && `git fetch`
 
+#### day32
 
+1. `last-modify` 与 `Etag`-时间粒度角度
+2. `FileEtag: INode Mtime Size`
+2. http `强缓存` 与 `协商缓存`
+3. `TCP` 与 `UDP` 区别
+4. `Array.reduce()`
 

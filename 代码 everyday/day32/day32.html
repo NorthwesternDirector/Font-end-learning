@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var debounce = function(fn, wait) {
+        var timeOut = null;
+        return function() {
+            var content = this;
+            var arg = arguments;
+            if (timeOut != null) {
+                clearTimeout(timeOut)
+            };
+            timeOut = setTimeout(function() {
+                fn.apply(content, arg)
+            }, wait)
+        }
+
+    }
+
+    var throttle = function(fn, delay) {
+        var prv = Date.now();
+        return function() {
+            var content = this;
+            var arg = arguments;
+            var now = Date.now();
+            if (now - prv >= delay) {
+                fn.apply(content, arg);
+                pre = Date.now();
+            }
+        }
+    }
+
+    /*Array.reduce()*/
+    var numbers = [65, 44, 12, 4];
+
+    function getSum(total, num, currentIndex, arr) {
+        console.log('这是初始total和num:' + total + '---' + num + '----' + currentIndex + '----' + arr)
+        return total + num;
+    };
+    console.log(numbers.reduce(getSum, 0));
+    /*Array.reduce()*/
+
+
+    /*手动实现Array.reduce()*/
+    Array.prototype.fakeReduce = function fakeReduce(fn, base) {
+        if (typeof fn !== "function") {
+            throw new TypeError("arguments[0] is not a function");
+        }
+        let initialArr = this;
+        let arr = initialArr.concat(); //得到副本
+
+        if (base) arr.unshift(base); // 当存在归并基础值的参数时，将其从数组首部推入
+        let index, newValue;
+
+        while (arr.length > 1) {
+            index = initialArr.length - arr.length + 1; // 当存在归并基础值的参数时，index从0开始，否则index从1开始👌
+            newValue = fn.call(null, arr[0], arr[1], index, initialArr);
+
+            arr.splice(0, 2, newValue); // 直接用 splice 实现替换
+        }
+
+        return newValue;
+    };
+    /*手动实现Array.reduce()*/
+</script>
+
+</html>
