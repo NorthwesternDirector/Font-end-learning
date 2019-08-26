@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext("2d");
+    /*画线*/
+    // context.moveTo(50, 50);
+    // context.lineTo(100, 50);
+    // context.stroke();
+
+    /*画矩形*/
+    // context.fillRect(100, 100, 50, 50);
+
+    /*圆*/
+    // context.arc(300, 200, 50, 0, 2 * Math.PI);
+    // context.fillStyle = "red";
+    // context.strokeStyle = "yellow";
+    // context.stroke();
+    // context.fill();
+
+
+    /*渐变圆*/
+    //1. 创建一个径向渐变
+    // c1 = {
+    //     x: 240,
+    //     y: 160,
+    //     r: 0
+    // };
+    // c2 = {
+    //     x: 300,
+    //     y: 200,
+    //     r: 100
+    // };
+
+    // var gradient = context.createRadialGradient(c1.x, c1.y, c1.r, c2.x, c2.y, c2.r);
+    // gradient.addColorStop(1, "gray");
+    // gradient.addColorStop(0, "lightgray");
+
+    // //2. 将渐变对象设为填充色
+    // context.fillStyle = gradient;
+
+    // //3. 画圆并填充
+    // context.arc(c2.x, c2.y, c2.r, 0, 2 * Math.PI);
+    // context.fill();
+</script>
+
+</html>

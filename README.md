@@ -28,3 +28,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 3. `TCP` 与 `UDP` 区别
 4. `Array.reduce()`
 
+#### day33
+1. `Canvas API` 简单学习
+2.`JS数据类型` 回顾
+
