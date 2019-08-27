@@ -30,5 +30,5 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 
 #### day33
 1. `Canvas API` 简单学习
-2.`JS数据类型` 回顾
+2. `JS数据类型` 回顾
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    /*字体样式*/
+    // ctx.font = "40px Arial";
+    // ctx.textBaseline = "top";
+    // ctx.textAlign = 'left';
+    // ctx.fillStyle = 'red';
+    // ctx.fillText('你想对我说什么', 0, 20);
+    // ctx.strokeStyle = 'green';
+    // ctx.strokeText('你想对我说什么', 0, 60);
+
+    /*切线圆弧*/
+    ctx.beginPath();
+    ctx.moveTo(20, 20);
+    ctx.lineTo(100, 20);
+    ctx.arcTo(150, 20, 150, 70, 50);
+    ctx.lineTo(150, 120);
+    ctx.stroke();
+</script>
+
+</html>
