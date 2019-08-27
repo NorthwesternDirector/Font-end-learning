@@ -12,6 +12,7 @@
     <canvas id="myCanvas"></canvas>
 </body>
 <script>
+
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     /*字体样式*/
@@ -30,6 +31,70 @@
     ctx.arcTo(150, 20, 150, 70, 50);
     ctx.lineTo(150, 120);
     ctx.stroke();
+
+    /*函数柯里化*/
+    // function sum(...args) {
+    //     if ([...args].length == 1) {
+    //         let sum2 = [...args][0];
+    //         var suum = function(y) {
+    //             sum2 += y;
+
+    //             return suum;
+    //         }
+    //         suum.valueOf = function() {
+    //             return sum2;
+    //         }
+    //         return suum;
+    //     } else {
+    //         let sum1 = 0;
+    //         for (var i = 0; i < [...args].length; i++) {
+    //             sum1 += [...args][i];
+    //         }
+    //         return sum1;
+    //     }
+    // }
+
+    // console.log(sum(1)(2)(3).valueOf());
+    // console.log(sum(1,2,3).valueOf());
+
+    /*防抖*/
+    var deBounce = function(fn,wait){
+        var timeout=null;
+        return function(){
+            var context=this;
+            var args=arguments;
+            if(timeout!=null){
+                clearTimeout(timeout)
+            }
+            timeout=setTimeout(function(){
+                fn.call(this,args)
+            },wait)
+        }
+    };
+
+   
+    /*节流*/
+   var throttle = function(fn,delay){
+       var prev=Date.now();
+       return function(){
+           var context = this;
+           var args=arguments;
+           var cur=Date.now();
+           if(cur-prev>=delay){
+               fn.call(this,args)
+               prev=Date.now()
+           };
+       }
+
+   };
+
+   function handle(){
+        console.log(Math.random())
+    };
+
+    window.addEventListener('click',throttle(handle,1000))
+ 
+    
 </script>
 
 </html>

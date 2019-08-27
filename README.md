@@ -29,6 +29,14 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 4. `Array.reduce()`
 
 #### day33
+
 1. `Canvas API` 简单学习
 2. `JS数据类型` 回顾
 
+#### day34
+1. `Canvas API` 基本图形绘制学习
+2. `CMD` `AMD` 了解模块化开发发展及 `ES6中的模块化`
+3. 回顾 `函数柯里化` 代码
+4. 回顾 `RegExp对象`
+5. 回顾 `防抖` `节流` 代码
+6. HTML `空标签` 学习
