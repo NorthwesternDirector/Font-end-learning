@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #a1 {
+        width: 100px;
+        height: 100px;
+        float: left;
+        background-color: lightcoral;
+    }
+    
+    #a2 {
+        width: 800px;
+        height: 100px;
+        float: left;
+        background-color: lightgreen;
+    }
+    
+    #a3 {
+        width: 800px;
+        height: 100px;
+        background-color: lightpink;
+    }
+    
+    #container {
+        background-color: lightskyblue;
+        display: inline-block;
+    }
+</style>
+
+<body>
+    <div id="container">
+
+        <div id="a1"></div>
+        <div id="a2"></div>
+        <div id="a3"></div>
+
+    </div>
+    <script>
+        for (var i = 0; i < 5; i += 5) {
+            var aa = "a";
+            const bb = "b";
+        }
+        console.log(aa)
+        console.log(bb)
+
+
+        /*回顾函数柯里化*/
+        // function sum(...arg){
+        //     if([...arg].length==1){
+        //         var sum1=[...arg][0];
+        //         var suum=function(y){
+        //             sum1+=y;
+        //             return suum;
+        //         };
+
+        //         suum.valueOf =function(){
+        //             return sum1;
+        //         };
+
+        //         return suum;
+        //     }else{
+        //         var sum2=0;
+        //         for(var i=0;i<[...arg].length;i++){
+        //             sum2+=[...arg][i]
+        //         };
+        //         return sum2;
+        //     }
+        // };
+
+        // console.log(sum(1)(1)(1).valueOf());
+        // console.log(sum(1,2,3).valueOf());
+
+        /*回顾防抖*/
+        // var debouce = function(fn,wait){
+        //     var timeout=null;
+        //     return function(){
+        //         var context=this;
+        //         var args=arguments;
+        //         if(timeout!=null){
+        //             clearTimeout(timeout)
+        //         };
+        //         timeout = setTimeout(function(){
+        //             fn.call(this,args)
+        //         },wait)
+        //     };
+        // }
+
+        // var hundle=function(){
+        //     console.log(Math.random())
+        // };
+
+        // window.addEventListener('click',debouce(hundle,1000))
+
+        /*回顾节流*/
+        // var throttle =function(fn,delay){
+        //     var prev=Date.now();
+        //     return function(){
+        //         var context = this;
+        //         var args = arguments;
+        //         var now = Date.now();
+        //         if(now-prev>=delay){
+        //             fn.call(this,args);
+        //             prev=Date.now();
+        //         }
+        //     }
+        // };
+
+        // var hundle = function(){
+        //     console.log(Math.random())
+        // };
+
+        // window.addEventListener('click',throttle(hundle,1000))
+
+        /*原型链实现继承*/
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.eat = function() {
+            console.log("eat");
+        }
+
+        function Student(score) {
+            this.score = score;
+        }
+
+        Student.prototype = new Person("Tom", 10);
+
+        var stu = new Student(100);
+        console.log(Student.prototype);
+        console.log(Person.prototype);
+
+
+        /*构造函数实现继承*/
+        // function Person(name,age){
+        //     this.name=name;
+        //     this.age=age;
+        // };
+        // Person.prototype.eat=function(){
+        //     console.log("eat")
+        // };
+
+        // function Student(name,age,score){
+        //     Person.call(this,name,age);
+        //     this.score=score;
+        // }
+
+        // var stu=new Student("TOM",10,100);
+        // stu.eat()//undefined
+
+        /*组合继承*/
+        // function Person(name,age){
+        //     this.name=name;
+        //     this.age=age;
+        // };
+
+        // Person.prototype.eat=function(){
+        //     console.log(this.name+"---"+"eat")
+        // };
+
+        // function Student(name,age,score){
+        //     Person.call(this,name,age);
+        //     this.score=score;
+        // };
+        // Student.prototype=new Person();
+        // Student.prototype.constructor=Person;
+
+        // var stu=new Student("TOM",10,100);
+
+        // stu.eat();
+
+        /*原型式继承 Object.create() */
+
+        // var Person={
+        //     name:"Tom",
+        //     age:17
+        // };
+
+        // var anotherPerson=Object.create(Person);
+        // anotherPerson.name="Jack";
+        // anotherPerson.age=17;
+
+        // console.log(Person.name);
+        // console.log(anotherPerson.name);
+
+        /*寄生式继承*/
+        // function create(original){
+        //     var clone=Object.create(original);
+        //     clone.sayHi=function(){
+        //         console.log("sayHi");
+        //     };
+        //     return clone;
+        // };
+        // var Person={
+        //     name:"Tom",
+        //     age:17
+        // };
+
+        // var anotherPerson=create(Person);
+        // anotherPerson.sayHi();
+
+        /*寄生组合式继承*/
+        // function inherit(student,person){
+        //     var prototype=Object.create(person.prototype);
+        //     prototype.constructor=student;
+        //     student.prototype=prototype;
+        // };
+
+        // function Person(name,age){
+        //     this.name=name;
+        //     this.age=age;
+        // };
+
+        // Person.prototype.eat=function(){
+        //     console.log(this.name+"---"+"eat")
+        // };
+
+        // function Student(name,age,score){
+        //     Person.call(this,name,age);
+        //     this.score=score;
+        // }
+
+        // inherit(Student,Person);
+
+        // var stu= new Student("Sam",10,1000);
+        // stu.eat();
+
+        // /*Object.create()*/
+        // function object(obj){
+        //      function F (){};
+        //      F.prototype=obj;
+        //      return new F();
+
+
+        // }
+
+        /*leetcode*/
+        // var romanToInt = function(s) {
+        //     var str=s.split('');
+        //     var map= new Map();
+        //     map.set("I",1);
+        //     map.set("V",5);
+        //     map.set("X",10);
+        //     map.set("L",50);
+        //     map.set("C",100);
+        //     map.set("D",500);
+        //     map.set("M",1000);
+        //     var res=[]; 
+        //     var sum=0;
+
+        //     for(let i=0;i<str.length;i++){
+        //         if(map.get(str[i+1])==undefined)res.push(map.get(str[i]));
+        //         if(map.get(str[i])>=map.get(str[i+1])){
+        //             res.push(map.get(str[i])) 
+        //         }else{
+        //             var mix=str[i]+str[i+1];
+        //             switch(mix){
+        //                 case "IV":
+        //                     res.push(4);
+        //                     i++;
+        //                     break;
+        //                 case "IX":
+        //                     res.push(9);
+        //                     i++;
+        //                     break;
+        //                 case "XL":
+        //                     res.push(40);
+        //                     i++;
+        //                     break;
+        //                 case "XC":
+        //                     res.push(90);
+        //                     i++;
+        //                     break;
+        //                 case "CD":
+        //                     res.push(400);
+        //                     i++;
+        //                     break;
+        //                 case "CM":
+        //                     res.push(900);
+        //                     i++;
+        //                     break;
+        //             }
+        //         }
+        //     };
+
+        //     res.forEach(item=>sum+=parseInt(item))
+
+        //     return sum; 
+        // };
+
+        // console.log(romanToInt("IV"));
+
+
+        var intToRoman = function(num) {
+            var map = new Map();
+            map.set(1, "I");
+            map.set(5, "V");
+            map.set(10, "X");
+            map.set(50, "L");
+            map.set(100, "C");
+            map.set(500, "D");
+            map.set(1000, "M");
+            var res = [];
+            var i = 1;
+
+            while (num != 0) {
+                if (num % 10 == 9) {
+                    switch (i) {
+                        case 1:
+                            res.unshift("IX");
+                            break;
+                        case 2:
+                            res.unshift("XC");
+                        case 3:
+                            res.unshift("CM");
+                    }
+                    i++;
+                    num = parseInt(num / 10);
+                    continue;
+                };
+                if (num % 10 == 5) {
+                    switch (i) {
+                        case 1:
+                            res.unshift("V");
+                            break;
+                        case 2:
+                            res.unshift("L");
+                        case 3:
+                            res.unshift("D");
+                    }
+                    i++;
+                    num = parseInt(num / 10);
+                    continue;
+                };
+                if (num % 10 == 4) {
+                    switch (i) {
+                        case 1:
+                            res.unshift("IV");
+                            break;
+                        case 2:
+                            res.unshift("XL");
+                        case 3:
+                            res.unshift("CD");
+                    }
+                    i++;
+                    num = parseInt(num / 10);
+                    continue;
+                };
+                if (num % 10 > 5) {
+                    switch (i) {
+                        case 1:
+                            for (let j = 0; j < (num % 10 - 5); j++) {
+                                res.unshift("I");
+                            }
+                            res.unshift("V");
+                            break;
+                        case 2:
+                            for (let j = 0; j < (num % 10 - 5); j++) {
+                                res.unshift("X");
+                            }
+                            res.unshift("L");
+                            break;
+                        case 3:
+                            for (let j = 0; j < (num % 10 - 5); j++) {
+                                res.unshift("C");
+                            }
+                            res.unshift("D");
+                            break;
+                    };
+                    i++;
+                    num = parseInt(num / 10);
+                    continue;
+                };
+                if (num % 10 < 5) {
+                    switch (i) {
+                        case 1:
+                            for (let j = 0; j < num % 10; j++) {
+                                res.unshift("I");
+                            }
+                            break;
+                        case 2:
+                            for (let j = 0; j < num % 10; j++) {
+                                res.unshift("X");
+                            }
+                            break;
+                        case 3:
+                            for (let j = 0; j < num % 10; j++) {
+                                res.unshift("C");
+                            }
+                            break;
+                    };
+                    i++;
+                    num = parseInt(num / 10);
+                    continue;
+                };
+
+                i++;
+                num = parseInt(num / 10);
+            };
+            return res.join('');
+        };
+        console.log(intToRoman(58))
+    </script>
+</body>
+
+</html>
