@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .bro1 {
+        width: 300px;
+        height: 200px;
+        background: lightcoral;
+        float: left;
+    }
+    
+    .bro2 {
+        width: 200px;
+        height: 100px;
+        background: pink;
+        float: left;
+    }
+    
+    .special {
+        background: #ddd;
+        display: table-caption;
+    }
+</style>
+
+<body>
+
+    <div class='special'>
+        <div class='bro1'></div>
+
+        <div class='bro2'> </div>
+    </div>
+    <script>
+        // /函数柯里化回顾*/
+        // function add(...arg) {
+        //     if ([...arg].length == 1) {
+        //         var sum1 = [...arg][0];
+        //         var summ = function(y) {
+        //             sum1 += y;
+        //             return summ;
+        //         };
+
+        //         summ.valueOf = function() {
+        //             return sum1;
+        //         };
+
+        //         return summ;
+        //     } else {
+        //         var sum2 = 0;
+        //         for (var i = 0; i < [...arg].length; i++) {
+        //             sum2 += [...arg][i];
+        //         };
+        //         return sum2
+        //     }
+        // };
+
+        // console.log(add(2)(3)(4).valueOf());
+        // console.log(add(2, 3, 4));
+
+        /*原型链继承*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // };
+        // Person.prototype.eat = function() {
+        //     console.log(this.name + " " + "eat")
+        // };
+
+        // function Student(score) {
+        //     this.score = score;
+        // }
+        // Student.prototype = new Person("Tom", 10);
+
+        // var stu = new Student(100);
+        // stu.eat();
+
+        /*借用构造函数*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // };
+
+        // Person.prototype.eat = function() {
+        //     console.log(this.name + this.age + "---" + "eat")
+        // };
+
+        // function Student(name, age, score) {
+        //     this.score = score;
+        //     Person.call(this, name, age);
+
+
+        // };
+        // var stu = new Student("Sam", 10, 100);
+
+        // console.log(stu.name + "--" + stu.age + "-" + stu.score);
+
+        /*组合继承*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // };
+
+        // Person.prototype.eat = function() {
+        //     console.log(this.name + "--" + this.age + " " + "eat")
+        // };
+
+        // function Student(name, age, score) {
+        //     this.score = score;
+        //     Person.call(this, name, age);
+        // };
+
+        // Student.prototype = new Person();
+
+        // var stu = new Student("Tom", 10, 100);
+
+        // stu.eat();
+
+        /*寄生继承*/
+        // function inherit(o) {
+        //     var obj = Object.create(o);
+        //     obj.eat = function() {
+        //         console.log("eat");
+        //     };
+        //     return obj;
+        // }
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // var stu = inherit(Person);
+
+        // stu.eat()
+
+        /*寄生组合式继承*/
+        // function inherit(stu, per) {
+        //     var prototype = Object.create(per.prototype);
+        //     prototype.constructor = stu;
+        //     stu.prototype = prototype;
+        // };
+
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // };
+
+        // Person.prototype.eat = function() {
+        //     console.log(this.name + this.age + "==" + "eat")
+        // };
+
+        // function Student(name, age, score) {
+        //     Person.call(this, name, age)
+        // };
+
+        // inherit(Student, Person);
+
+        // var stu = new Student("Sam", 10, 1000);
+        // stu.eat();
+
+        // function object(o) {
+        //     function F() {};
+        //     F.prototype = o;
+        //     return new F()
+        // }
+
+        /*ajax*/
+        // var xhr = new XMLHttpRequest();
+
+        // xhr.open("get", "URL");
+
+        // xhr.setRequestHeader();
+
+        // xhr.send("key1=value1&key2=value2");
+
+        // xhr.onreadtstatechange = function() {
+        //     if (this.readyState != 4) return;
+
+        //     console.log(this.responseText);
+        // }
+
+        /*类型判断*/
+        // var a = 10;
+        // var b = 'b';
+        // var c = false;
+        // var d = [];
+        // var f = {};
+
+        // console.log(typeof a == "number")
+        // console.log(typeof c)
+        // console.log(d instanceof Array)
+        // console.log(Object.prototype.toString.call(b) == "[object String]")
+
+        /*URL参数*/
+        // let str = "http://localhost:3000/index.html?phone=12345678901&pwd=123123&name=DT";
+        // let params = str.split("?")[1].split("&");
+        // console.log(params)
+        // let paramsObj = {};
+        // for (let i = 0; i < params.length; i++) {
+        //     let tmpParam = params[i].split("=");
+        //     paramsObj[tmpParam[0]] = tmpParam[1];
+        // };
+        // console.log(paramsObj)
+
+        /*正则表达式*/
+
+        var a = 1000000;
+        console.log(a.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,'));
+        // console.log(/(?=(?:\d{3})+$)/.exec(a))
+        //console.log(a.toString().replace(/(\d)(?=(?:((\d{3})+(\.\d*)))+$)/g, '$1,'));
+
+
+
+        // function toThousands(num) {
+        //     var num = (num || 0).toString(),
+        //         result = '';
+        //     while (num.length > 3) {
+        //         result = ',' + num.slice(-3) + result;
+        //         num = num.slice(0, num.length - 3);
+        //     }
+        //     if (num) {
+        //         result = num + result;
+        //     }
+        //     return result;
+        // }
+        // console.log(toThousands(a))
+
+        // let str = "http://localhost:3000/index.html?phone=12345678901&pwd=123123&name=DT"
+        // var reg = /^(https?:\/\/)/;
+        // console.log(reg.exec(str))
+
+
+        var url = 'http://www.baidu.com/?dsp=ipad&sid=20510&name=wangbin';
+        var reg = /[?&](\w+)=(\w+)/g;
+        var obj = {};
+        console.log(reg.exec(url))
+        while (ret = reg.exec(url)) {
+            obj[ret[1]] = ret[2];
+        }
+        console.log(obj);
+    </script>
+</body>
+
+</html>

@@ -41,6 +41,13 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 5. 回顾 `防抖` `节流` 代码
 6. HTML `空标签` 学习
 
-### day35
+#### day35
 1. 熟悉 `原型链继承` `借用构造函数继承` `组合继承` `寄生继承` `寄生组合式继承` 代码
 2. `清除浮动` 与 `BFC` 
+
+### day36
+1. 理解 `__proto__` `constructor` `prototype`之间的关系 [图解](https://chen-cong.blog.csdn.net/article/details/81211729)
+2. 熟悉 `Ajax` 源代码
+3. 熟悉基本变量类型、引用变量类型判断 `typeof` `instanceof` `Object.prototype.toString.call()` 的使用
+4. 将URL中的参数存入一个参数对象 利用 `split()`
+5. 熟悉 `RegExp正则表达式` 实现第4条功能 及 千分位逗号功能
