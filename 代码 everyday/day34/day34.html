@@ -12,7 +12,6 @@
     <canvas id="myCanvas"></canvas>
 </body>
 <script>
-
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
     /*字体样式*/
@@ -58,43 +57,41 @@
     // console.log(sum(1,2,3).valueOf());
 
     /*防抖*/
-    var deBounce = function(fn,wait){
-        var timeout=null;
-        return function(){
-            var context=this;
-            var args=arguments;
-            if(timeout!=null){
+    var deBounce = function(fn, wait) {
+        var timeout = null;
+        return function() {
+            var context = this;
+            var args = arguments;
+            if (timeout != null) {
                 clearTimeout(timeout)
             }
-            timeout=setTimeout(function(){
-                fn.call(this,args)
-            },wait)
+            timeout = setTimeout(function() {
+                fn.call(this, args)
+            }, wait)
         }
     };
 
-   
+
     /*节流*/
-   var throttle = function(fn,delay){
-       var prev=Date.now();
-       return function(){
-           var context = this;
-           var args=arguments;
-           var cur=Date.now();
-           if(cur-prev>=delay){
-               fn.call(this,args)
-               prev=Date.now()
-           };
-       }
+    var throttle = function(fn, delay) {
+        var prev = Date.now();
+        return function() {
+            var context = this;
+            var args = arguments;
+            var cur = Date.now();
+            if (cur - prev >= delay) {
+                fn.call(this, args)
+                prev = Date.now()
+            };
+        }
 
-   };
+    };
 
-   function handle(){
+    function handle() {
         console.log(Math.random())
     };
 
-    window.addEventListener('click',throttle(handle,1000))
- 
-    
+    window.addEventListener('click', throttle(handle, 1000))
 </script>
 
 </html>
