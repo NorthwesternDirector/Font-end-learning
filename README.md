@@ -9,7 +9,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 
 脑图内容包括8个方面：
 * HTML基础 / CSS基础 / JS基础 / 前端进阶 / 前端核心 / 设计模式 / 网络 / 算法与数据结构 / 计算机原理
-* 脑图都是从自己的前端笔面经历和他人分享的前端笔面经历中总结整理出来的，里边划分的十分详细，可以帮助你在笔面之前进行一个查漏补缺，有需要的同学可以下载 [源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，上一个预览图（预览图只能看到三级菜单）：
+* 脑图是从自己与他人分享的 `前端笔面经历` 中总结整理得出的，里边划分的十分详细，可以帮助笔面前端的同学进行查漏补缺，有需要的同学可以下载 [源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，上一个预览图（预览图只能看到三级菜单）：
 
 <img width=881px  src="https://github.com/NorthwesternDirector/-/blob/master/icon/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-preview.png">
 
