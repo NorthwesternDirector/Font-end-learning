@@ -8,10 +8,11 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 <img width=100px height=36px src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566627798554&di=27a976b0200f12cfb6f525627b97cd8c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180929%2Fb5c6b39dcbdc4afaa62fe15d9f08848d.jpeg">
 
 脑图内容包括8个方面：
-* CSS基础 / HTML基础 / JS基础 / 设计模式 / 前端进阶 / 前端核心 / 网络 / 算法与数据结构
-预览：
+* HTML基础 / CSS基础 / JS基础 / 前端进阶 / 前端核心 / 设计模式 / 网络 / 算法与数据结构 / 计算机原理
+* 脑图都是从自己的前端笔面经历和他人分享的前端笔面经历中总结整理出来的，里边划分的十分详细，可以帮助你在笔面之前进行一个查漏补缺，有需要的同学可以下载 [源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，上一个预览图（预览图只能看到三级菜单）：
 
-<img width=800px  src="https://github.com/NorthwesternDirector/-/blob/master/icon/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-preview.png">
+<img width=881px  src="https://github.com/NorthwesternDirector/-/blob/master/icon/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-preview.png">
+
 -------------------
 
 #### day31
@@ -58,3 +59,6 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 3. `树` 的若干概念
 
 #### day38
+1. 熟悉 创建对象的7种方式 `工厂` `构造函数` `原型` `组合` `动态构造函数` `寄生构造函数` `稳妥构造函数`
+2. 回顾数组操作 `reduce()` `map()` `forEach()` `filter()`
+3. 理解 `图片懒加` 载原理

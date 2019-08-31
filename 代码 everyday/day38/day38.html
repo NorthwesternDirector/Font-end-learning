@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj1 = {};
+
+        var obj2 = new Object();
+
+        /*工厂模式*/
+        // function createPerson(name, age) {
+        //     var o = new Object();
+        //     o.name = name;
+        //     o.age = age;
+        //     o.sayName = function() {
+        //         console.log(this.name)
+        //     };
+        //     return o;
+        // };
+        // var obj3 = createPerson("Sam", 10);
+        // obj3.sayName();
+
+
+        /*构造函数*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sayHi = function() {
+        //         console.log(this.name + " " + "sayHi")
+        //     };
+        // };
+        // var obj4 = new Person("Tom", 10);
+        // obj4.sayHi();
+
+        /*原型模式*/
+        // function Person() {
+
+        // };
+        // Person.prototype = {
+        //     constructor: Person,
+        //     name: "Nike",
+        //     age: 29,
+        //     sayHi: function() {
+        //         console.log(this.name + this.age + "eat");
+        //     }
+
+        // };
+
+        // var person1 = new Person();
+        // person1.sayHi();
+
+        /*组合模式*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // Person.prototype.sayHi = function() {
+        //     console.log(this.name + " " + "eat")
+        // }
+
+        // var p1 = new Person("DT", 100);
+        // p1.sayHi()
+
+        /*动态原型模式*/
+        // function Person(name, age) {
+        //     this.name = name;
+        //     this.age = age;
+
+        //     if (typeof this.sayHi != "function") {
+        //         Person.prototype.sayHi = function() {
+        //             console.log(this.name + "sayHi")
+        //         }
+        //     }
+        // };
+
+        // var p2 = new Person("FS", 99);
+        // p2.sayHi()
+        // console.log(typeof a)
+
+        /*寄生构造函数模式*/
+        // function Person(name, age) {
+        //     var o = new Object();
+        //     o.name = name;
+        //     o.age = age;
+        //     o.sayHi = function() {
+        //         console.log(this.name + "SayHi")
+        //     };
+        //     return o;
+        // }
+
+        // var p3 = new Person("WW", 18);
+        // p3.sayHi();
+
+        /*稳妥构造函数*/
+        // function Person(name, age) {
+        //     var o = new Object();
+        //     o.sayHi = function() {
+        //         console.log(name + "sayHi")
+        //     };
+        //     return o;
+        // };
+
+        // var p4 = Person("DD", 13);
+        // p4.sayHi()
+    </script>
+</body>
+
+</html>
