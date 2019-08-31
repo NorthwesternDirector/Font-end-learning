@@ -9,6 +9,9 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 
 脑图内容包括8个方面：
 * CSS基础 / HTML基础 / JS基础 / 设计模式 / 前端进阶 / 前端核心 / 网络 / 算法与数据结构
+预览：
+
+<img width=800px  src="https://github.com/NorthwesternDirector/-/blob/master/icon/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-preview.png">
 -------------------
 
 #### day31
