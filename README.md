@@ -62,3 +62,6 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
 1. 熟悉 创建对象的7种方式 `工厂` `构造函数` `原型` `组合` `动态构造函数` `寄生构造函数` `稳妥构造函数`
 2. 回顾数组操作 `reduce()` `map()` `forEach()` `filter()`
 3. 理解 `图片懒加` 载原理
+
+#### day39
+1. 结合PDD面试回顾 `HTTP状态码` `HTTP请求方法` `线程` `进程` `Cache-Control`

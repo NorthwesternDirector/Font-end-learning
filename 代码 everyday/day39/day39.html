@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function print() {
+            console.log(this.a + this.b)
+        };
+        print.bind({
+            a: 10,
+            b: 20
+        }).bind({
+            a: 1,
+            b: 2
+        })()
+        console.log(print.bind({
+            a: 10,
+            b: 20
+        }))
+        var str = new String("123");
+        var num = new Number(12);
+        console.log(typeof num)
+
+        var obj = Object.create(null);
+        console.log(obj)
+    </script>
+</body>
+
+</html>
