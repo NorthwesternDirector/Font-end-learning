@@ -2,7 +2,7 @@
 
 ### 前端面试题脑图整理 
 
-Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)，[源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，也可以直接下载 [PNG格式文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.png)(图片格式无法查看备注的详细信息)
+Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>下载[源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，或下载 [PNG格式文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.png)(注：png格式无法查看备注内详细信息)
 
 
 <img width=100px height=36px src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566627798554&di=27a976b0200f12cfb6f525627b97cd8c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180929%2Fb5c6b39dcbdc4afaa62fe15d9f08848d.jpeg">
@@ -65,3 +65,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)，[源�
 
 #### day39
 1. 结合PDD面试回顾 `HTTP状态码` `HTTP请求方法` `线程` `进程` `Cache-Control`
+
+#### day40
+1. 回顾 标准的DOM操作方法，创建元素、修改属性、添加元素
+2. 回顾 HTTP请求的9种方法
