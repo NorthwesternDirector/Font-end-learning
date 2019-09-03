@@ -2,14 +2,14 @@
 
 ### 前端面试题脑图整理 
 
-Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)
+Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)，[源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，也可以直接下载 [PNG格式文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.png)(图片格式无法查看备注的详细信息)
 
 
 <img width=100px height=36px src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566627798554&di=27a976b0200f12cfb6f525627b97cd8c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180929%2Fb5c6b39dcbdc4afaa62fe15d9f08848d.jpeg">
 
 脑图内容包括8个方面：
 * HTML基础 / CSS基础 / JS基础 / 前端进阶 / 前端核心 / 设计模式 / 网络 / 算法与数据结构 / 计算机原理
-* 脑图是从自己与他人分享的 `前端笔面经历` 中总结整理得出的，里边划分的十分详细，可以帮助笔面前端的同学进行查漏补缺，有需要的同学可以下载 [源文件](https://github.com/NorthwesternDirector/-/blob/master/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91.xmind)，上一个预览图（预览图只能看到三级菜单）：
+* 脑图是从自己与他人分享的 `前端笔面经历` 中总结整理得出的，里边划分的十分详细，可以帮助笔面前端的同学进行查漏补缺，上一个预览图（预览图只能看到三级菜单）：
 
 <img width=881px  src="https://github.com/NorthwesternDirector/-/blob/master/icon/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91-preview.png">
 
