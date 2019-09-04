@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // /*浅拷贝*/
+        // function copy(initOBj) {
+        //     var obj = {};
+        //     for (var item in initOBj) {
+        //         obj[item] = initOBj[item]
+        //     };
+        //     return obj;
+        // }
+        // /* 深拷贝*/
+        // function isObj(obj) { //判断元素是否为引用类型
+        //     return (typeof obj == "object" || typeof obj == "function") && obj != null;
+        // }
+
+        // function deepCopy(initObj) {
+        //     //var tmpObj = Array.isArray(initObj) ? [] : {};
+        //     var tmpObj = new initObj.constructor;
+
+        //     for (var item in initObj) {
+        //         tmpObj[item] = isObj(initObj[item]) ? deepCopy(initObj[item]) : initObj[item]
+        //     };
+        //     return tmpObj;
+        // }
+
+        // var obj = {
+        //     name: '撩课',
+        //     age: 18,
+        //     friends: ['小花', '小黑'],
+        //     goodF: {
+        //         name: '小撩',
+        //         age: 19,
+        //         address: '上海',
+        //         pets: [{
+        //             name: '土豆'
+        //         }, {
+        //             name: '马铃薯'
+        //         }]
+        //     },
+        //     bir: new Date()
+        // };
+
+        // console.log(obj.bir)
+        // console.log(oo.bir)
+
+        // function log()　 {
+        //     console.log.apply(console, arguments);
+        // }
+        // log(1); //1
+        // log(1, 2); //1
+
+        // var a = [1, 2, 3, 4, 5, 6, 7];
+        // a.unshift("app")
+        // console.log.apply(console, a)
+        // console.log(1, 2, 3, 4, 5)
+
+        /*call代码实现*/
+
+        // Function.prototype.call2 = function(context, ...args) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...args);
+        //     delete context.fn;
+        //     return result;
+        // };
+
+        // var value = 2;
+        // var obj = {
+        //     value: 1
+        // };
+
+        // function bar(name, age) {
+        //     console.log(this.value);
+        //     return {
+        //         value: this.value,
+        //         name: name,
+        //         age: age
+        //     }
+        // };
+
+        // bar.call2(null);
+
+        // console.log(bar.call2(obj));
+
+        /*apply代码实现 与call相同·*/
+        // Function.prototype.apply2 = function(context, arr) {
+        //     var context = context || window;
+        //     context.fn = this;
+
+        //     var result = context.fn(...arr)
+        //     delete context.fn;
+        //     return result;
+        // }
+
+        // console.log(bar.apply2(obj, ["DT", 30]));
+
+        /*apply实现bind*/
+
+        // Function.prototype.bind2 = function(context) {
+        //     var self = this;
+        //     var args = Array.prototype.slice.call(arguments, 1);
+
+        //     var fBound = function() {
+        //             var bindArgs = Array.prototype.slice.call(arguments);
+        //             // 当作为构造函数时，this 指向实例，此时结果为 true，将绑定函数的 this 指向该实例，可以让实例获得来自绑定函数的值
+        //             // 以上面的是 demo 为例，如果改成 `this instanceof fBound ? null : context`，实例只是一个空对象，将 null 改成 this ，实例会具有 habit 属性
+        //             // 当作为普通函数时，this 指向 window，此时结果为 false，将绑定函数的 this 指向 context
+        //             return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+        //         }
+        //         // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+        //     fBound.prototype = this.prototype;
+        //     return fBound;
+        // }
+
+        // var a = [2, 3, 4, 5, 6, 7, 8, 6, 5, 3, 2, 7, 8];
+        // var result = 0;
+        // for (var item in a) {
+        //     result ^= a[item];
+        // };
+        // console.log(result)
+        console.log(['10', '1010', '101010'].map(parseInt))
+        var a = ['10', '1010', '101010'];
+        console.log(parseInt(a[1]))
+    </script>
+</body>
+
+</html>
