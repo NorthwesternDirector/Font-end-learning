@@ -71,8 +71,15 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 2. 回顾 HTTP请求的9种方法
 
 #### day41
-1. 回顾 `HTTP1.0` `HTTP1.1` `HTTP2.0` 区别
+1. 回顾 `HTTP1.0` `HTTP1.1` `HTTP2.0` 区别 结合[美团面筋] (https://www.nowcoder.com/discuss/238158)
 2. 回顾 `url输入全过程`
 3. 回顾 `强缓存` `协商缓存`
 4. 学习`apply` `call` `bind` 代码
 5. 回顾 `位运算` 相关知识
+
+#### day42
+1. 回顾DOM操作 `document.querySelectorAll("[class$='1']")`等 结合 [美团面筋] (https://www.nowcoder.com/discuss/245565?type=0&order=0&pos=19&page=1)
+2. 回顾 `圣杯` `双飞翼` 布局,`两栏自适应`布局`
+3. 回顾 `浏览器内核`
+4. 回顾 `事件冒泡` `事件委托` 代码 , event.target.id/className/nodeName/innerHTML
+5. 学习 `GET` `POST` 请求的根本区别

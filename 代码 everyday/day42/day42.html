@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* 两列布局1 */
+    /* #left {
+        float: left;
+        width: 200px;
+        height: 400px;
+    }
+    #right {
+        height: 400px;
+        overflow: hidden;
+    } */
+    /* 两列布局2 */
+    /* #container {
+        position: relative;
+    }
+    #left {
+        position: absolute;
+        width: 200px;
+        height: 400px;
+    }
+    #right {
+        margin-left: 200px;
+        height: 400px;
+    } */
+    /*两列布局3*/
+    /* #container {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    #left {
+        width: 40%;
+        height: 400px;
+    }
+    
+    #right {
+        width: 60%;
+        height: 400px;
+    } */
+</style>
+
+<body>
+    <!-- <div class="jq_1"></div>
+    <div class="jq_2"></div>
+    <div class="sdf1"></div>
+    <div class="jq_3"></div>
+    <div class="jq_4"></div> -->
+
+    <!-- 圣杯 -->
+    <!-- <div id="container">
+        <div id="mid">1种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种</div>
+        <div id="div1">左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左</div>
+        <div id="div3">右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右</div>
+    </div> -->
+
+    <!-- 双飞翼 -->
+    <!-- #container {
+        /* padding: 0 300px 0 100px; */
+        overflow: hidden
+    }
+    
+    #div1 {
+        background-color: lightpink;
+        float: left;
+        width: 100px;
+        margin-left: -100%;
+    }
+    
+    #midd {
+        width: 100%;
+        background-color: blueviolet;
+        float: left;
+    }
+    
+    #mid {
+        margin: 0 300px 0 100px;
+    }
+    
+    #div3 {
+        background-color: aqua;
+        float: left;
+        width: 300px;
+        margin-left: -300px;
+    } -->
+    <!-- <div id="container">
+        <div id="midd">
+            <div id="mid">1种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种种</div>
+        </div>
+        <div id="div1">左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左左</div>
+        <div id="div3">右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右>右右右右</div>
+    </div> -->
+
+    <!-- 双列测试 -->
+    <!-- <div id="container">
+        <div id="left" style="background-color:lightpink">左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边左边 左边左边左边</div>
+        <div id="right" style="background-color:lightseagreen">右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边右边</div>
+    </div> -->
+    <div id="buttons">
+        <button>a</button>
+        <button>b</button>
+    </div>
+
+</body>
+<script>
+    // console.log(document.querySelectorAll("[class$='1']"));
+
+    // var div = document.createElement("div");
+
+    // var body = document.getElementsByTagName("body");
+    // body[0].appendChild(div);
+    // setTimeout(function() {
+    //     var removeDiv = document.getElementsByTagName("div")
+    //     body[0].removeChild(removeDiv[0])
+    // }, 6000);
+    var btn = document.getElementById('buttons');
+    var btns = btn.children;
+    // 事件委托
+    // btns.addEventListener("click", function(e) {
+    //     console.log(e.target.innerHTML);
+    // });
+
+    //事件冒泡
+    // btns[0].addEventListener("click", function(e) {
+    //     alert(1);
+    // }, false)
+    // btns[1].addEventListener("click", function(e) {
+    //     alert(2);
+    // }, false)
+</script>
+
+</html>
