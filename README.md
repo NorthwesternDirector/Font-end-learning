@@ -85,7 +85,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 5. 学习 `GET` `POST` 请求的根本区别
 
 #### day43
-1. 回顾 `闭包` 相关内容 结合 [美团面筋]https://www.nowcoder.com/discuss/245109?type=all&order=time&pos=&page=1)
+1. 回顾 `闭包` 相关内容 结合 [美团面筋](https://www.nowcoder.com/discuss/245109?type=all&order=time&pos=&page=1)
 2. 回顾 `节流` `防抖` 代码
 3. 回顾 `TCP` `UDP` 区别
 4. 回顾 `伪类:` `伪元素::`
