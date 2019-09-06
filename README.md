@@ -78,8 +78,17 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 5. 回顾 `位运算` 相关知识
 
 #### day42
-1. 回顾DOM操作 `document.querySelectorAll("[class$='1']")`等 结合 [美团面筋] (https://www.nowcoder.com/discuss/245565?type=0&order=0&pos=19&page=1)
+1. 回顾DOM操作 `document.querySelectorAll("[class$='1']")`等 结合 [美团面筋](https://www.nowcoder.com/discuss/245565?type=0&order=0&pos=19&page=1)
 2. 回顾 `圣杯` `双飞翼` 布局,`两栏自适应`布局`
 3. 回顾 `浏览器内核`
 4. 回顾 `事件冒泡` `事件委托` 代码 , event.target.id/className/nodeName/innerHTML
 5. 学习 `GET` `POST` 请求的根本区别
+
+#### day43
+1. 回顾 `闭包` 相关内容 结合 [美团面筋]https://www.nowcoder.com/discuss/245109?type=all&order=time&pos=&page=1)
+2. 回顾 `节流` `防抖` 代码
+3. 回顾 `TCP` `UDP` 区别
+4. 回顾 `伪类:` `伪元素::`
+5. 学习 `DNS解析` 步骤
+6. 学习 `vue-router` 的两种模式
+7. 回顾 `居中布局` `vue8个生命周期函数`

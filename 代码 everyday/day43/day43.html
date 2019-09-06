@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* div {
+        background: lightpink;
+        width: 600px;
+        height: 600px;
+        border-width: 30px;
+        border-style: solid;
+        border-color: lime;
+        border-radius: 50%;
+    }
+    
+    div::before {
+        content: '';
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        position: absolute;
+        top: 300px;
+        left: 300px;
+        border-radius: 50%;
+    }
+    
+    div::after {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: rgb(226, 159, 58);
+        position: absolute;
+        top: 300px;
+        left: 300px;
+        border-radius: 50%;
+    } */
+    
+    .father {
+        position: relative;
+        height: 800px;
+    }
+    
+    .son {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgb(255, 19, 19);
+    }
+</style>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+
+
+    <script>
+        // 防抖
+        var debounce = function(fn, wait) {
+            var timeout = null;
+            return function() {
+                var args = arguments;
+                var context = this;
+                if (timeout != null) {
+                    clearTimeout(timeout)
+                };
+                timeout = setTimeout(function(context, args) {
+                    fn.apply(context, args)
+                }, wait)
+            }
+
+        };
+
+
+        // 节流
+        function throttle(fn, delay) {
+            let canRun = true; // 通过闭包保存一个标记
+            return function() {
+                if (!canRun) return; // 在函数开头判断标记是否为 true，不为 true 则 return
+                canRun = false; // 立即设置为 false
+                setTimeout(() => { // 将外部传入的函数的执行放在 setTimeout 中
+                    fn.apply(this, arguments);
+                    // 最后在 setTimeout 执行完毕后再把标记设置为 true(关键) 表示可以执行下一次循环了。当定时器没有执行的时候标记永远是 false，在开头被 return 掉
+                    canRun = true;
+                }, delay);
+            };
+        }
+
+
+        function handle() {
+            console.log(Math.random())
+        };
+
+        window.addEventListener('click', throttle(handle, 2000))
+    </script>
+</body>
+
+</html>
