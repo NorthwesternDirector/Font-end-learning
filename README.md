@@ -71,7 +71,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 2. 回顾 HTTP请求的9种方法
 
 #### day41
-1. 回顾 `HTTP1.0` `HTTP1.1` `HTTP2.0` 区别 结合[美团面筋] (https://www.nowcoder.com/discuss/238158)
+1. 回顾 `HTTP1.0` `HTTP1.1` `HTTP2.0` 区别 结合 [美团面筋](https://www.nowcoder.com/discuss/238158)
 2. 回顾 `url输入全过程`
 3. 回顾 `强缓存` `协商缓存`
 4. 学习`apply` `call` `bind` 代码
