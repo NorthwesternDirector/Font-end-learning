@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var str = "123";
+        // console.log(str.length);
+
+        // leetcode903
+        // var numPermsDISequence = function(S) {
+        //     //降序D 后面要加小于等于末尾的（2的）数字，然后把所有大于等于这个数字的地方都加1
+        //     //升序I 后面要加大于末尾的（2的）数字，然后把所有大于等于这个数字的地方都加1
+
+        //     var res = 0;
+        //     var n = S.length;
+        //     var M = Math.pow(10, 9) + 7;
+
+        //     var dp = new Array(n + 1);
+        //     for (var i = 0; i < n + 1; i++) {
+        //         dp[i] = new Array();
+        //     };
+
+        //     for (var i = 0; i < n + 1; i++) {
+        //         for (var j = 0; j < n + 1; j++) {
+        //             dp[i][j] = 0
+        //         }
+        //     };
+
+        //     dp[0][0] = 1;
+
+        //     for (var i = 1; i <= n; ++i) {
+        //         for (var j = 0; j <= i; ++j) {
+        //             if (S.charAt(i - 1) == 'D') {
+        //                 for (var k = j; k <= i - 1; ++k) {
+        //                     dp[i][j] = (dp[i][j] + dp[i - 1][k]) % M;
+        //                 }
+        //             } else {
+        //                 for (var k = 0; k <= j - 1; ++k) {
+        //                     dp[i][j] = (dp[i][j] + dp[i - 1][k]) % M;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     for (var i = 0; i <= n; ++i) {
+        //         res = (res + dp[n][i]) % M;
+        //     }
+        //     return res;
+        // };
+
+        // console.log(numPermsDISequence("DID"))
+
+        // var longestPalindrome = function(s) {
+        //     var sArr = s.split("");
+        //     var map = {};
+        //     var res = 0;
+        //     for (var i = 0; i < sArr.length; i++) {
+        //         if (map[sArr[i]] == undefined) {
+        //             map[sArr[i]] = 1;
+        //         } else {
+        //             map[sArr[i]] += 1
+        //         }
+        //     };
+
+        //     for (var item in map) {
+        //         res += parseInt(map[item] / 2);
+        //     };
+        //     return res * 2 + 1;
+        // };
+
+        // console.log(longestPalindrome("abccccdd"))
+
+
+
+        // event loop输出测试
+        // async function async1() {
+        //     console.log('async1 start')
+        //     await async2()
+        //     console.log('async1 end')
+        // }
+
+        // async function async2() {
+        //     console.log('async2')
+        // }
+
+        // console.log('script start')
+        // setTimeout(function() {
+        //     console.log('setTimeout')
+        // }, 0)
+
+        // async1();
+
+        // new Promise(function(resolve) {
+        //     console.log('promise1')
+        //     resolve();
+        // }).then(function() {
+        //     console.log('promise2')
+        // })
+
+        // console.log('script end')
+
+
+        // call
+        // Function.prototype.call2 = function(context, ...args) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...args);
+        //     delete context.fn;
+        //     return result;
+        // };
+
+        //apply
+        // Function.prototype.apply2 = function(context, arr) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...arr)
+        //     delete context.fn;
+        //     return result;
+        // }
+
+
+        // var value = 2;
+        // var obj = {
+        //     value: 1
+        // };
+
+        // function bar(name, age) {
+        //     console.log(this.value);
+        //     return {
+        //         value: this.value,
+        //         name: name,
+        //         age: age
+        //     }
+        // };
+
+        // //zbar.call2(null);
+        // //console.log(bar.apply2(obj, ["DT", 30]));
+        // console.log(bar.call2(obj, ["dt", "18"]));
+
+        //apply实现bind
+        // Function.prototype.bind2 = function(context) {
+        //     var self = this;
+        //     var args = Array.prototype.slice.call(arguments, 1);
+
+        //     var fBound = function() {
+        //         var bindArgs = Array.prototype.slice.call(arguments);
+        //         return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+        //     }
+        //     fBound.prototype = this.prototype;
+        //     return fBound;
+        // }
+
+        // var abc = function() {
+        //     console.log("a'b'c");
+        //     console.log(this)
+        // };
+
+
+        // var a = {
+        //     a: "aa"
+        // };
+        // var aaa = abc.bind2(a);
+        // aaa();
+
+        // var a = [1, 2, 3, 4, 5, 6];
+        // a = a.slice(1);
+        // console.log(a)
+    </script>
+</body>
+
+</html>

@@ -101,3 +101,9 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 
 #### day45
 1. `display` `position` `float` 关系
+
+#### day46
+1. Leetcode 409
+2. 回顾 `CSS3新增属性`
+3. 学习 `promise` 3种状态
+4. 回顾 `bind` `apply` `call` 代码
