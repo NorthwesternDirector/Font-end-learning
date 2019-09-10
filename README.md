@@ -107,3 +107,8 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 2. 回顾 `CSS3新增属性`
 3. 学习 `promise` 3种状态
 4. 回顾 `bind` `apply` `call` 代码
+
+#### day47
+1. 学习 `js动画`
+2. `display:none` `visibility:hidden` 区别
+3. 学习 `CSS的奇怪单位`
