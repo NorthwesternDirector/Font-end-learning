@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        position: relative;
+        height: 1000px;
+        background-color: blue;
+    }
+    
+    .son {
+        position: absolute;
+        background-color: chartreuse;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 25% 0;
+    }
+</style>
+
+<body>
+
+
+    <!-- <div class="father">aaaaaaaa
+        <div class="son">哈哈哈啊哈哈哈啊哈哈哈哈啊哈啊啊啊啊啊很打击啥叫看</div>
+    </div> -->
+
+    <div style="width:200px;height:200px;padding:30px;background-color:red">
+        <div id="d1" style="width:100px;height:100px;background-color:orange;">
+            <div id="d2" style="width:75px;height:75px;background-color:yellow;">
+                <div id="d3" style="width:50px;height:50px;background-color:blue">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // aa();
+    // bb();
+    // // 函数表达式
+    // var bb = function() {
+    //     alert("bb")
+    // }
+    // // 函数声明
+    // function aa() {
+    //     alert("aa");
+    // }
+
+    // // 创建对象的几种方式
+    // // 1.对象字面量
+    // var person = {
+    //     name: "dt",
+    //     age: 29,
+    //     sayHi: function() {
+    //         console.log(this.name + " " + "hi")
+    //     }
+    // };
+    // person.sayHi();
+    // console.log(person);
+
+    // //2.创建Object实例
+    // var person2 = new Object();
+    // person2.name = "fs";
+    // person2.age = 18;
+    // person2.sayHi = function() {
+    //     console.log(this.name + " " + "hi")
+    // };
+    // person2.sayHi();
+    // console.log(person2);
+
+    // //3.工厂模式
+    // function createPerson(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     o.sayHi = function() {
+    //         console.log(this.name + " " + "hi")
+    //     };
+    //     return o;
+    // };
+    // var person3 = createPerson("dt", "99");
+    // person3.sayHi();
+    // console.log(person3);
+
+    // //4.构造函数模式
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sayHi = function() {
+    //         console.log(this.name + " " + "hi")
+    //     };
+    // }
+    // var person4 = new Person("fs", 66);
+
+    // person4.sayHi();
+    // console.log(person4);
+
+    // //5.原型模式
+    // function newPerson() {};
+    // newPerson.prototype.name = "dt";
+    // newPerson.prototype.age = 96;
+    // newPerson.prototype.sayHi = function() {
+    //     console.log(this.name + " " + "hi")
+    // }
+
+    // var person5 = new newPerson();
+
+    // person5.sayHi();
+    // console.log(person5);
+
+
+    // //6.组合模式
+    // function Person2(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // };
+    // Person2.prototype.sayHi = function() {
+    //     console.log(this.name + " " + "hi")
+    // };
+
+    // var person6 = new Person2("fs", 00);
+
+    // person6.sayHi();
+    // console.log(person6);
+
+    // //7.寄生构造函数模式
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     o.sayHi = function() {
+    //         console.log(this.name + " " + "hi")
+    //     };
+    //     return o
+    // };
+
+    // var person = new Person("Dt", 22);
+    // person.sayHi();
+    // console.log(person);
+
+    // Array.prototype.toTo = function() {
+    //     return this.join('|');
+    // };
+    // var a = [1, 2, 3, 4, 5, 6];
+    // console.log(a.toTo())
+    // 8.稳妥构造函数模式
+
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.sayHi = function() {
+    //         console.log(name + " " + "hi")
+    //     };
+    //     return o
+    // };
+    // var person = new Person("Dt", 22);
+    // person.sayHi();
+    // console.log(person);
+
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.syaHi = function() {
+        console.log(this.name + this.age + " " + "sayhi")
+    };
+    //1原型链实现继承
+    // function Student(score) {
+    //     this.score = score
+    // };
+    // Student.prototype = new Person("DT", 343);
+
+    // Student.prototype.study = function() {
+    //     console.log(this.score + "studying" + this.name)
+    // };
+    // var stu = new Student(100);
+    // stu.syaHi();
+    // stu.study();
+    //2借用构造函数继承
+
+    // function Student(name, age, score) {
+    //     this.score = score;
+    //     Person.call(this, name, age);
+    // };
+
+    // var stu = new Student("dd", 18, 100);
+    // console.log(stu);
+
+    //3.组合继承
+
+    // function Student(name, age, score) {
+    //     this.score = score;
+    //     Person.call(this, name, age);
+    // };
+
+    // Student.prototype = new Person();
+
+    // var stu = new Student("dd", 18, 100);
+    // stu.syaHi()
+
+    // 4寄生式继承
+    // function create(original) {
+    //     var clone = Object.create(original);
+    //     clone.syaHi = function() {
+    //         console.log(this.name + "sayhi");
+    //     };
+    //     return clone;
+    // };
+
+    // var person = {
+    //     name: "dt",
+    //     age: 18
+    // };
+
+    // var student = create(person);
+    // student.syaHi()
+
+    //5寄生组合式继承
+    function inherit(person, student) {
+        var prototype = Object.create(person.prototype);
+        prototype.constructor = student;
+        student.prototype = prototype;
+    };
+
+    function Student(name, age, score) {
+        this.score = score;
+        Person.call(this, name, age)
+    };
+
+    inherit(Person, Student);
+
+    var stu = new Student("de", 18, 100);
+    stu.syaHi();
+
+    //test
+    // var son = document.getElementsByClassName("son")[0];
+    // son.addEventListener("click", function() {
+    //     alert("a")
+    // });
+    // son.addEventListener("click", function() {
+    //     alert("b")
+    // })
+    // son.onclick = function() {
+    //     alert("c")
+    // };
+    // son.onclick = function() {
+    //     alert("d")
+    // }
+
+    function fun1() {
+        alert(event.currentTarget.innerText)
+    };
+
+    d1.addEventListener("click", fun1, false);
+    d2.addEventListener("click", fun1, false);
+    d3.addEventListener("click", fun1, false);
+</script>
+
+
+</html>
