@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* 属性选择器 */
+    
+    [class^='m-'] {
+        background-color: blanchedalmond
+    }
+</style>
+
+<body>
+    <div class="m-1">m1</div>
+    <div class="v-1">v1</div>
+    <div class="m-2">m2</div>
+    <div class="v-2">v2</div>
+</body>
+
+<script>
+    function debounce(fn, wait) {
+        var timeout = null;
+        return function() {
+            var context = this;
+            var args = arguments;
+            if (timeout != null) {
+                clearTimeout(timeout)
+            };
+            timeout = setTimeout(function() {
+                fn.apply(context, args)
+            }, wait)
+        }
+    };
+
+    function throttle(fn, delay) {
+        var canrun = true;
+        return function() {
+            var context = this;
+            var args = arguments;
+            if (!canrun) return;
+            canrun = false;
+            setTimeout(function() {
+                fn.apply(context, args);
+                canrun = true;
+            }, delay)
+        }
+    }
+
+
+    function handle() {
+        console.log(Math.random())
+    };
+    window.addEventListener("click", throttle(handle, 1000))
+    console.log([] == 0);
+    console.log(2019..toString())
+
+    function foo() {
+
+    };
+    var o = foo.name;
+    foo.name = "bar";
+    console.log([o, foo.name])
+</script>
+
+</html>
