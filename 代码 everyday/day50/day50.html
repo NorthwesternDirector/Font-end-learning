@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #div1 {
+        background-color: rgb(3, 3, 3);
+        width: 1200px;
+        height: 500px;
+    }
+    
+    #div2 {
+        background-color: rgb(255, 0, 0);
+        width: 1200px;
+        height: 500px;
+        padding-top: 100px;
+    }
+</style>
+
+<body>
+
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <script>
+        // var a;
+
+        // function log() {
+        //     console.log.apply(this, arguments);
+        // };
+        // console.log(console)
+        // log(1); //1
+        // log(1, 2); //1 2
+        // log(['1', '7', '11'].map(parseInt))
+
+        // ['1', '7', '11'].map(function(value, index, array) {
+        //     console.log(value + " " + index + " " + array)
+        // })
+
+        // var str1 = new RegExp("e");
+        // console.log(str1.exec("hello").index);
+
+        // function* helloWorldGenerator() {
+        //     yield 'hello';
+        //     yield 'world';
+        //     return 'ending';
+        // }
+
+        // var hw = helloWorldGenerator();
+        // console.log(hw)
+
+        // var anObj = {
+        //     100: 'a',
+        //     2: 'b',
+        //     7: 'c'
+        // };
+        // console.log(Object.keys(anObj));
+
+        // function isObj(obj) {
+        //     return (typeof obj == 'objct' || typeof obj == 'function') && obj != null
+        // }
+
+        // function deepCopy(obj) {
+        //     let tmpObj = Array.isArray(obj) ? [] : {};
+        //     for (var key in obj) {
+        //         temObj[key] = isObj(obj[key]) ? deepCopy(obj[key]) : obj[key]
+        //     };
+        //     return tmpObj;
+        // };
+        // console.log(deepCopy(function a() {}));\
+
+
+        // console.log(Math.sqrt(4))
+
+        // console.log(Math.floor(1.4));
+        // console.log(Math.ceil(1.4));
+        // console.log(Math.round(1.4));
+        // var d = new Date("2019-9-13");
+        // var g = new Date("2019-10-1");
+        // console.log((g - d) / (1000 * 60 * 60 * 24))
+        // console.log(a)
+
+        // var a = 3;
+
+        // console.log(aa(3))
+
+        // // function aa(s) {
+        // //     return s
+        // // }
+        // var aa = function(s) {
+        //     return s;
+        // }
+
+        var fn = "11"; //fn被声明为function，且此时fn已经被赋值，这个值就是function的对象
+
+        var fn; //fn已经在上一行被声明且已经有值， 再 var 无效，并不会重置为 undefined
+
+        console.log(fn) //打印结果：function fn(){}
+    </script>
+</body>
+
+</html>
