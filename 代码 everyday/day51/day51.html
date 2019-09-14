@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a = [101, 23, 32, 13, 41];
+        // a.forEach(function(index, item, arr) {
+        //     console.log(`${index}--${item}--${arr}`)
+        // });
+
+        // console.log(["1", "2", "3"].map(parseInt));
+
+
+        // console.log(a.reduce(function(x, y) {
+        //     return x * y
+        // }))
+
+        // a.sort(function(a, b) {
+        //     return a - b
+        // });
+        // console.log(a);
+
+        // var obj = {
+        //     a: 1,
+        //     b: 2,
+        //     c: 3
+        // };
+        // console.log(Object.keys(obj));
+
+        // // call
+        // Function.prototype.call2 = function(context, ...args) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...args);
+        //     delete context.fn;
+        //     return result;
+        // };
+
+        // //apply
+        // // Function.prototype.apply2 = function(context, arr) {
+        // //     var context = context || window;
+        // //     context.fn = this;
+        // //     var result = context.fn(...arr)
+        // //     delete context.fn;
+        // //     return result;
+        // // }
+
+
+        // var value = 2;
+        // var obj = {
+        //     value: 1
+        // };
+
+        // function bar(name, age, sex) {
+        //     console.log(this.value);
+        //     return {
+        //         value: this.value,
+        //         name: name,
+        //         age: age,
+        //         sex: sex
+        //     }
+        // };
+
+
+        // console.log(bar.call2(obj, "dt", "18", "man"));
+
+        // function sum(...nums) {
+        //     let total = 0;
+        //     console.log(...nums);
+        //     console.log(nums);
+        //     for (const num of nums) {
+        //         total += num;
+        //     }
+        //     return total;
+        // }
+
+        // sum(1, 2, 3, 4, 5)
+
+
+        String.prototype.spacify = function() {
+            var str = this;
+            str = str.replace(/\s/g, "");
+            var arr = str.split("");
+            return arr.join(" ")
+        };
+        console.log('hello world'.spacify())
+
+
+        var bb = {
+            alertbb: function() {
+                console.log(bb)
+            }
+        }
+
+
+        function flatten(ary) {
+            return ary.reduce((pre, cur) => {
+
+                return pre.concat(Array.isArray(cur) ? flatten(cur) : cur);
+            })
+        }
+        let ary = [1, 2, [3, 4],
+            [5, [6, 7]]
+        ];
+        console.log(flatten(ary))
+    </script>
+</body>
+
+</html>
