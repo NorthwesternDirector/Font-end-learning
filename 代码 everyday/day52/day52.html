@@ -7,6 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    .box {
+        background-color: lightblue;
+        height: 20px;
+        line-height: 20px;
+        box-sizing: border-box;
+    }
+</style>
 
 <body>
 
@@ -17,7 +25,45 @@
         <div id="son4" class="son" style="margin: 30px;height:40px;background-color: burlywood">son4</div>
         <div id="son5" class="son" style="margin: 30px;height:40px;background-color: burlywood">son5</div>
     </div>
+
+    <div class="box" style="width:0">0%</div>
+    <button id="btn">load</button>
     <script>
+        /*js动画*/
+        // var btn = document.getElementById('btn');
+        // var div = document.getElementsByClassName('box')[0];
+
+        // btn.addEventListener('click', function() {
+        //     //load1();
+        //     load2();
+        //     //load3();
+        // });
+
+        // function load3() {
+
+        //     if (parseInt(div.style.width) < 500) {
+        //         div.style.width = parseInt(div.style.width) + 5 + 'px';
+        //         div.innerHTML = parseInt(div.style.width) / 5 + '%';
+        //         var c = requestAnimationFrame(load3);
+        //     } else {
+        //         cancelAnimationFrame(c);
+        //     }
+        // };
+
+        // function load2() {
+        //     div.style.width = parseInt(div.style.width) + 5 + 'px';
+        //     div.innerHTML = parseInt(div.style.width) / 5 + '%';
+        //     var c = setInterval(function() {
+        //         if (parseInt(div.style.width) < 500) {
+        //             load2();
+        //         } else {
+        //             clearInterval(c);
+        //         }
+
+        //     }, 1600);
+        // };
+
+
         /*利用reduce进行数组扁平化*/
         function flatDeep(arr) {
             return arr.reduce((flattenArray, element) => {
@@ -25,6 +71,7 @@
             }, [])
         }
         console.log(flatDeep([1, 2, 3, [4, [5, 6]], 8, 9]));
+
 
         /*事件委托*/
         // document.getElementById("father").addEventListener("click", function(e) {
@@ -42,22 +89,66 @@
         //     alert("s")
         // }, true)
 
-        console.log((100000).toLocaleString())
 
-        var num = 1002001;
+        /*数值千分位1*/
+        // console.log((100000).toLocaleString())
 
-        function thousand(num) {
-            var numStr = num.toString();
-            var result = "";
-            while (numStr.length > 3) {
-                result = "," + numStr.slice(-3) + result;
-                numStr = numStr.slice(0, numStr.length - 3)
-            }
-            if (numStr.length != 0) return numStr + result;
-            return result;
+
+        /*数值千分位1*/
+        // var num = 1002001;
+        // function thousand(num) {
+        //     var numStr = num.toString();
+        //     var result = "";
+        //     while (numStr.length > 3) {
+        //         result = "," + numStr.slice(-3) + result;
+        //         numStr = numStr.slice(0, numStr.length - 3)
+        //     }
+        //     if (numStr.length != 0) return numStr + result;
+        //     return result;
+        // };
+        // console.log(thousand(num));
+
+
+        /*正则数值千分位*/
+        var str = "1001002";
+
+        function thousand(str) {
+
+            //return str = str.replace(/(\d)(?=(\d{3})+$)/g, '$1,'); //不带小数
+            return str = str.replace(/(\d)(?=(\d{3})+\.)/g, '$1,'); //带两位小数
         };
+        console.log(thousand(str))
+            // var a = 222122122.6754;
+            // var b = a.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'); //使用正则替换，每隔三个数加一个',' 
+            // console.log(b)
 
-        console.log(thousand(num));
+        /*正则匹配url参数*/
+        ///[?&](\w+)=(\w+)/g
+        // var url = 'http://www.baidu.com/?dsp=ipad&sid=20510&name=wangbin';
+        // var reg = /[?&](\w+)=(\w+)/g;
+        // var obj = {};
+        // while (ret = reg.exec(url)) {
+        //     console.log(ret);
+        //     obj[ret[1]] = ret[2];
+        // };
+        // console.log(obj);
+
+
+        /*正则匹配电话号码*/
+        // /(13|14|15|18)[0-9]{9}/
+        // var pattern = /(13|14|15|18)[0-9]{9}/;
+        // var str = "13688888888";
+        // console.log(pattern.test(str));
+
+
+
+        // var c = setTimeout(function() {
+        //     console.log("a")
+        // }, 2000);
+
+        // c = setTimeout(function() {
+        //     console.log("b")
+        // }, 5000);
     </script>
     </script>
 </body>
