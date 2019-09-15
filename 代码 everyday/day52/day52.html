@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="father" style="background-color:lightslategray">
+        <div id="son1" class="son" style="margin: 30px;height:40px;background-color: burlywood">son1</div>
+        <div id="son2" class="son" style="margin: 30px;height:40px;background-color: burlywood">son2</div>
+        <div id="son3" class="son" style="margin: 30px;height:40px;background-color: burlywood">son3</div>
+        <div id="son4" class="son" style="margin: 30px;height:40px;background-color: burlywood">son4</div>
+        <div id="son5" class="son" style="margin: 30px;height:40px;background-color: burlywood">son5</div>
+    </div>
+    <script>
+        /*利用reduce进行数组扁平化*/
+        function flatDeep(arr) {
+            return arr.reduce((flattenArray, element) => {
+                return Array.isArray(element) ? [...flattenArray, ...flatDeep(element)] : [...flattenArray, element]
+            }, [])
+        }
+        console.log(flatDeep([1, 2, 3, [4, [5, 6]], 8, 9]));
+
+        /*事件委托*/
+        // document.getElementById("father").addEventListener("click", function(e) {
+        //     if (e.target.className == "son") {
+        //         console.log(e.target.id)
+        //     }
+        // })
+
+        // document.getElementById("father").addEventListener("click", function() {
+
+        //     alert("f")
+        // }, true)
+        // document.getElementById("son1").addEventListener("click", function() {
+
+        //     alert("s")
+        // }, true)
+
+        console.log((100000).toLocaleString())
+
+        var num = 1002001;
+
+        function thousand(num) {
+            var numStr = num.toString();
+            var result = "";
+            while (numStr.length > 3) {
+                result = "," + numStr.slice(-3) + result;
+                numStr = numStr.slice(0, numStr.length - 3)
+            }
+            if (numStr.length != 0) return numStr + result;
+            return result;
+        };
+
+        console.log(thousand(num));
+    </script>
+    </script>
+</body>
+
+</html>

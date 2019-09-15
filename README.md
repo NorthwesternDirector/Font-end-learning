@@ -132,3 +132,6 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 #### day51
 1. 学习Array的高阶函数 结合 [PDD面筋](https://www.nowcoder.com/discuss/257575?type=post&order=time&pos=&page=1&subType=2)
 2. `call` `apply` 代码回顾
+
+#### day52
+1. 利用 `Array.reduce()` 进行数组扁平化（flat）
