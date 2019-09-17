@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*set map*/
+        // var a = new Set(["a", {
+        //     a: 1
+        // }, "c", " d", "e"]);
+        // console.log(a.has({a: 1}));
+        // a.forEach(function(value, index, set) {
+        //     console.log(`${value}--${index}--${set}`)
+        // });
+
+        // var b = new Map([
+        //     ["a", "b"],
+        //     ["c", " d"],
+        //     ["e", {}]
+        // ]);
+        // console.log(b.has("a"));
+        // b.forEach(function(value, index, set) {
+        //     console.log(`${value}--${index}--${set}`)
+        // });
+
+        /* call apply bind*/
+
+        Function.prototype.call2 = function(context, ...arg) {
+            var context = context || window;
+            context.fn = this;
+            var result = context.fn(...arg);
+            delete context.fn;
+            return result;
+        };
+
+
+
+        Function.prototype.apply2 = function(context, arg) {
+            var context = context || window;
+            context.fn = this;
+            var result = context.fn(...arg);
+            delete context.fn;
+            return result;
+        };
+
+        // var value = 2;
+        // var obj = {
+        //     value: 1
+        // };
+
+        // function bar(name, age) {
+        //     console.log(this.value);
+        //     return {
+        //         value: this.value,
+        //         name: name,
+        //         age: age
+        //     }
+        // };
+
+        // bar.call2(null);
+        // console.log(bar.apply2(obj, [12, 34]));
+
+        // Function.prototype.bind2 = function(context) {
+        //     var self = this;
+        //     var args = Array.prototype.slice.call(arguments, 1); //Array.prototype.slice.call(arguments, 1)可以理解成是让arguments转换成一个数组对象，让arguments具有slice()方法。要是直接写arguments.slice(1)会报错。
+        //     var fBound = function() {
+        //         var bindArgs = Array.prototype.slice.call(arguments);
+        //         return self.apply(this instanceof fBound ? this : context, args.concat(bindArgs));
+        //     };
+        //     fBound.prototype = self.prototype;
+        //     return fBound;
+        // };
+
+        // var obj = {
+        //     value: 1
+        // };
+
+        // function bar(name, age) {
+        //     console.log(this.value);
+        //     return {
+        //         value: this.value,
+        //         name: name,
+        //         age: age
+        //     }
+        // };
+
+        // var newObj = bar.bind(obj);
+        // console.log(newObj("12", "34"))
+
+        function isObj(obj) {
+            return (typeof obj == "object" || typeof obj == "function") && typeof obj != null;
+        }
+
+        function deepCopy(obj) {
+            var tmpObj = Array.isArray(obj) ? {} : [];
+            for (var key in obj) {
+                tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key]) : obj[key]
+            };
+            return tmpObj;
+        }
+    </script>
+</body>
+
+</html>
