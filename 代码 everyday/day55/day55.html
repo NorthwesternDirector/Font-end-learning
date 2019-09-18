@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Function.prototype.call2 = function(context, ...arg) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...arg);
+        //     delete context.fn;
+        //     return result;
+        // };
+
+        // Function.prototype.apply = function(context, arr) {
+        //     var context = context || window;
+        //     context.fn = this;
+        //     var result = context.fn(...arr);
+        //     delete context.fn;
+        //     return result;
+        // };
+
+        // Function.prototype.bind2 = function(context) {
+        //     var self = this;
+        //     var args = Array.prototype.slice.call(arguments, 1);
+        //     var fBind = function() {
+        //         var bindArgs = Array.prototype.slice.call(arguments);
+        //         return self.apply(this instanceof fBind ? this : context, args.concat(bindArgs))
+        //     };
+        //     fBind.prototype = self.prototype;
+        //     return fBind;
+        // };
+
+        // function isObj(obj) {
+        //     return obj instanceof Object;
+        // };
+
+        // function deepCopy(obj) {
+        //     var tmpObj = Array.isArray(obj) ? [] : {};
+        //     for (var key in obj) {
+        //         tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key]) : obj[key];
+        //     }
+        //     return tmpObj;
+        // }
+
+        // function DrawImage(ImgD, width_s, height_s) {
+        //     /*var width_s=139;
+        //     var height_s=104;
+        //     */
+        //     var image = new Image();
+        //     image.src = ImgD.src;
+        //     if (image.width > 0 && image.height > 0) {
+        //         flag = true;
+        //         if (image.width / image.height >= width_s / height_s) {
+        //             if (image.width > width_s) {
+        //                 ImgD.width = width_s;
+        //                 ImgD.height = (image.height * width_s) / image.width;
+        //             } else {
+        //                 ImgD.width = image.width;
+        //                 ImgD.height = image.height;
+        //             }
+        //         } else {
+        //             if (image.height > height_s) {
+        //                 ImgD.height = height_s;
+        //                 ImgD.width = (image.width * height_s) / image.height;
+        //             } else {
+        //                 ImgD.width = image.width;
+        //                 ImgD.height = image.height;
+        //             }
+        //         }
+        //     }
+        //     /*else{
+        //     ImgD.src="";
+        //     ImgD.alt=""
+        //     }*/
+        // };
+
+        function debounce(fn, wait) {
+            var timeout = null;
+            return function() {
+                var context = this;
+                var args = arguments;
+                if (timeout != null) {
+                    clearTimeout(timeout);
+                };
+                timeout = setTimeout(function() {
+                    fn.apply(context, args);
+                }, wait);
+            };
+        }
+    </script>
+</body>
+
+</html>
