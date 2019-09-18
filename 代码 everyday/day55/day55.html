@@ -7,8 +7,75 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    /* .container {
+        padding: 0px 300px 0px 200px
+    }
+    
+    .mid {
+        float: left;
+        position: relative;
+        background: red;
+        width: 100%
+    }
+    
+    .left {
+        float: left;
+        position: relative;
+        background: blue;
+        width: 200px;
+        margin-left: -100%;
+        left: -200px;
+    }
+    
+    .right {
+        float: left;
+        position: relative;
+        background: green;
+        width: 300px;
+        margin-left: -300px;
+        right: -300px;
+    } */
+    
+    .midd {
+        float: left;
+        width: 100%;
+    }
+    
+    .mid {
+        background: red;
+        margin: 0px 300px 0px 200px;
+    }
+    
+    .left {
+        float: left;
+        background: blue;
+        width: 200px;
+        margin-left: -100%;
+    }
+    
+    .right {
+        float: left;
+        background: green;
+        width: 300px;
+        margin-left: -300px;
+    }
+</style>
 
 <body>
+
+    <!-- <div class="container">
+        <div class="mid">mmmmmmmmmmmmmmmm mmmmm mm m m m </div>
+        <div class="left">l l l l l l l l l l l ll l l </div>
+        <div class="right">r r rr r r r r r r r r </div>
+    </div> -->
+    <div class="container">
+        <div class="midd">
+            <div class="mid">mmmmmmmmmmmmmmmm mmmmm mm m m m </div>
+        </div>
+        <div class="left">l l l l l l l l l l l ll l l </div>
+        <div class="right">r r rr r r r r r r r r </div>
+    </div>
     <script>
         // Function.prototype.call2 = function(context, ...arg) {
         //     var context = context || window;
@@ -93,7 +160,18 @@
                     fn.apply(context, args);
                 }, wait);
             };
-        }
+        };
+
+        // const a = {
+        //     i: 1,
+        //      toString: function() {
+        //         return a.i++;
+        //     }
+        // }
+
+        // if (a == 1 && a == 2 && a == 3) {
+        //     console.log('Hello World!');
+        // }
     </script>
 </body>
 
