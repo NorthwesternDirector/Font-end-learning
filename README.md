@@ -148,3 +148,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 #### day55
 1. 结合  [顺丰面筋](https://www.nowcoder.com/discuss/212898?type=post&order=time&pos=&page=1)
 2. 回顾 `CSS布局` `HTML脑图`
+
+#### day56
+1. 回顾 `CSS脑图` `JS脑图`
+2. 简写 `判断回文字符串代码`

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .father {
+        height: 800px;
+        background-color: rgb(77, 58, 58);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .son {
+        background-color: #fff;
+        height: 100px;
+    }
+</style>
+
+
+<body>
+    <div class="father">
+        <div class="son">哈哈哈</div>
+    </div>
+    <script>
+        function run(str) {
+            if (typeof str != 'string') return false;
+            return str.split("").reverse().join("") == str;
+        }
+
+        console.log(run("1234321"))
+    </script>
+</body>
+
+</html>
