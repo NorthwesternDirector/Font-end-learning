@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        };
+        Person.prototype.eat = function() {
+            console.log(this.name + " " + this.age + "eat")
+        };
+
+        /*原型链实现继承*/
+        // function Student(score) {
+        //     this.score = score;
+        // };
+        // Student.prototype = new Person("DT", 33);
+
+        // var stu = new Student(100);
+        // stu.eat();
+
+        /*借用构造函数实现继承*/
+        // function Student(name, age, score) {
+        //     this.score = score;
+        //     Person.call(this, name, age);
+        // };
+
+        // var stu = new Student("dt", 100, 100);
+        // console.log(stu.name);
+
+        /*组合继承*/
+        // function Student(name, age, score) {
+        //     this.score = score;
+        //     Person.call(this, name, age);
+        // }
+        // Student.prototype = new Person();
+
+        // var stu = new Student("dt", 100, 100);
+        // stu.eat()
+
+        /*寄生式继承*/
+        // function create1(obj) {
+        //     var clone = Object.create(obj);
+        //     clone.sayHi = function() {
+        //         console.log(sayHi);
+        //     };
+        //     return clone;
+        // }
+
+        /*寄生组合继承*/
+        // function inherit(person, student) {
+        //     var prototype = Object.create(person.prototype);
+        //     prototype.constructor = student;
+        //     student.prototype = prototype;
+        // }
+
+        // function Student(name, age, score) {
+        //     this.score = score;
+        //     Person.call(this, name, age);
+        // }
+
+        // inherit(Person, Student);
+        // var stu = new Student("de", 18, 100);
+        // stu.eat();
+
+        /*防抖*/
+        function debounce(fn, wait) {
+            var timeout = null;
+            return function() {
+                var context = this;
+                var args = arguments;
+                if (timeout != null) {
+                    clearTimeout(timeout)
+                };
+                timeout = function() {
+                    setTimeout(function() {
+                        fn.apply(context, args)
+                    }, wait)
+                }
+            }
+        }
+
+        function throttle(fn, delay) {
+            var canrun = ture;
+            return function() {
+                var context = this;
+                var args = arguments;
+                if (!true) return;
+                canrun = false;
+                setTimeout(function() {
+                    fn.apply(context, args);
+                    canrun = true;
+                }, delay)
+            }
+        }
+
+        var a = 1000000;
+        console.log(a.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,'));
+
+
+        var arr = ['1', 1, 6, 'a', 9, '9'];
+
+        var map = new Map();
+
+        for (var i = 0; i < arr.length; i++) {
+            if (!map.has(arr[i])) {
+                map.set(arr[i], 1)
+            } else {
+                map.set(arr[i], map.get(arr[i]) + 1);
+            }
+        };
+        console.log(map);
+    </script>
+</body>
+
+</html>
