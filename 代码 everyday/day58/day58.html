@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+    <div>
+        <ul class="ull">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+
+    </div>
+    <script>
+        var ul = document.querySelectorAll(".ull")[0];
+        ul.addEventListener("click", function(event) {
+            var event = event || window.event;
+            var target = event.target || event.srcElement;
+            console.log(target.tagName + " " + target.nodeName)
+            if (target.nodeName.toLowerCase() == "li") alert("a")
+        })
+
+        // var removeDuplicateItems = function(arr) {
+        //     return [...new Set(arr)];
+        // }
+        // var arr = [42, 'foo', '42', 'foo', true, true]
+        // console.log(removeDuplicateItems(arr));
+
+        // console.log(navigator.appCodeName);
+        // console.log(navigator.appName);
+        // console.log(navigator.appVersion);
+
+        /*利用闭包实现按列升降序排序函数（0表示升序，1表示降序）*/
+
+
+        // var testArray = [{
+        //     name: 1,
+        //     age: 18,
+        //     mobile: 123
+        // }, {
+        //     name: 3,
+        //     age: 19,
+        //     mobile: 234
+        // }, {
+        //     name: 2,
+        //     age: 20,
+        //     mobile: 456
+        // }];
+
+        // console.log(testArray[1].name)
+
+
+        // function sortM(arr, param) {
+        //     return function(flag) {
+        //         if (flag == 0) {
+        //             arr.sort(function(a, b) {
+        //                 return a[param] - b[param]
+        //             })
+        //         };
+        //         if (flag == 1) {
+        //             arr.sort(function(a, b) {
+        //                 return b[param] - a[param]
+        //             })
+        //         };
+        //         return arr;
+        //     }
+        // };
+        // console.log(sortM(testArray, "name")(0))
+        // var a = {
+        //     1: 1,
+        //     2: 2,
+        //     3: 4
+        // }
+        // a.a = a;
+
+        // function isObj(obj) {
+        //     return obj instanceof Object
+        // }
+
+        // function deepCopy(obj, hash = new Map()) {
+        //     if (hash.has(obj)) return hash.get(obj);
+        //     var tmpObj = Array.isArray(obj) ? [] : {};
+        //     hash.set(obj, tmpObj);
+        //     for (var key in obj) {
+        //         tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key], hash) : obj[key];
+        //     };
+        //     return tmpObj
+        // };
+
+        // var b = deepCopy(a);
+
+        // console.log(b)
+
+
+        // var hash = new Map();
+        // var obj = {};
+        // hash.set("obj", obj);
+        // console.log(hash.get("obj"));
+        // obj.a = 1;
+        // obj.c = 2;
+        // console.log(hash.get("obj"));
+
+
+        let a = 0;
+
+        let a = 1;
+        console.log(a)
+    </script>
+
+</body>
+
+</html>
