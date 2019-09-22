@@ -9,7 +9,19 @@
 </head>
 
 <body>
+    <ul id="list">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>
+
+            <a href="#">44</a>
+        </li>
+    </ul>
     <script>
+        console.log(document.querySelector("#list").innerHTML);
+        console.log(document.querySelector("#list").innerText);
+
         // function fun() {
         //     return () => {
         //         return () => {
@@ -45,17 +57,17 @@
         // };
         // alert(a)
 
-        console.log(1);
-        new Promise(function(resolve, reject) {
-            reject();
-            resolve();
+        // console.log(1);
+        // new Promise(function(resolve, reject) {
+        //     reject();
+        //     resolve();
 
-        }).then(function() {
-            console.log(2);
-        }, function() {
-            console.log(3);
-        })
-        console.log(4)
+        // }).then(function() {
+        //     console.log(2);
+        // }, function() {
+        //     console.log(3);
+        // })
+        // console.log(4)
 
 
         // function Person(age, year) {
@@ -68,6 +80,49 @@
 
         // var a = new Person(12, 13);
         // a.sayhi()
+
+        // function selfAdd() {
+        //     var i = 0;
+        //     return function() {
+        //         return i++;
+        //     }
+        // };
+
+        // var selfAdd = (function() {
+        //     var i = 0;
+        //     return function() {
+        //         return i++;
+        //     }
+        // })();
+        // console.log(selfAdd());
+        // console.log(selfAdd());
+        // console.log(selfAdd());
+        // console.log(selfAdd());
+
+        var ul = document.querySelector("#list");
+        ul.onclick = function(ev) {
+            var event = ev || window.event;
+            var target = event.target || event.srcElement;
+            if (getNode(target).tagName.toLowerCase() == 'li') {
+                alert("li");
+            }
+        };
+
+        // function getNode(node) {
+        //     if (node.nodeName === 'LI') {
+        //         return node;
+        //     } else {
+        //         return getNode(node.parentNode);
+        //     }
+        // }
+
+        function getNode(node) {
+            if (node.tagName.toLowerCase() == 'li') {
+                return node
+            } else {
+                return getNode(node.parentNode)
+            }
+        }
     </script>
 </body>
 
