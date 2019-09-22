@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fun() {
+        //     return () => {
+        //         return () => {
+        //             return () => {
+        //                 console.log(this.name)
+        //             }
+        //         }
+        //     }
+        // };
+        // var f = fun.call({
+        //     name: 'foo'
+        // });
+        // var t1 = f.call({
+        //     name: 'bar'
+        // })()();
+        // var t2 = f().call({
+        //     name: 'baz'
+        // })();
+        // var t3 = f()().call({
+        //     name: 'qux'
+        // })
+
+        // var a = {
+        //     valueOf() {
+        //         return 1
+        //     },
+        //     toString() {
+        //         return 2
+        //     },
+        //     get() {
+        //         return 3
+        //     }
+        // };
+        // alert(a)
+
+        console.log(1);
+        new Promise(function(resolve, reject) {
+            reject();
+            resolve();
+
+        }).then(function() {
+            console.log(2);
+        }, function() {
+            console.log(3);
+        })
+        console.log(4)
+
+
+        // function Person(age, year) {
+        //     this.age = age;
+        //     this.year = year;
+        // }
+        // Person.prototype.sayhi = function() {
+        //     console.log(this.age + " " + this.year);
+        // };
+
+        // var a = new Person(12, 13);
+        // a.sayhi()
+    </script>
+</body>
+
+</html>
