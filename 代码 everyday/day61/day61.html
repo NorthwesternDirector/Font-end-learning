@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* 圣杯 */
+    /* .container {
+        padding: 0px 200px 0px 300px;
+    }
+    
+    .mid {
+        float: left;
+        position: relative;
+        background-color: rgb(255, 143, 143);
+        width: 100%;
+    }
+    
+    .left {
+        float: left;
+        position: relative;
+        background-color: rgb(255, 0, 0);
+        width: 300px;
+        margin-left: -100%;
+        left: -300px;
+    }
+    
+    .right {
+        float: left;
+        position: relative;
+        background-color: rgb(229, 255, 136);
+        width: 200px;
+        margin-left: -200px;
+        right: -200px;
+    } */
+    /*双飞翼*/
+    /* .midd {
+        float: left;
+        background-color: rgb(255, 143, 143);
+        width: 100%;
+    }
+    
+    .mid {
+        margin: 0 200px 0 300px;
+    }
+    
+    .left {
+        float: left;
+        background-color: rgb(255, 0, 0);
+        width: 300px;
+        margin-left: -100%;
+    }
+    
+    .right {
+        float: left;
+        background-color: rgb(229, 255, 136);
+        width: 200px;
+        margin-left: -200px;
+    } */
+</style>
+
+<body>
+    <!-- /* 圣杯 */ -->
+    <!-- <div class="container">
+        <div class="mid">m m m m m m m m m m </div>
+        <div class="left">l l l l l l l l l l l l l l l l l l l l ll l l</div>
+        <div class="right">rr r r r r r</div>
+    </div> -->
+
+    <!-- /*双飞翼*/ -->
+    <!-- <div class="container">
+        <div class="midd">
+            <div class="mid">m m m m m m m m m m </div>
+        </div>
+        <div class="left">l l l l l l l l l l l l l l l l l l l l ll l l</div>
+        <div class="right">rr r r r r r</div>
+    </div> -->
+
+</body>
+
+<script>
+    // call
+    Function.prototype.call2 = function(context, ...args) {
+            var context = context || window;
+            context.fn = this;
+            var result = context.fn(...args);
+            delete context.fn;
+            return result;
+        }
+        //apply
+    Function.prototype.apply2 = function(context, arr) {
+            var context = context || window;
+            context.fn = this;
+            var result = context.fn(...arr);
+            delete context.fn;
+            return result;
+        }
+        //bind
+    Function.bind.bind2 = function(context) {
+        var self = this;
+        var args = Array.prototype.slice.call(arguments, 1);
+        var fbind = function() {
+            var bindargs = Array.prototype.slice.call(arguments);
+            return self.apply(this instanceof fbind ? this : context, args.concat(bindargs))
+        };
+        //fbind.prototype = self.prototype;
+        return fbind;
+    }
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    };
+    Person.prototype.syaHi = function() {
+        console.log(this.name + this.age + " " + "sayhi")
+    };
+
+    /*寄生式继承*/
+    // function create(original) {
+    //     var clone = Object.create(original);
+    //     clone.syaHi = function() {
+    //         console.log(this.name + "sayhi");
+    //     };
+    //     return clone;
+    // };
+
+    // var person = {
+    //     name: "dddd",
+    //     age: 18
+    // };
+
+    // var student = create(person);
+    // student.syaHi()
+
+
+    // function inherit(person, student) {
+    //     var prototype = Object.create(person.prototype);
+    //     prototype.constructor = student;
+    //     student.prototype = prototype;
+    // }
+
+    // function Student(name, age, score) {
+    //     this.score = score;
+    //     Person.call(this, name, age)
+    // };
+
+    // inherit(Person, Student);
+
+    // var stu = new Student("de", 18, 100);
+    // stu.syaHi();
+
+    // var newObj = new Object();
+    // newObj.__proto__ = originObj.prototype;
+    // originObj.call(newObj);
+    // return newObj;
+
+    // function debounce(fn, wait) {
+    //     var timeout = null;
+    //     return function() {
+    //         var context = this;
+    //         var args = arguments;
+    //         if (timeout != null) {
+    //             clearTimeout(timeout)
+    //         };
+    //         timeout = setTimeout(function() {
+    //             fn.apply(context, args)
+    //         }, wait)
+    //     }
+    // };
+
+    // function throttle(fn, delay) {
+    //     var canrun = true;
+    //     return function() {
+    //         var context = this;
+    //         var args = arguments;
+    //         if (!canrun) return;
+    //         canrun = false;
+    //         setTimeout(function() {
+    //             fn.apply(context, args);
+    //             canrun = true;
+    //         }, delay)
+    //     }
+    // }
+
+    // function handle() {
+    //     console.log(Math.random())
+    // };
+
+    // window.addEventListener("click", debounce(handle, 1000))
+    // function isObj(obj) {
+    //     //return obj instanceof obj
+    //     return typeof obj == "objct"
+    // }
+
+    // function deepCopy(obj, hash = new Map()) {
+    //     if (hash.has(obj)) return hash.get(obj);
+    //     var tmpObj = Array.isArray(obj) ? [] : {};
+    //     hash.set(obj, tmpObj);
+    //     for (var key in obj) {
+    //         tmpObj[key] = isobj(obj[key]) ? deepCopy(obj[key], hash) : obj[key]
+    //     };
+    //     return tmpObj
+    // }
+
+    function sum(...arg) {
+        if ([...arg].length = 1) {
+            var sum1 = [...arg][0];
+            summ = function(y) {
+                sum1 += y;
+                return summ;
+            };
+            return summ;
+            summ.valueOf = function() {
+                return sum1;
+            }
+
+        } else {
+            var sum2 = 0;
+            for (var i = 0; i < [...arg].length; i++) {
+                sum2 += [...arg][i];
+            };
+            return sum2;
+        }
+    };
+
+    var removeItems = function(arr) {
+        return [...new Set(arr)];
+    };
+    var arr = [42, 'foo', '42', 'foo', true, true];
+    console.log(removeItems(arr));
+
+    var selfAdd = (function() {
+        var i = 0;
+        return function() {
+            return i++;
+        }
+    })();
+    console.log(selfAdd());
+    console.log(selfAdd());
+    console.log(selfAdd());
+</script>
+
+</html>
