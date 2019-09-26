@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    console.log(Array.prototype);
+    var arr = [5, 4, 6, 2];
+    var i = 1;
+    console.log(arr);
+    arr.sort(function(a, b) {
+        console.log(`第${i}次循环 a = ${a} , b = ${b} 上次操作后的数组是 ${arr}`);
+        i++;
+        return a - b;
+    });
+    console.log(arr);
+</script>
+
+</html>
