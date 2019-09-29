@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //f（）调用一次输出1，第二次调用输出2
+    // var f = (function() {
+    //     var i = 0;
+    //     return function() {
+    //         i++;
+    //         console.log(i);
+    //     }
+    // })();
+    // f();
+    // f();
+
+
+    //m的n次方优化
+    function power(a, n) {
+        var s = 1,
+            t = a;
+        while (n > 0) {
+            if (n % 2 == 1) s = s * t;
+            n = parseInt(n / 2);
+            t = t * t;
+        }
+        return s;
+    }
+    console.log(power(2, 5))
+</script>
+
+</html>
