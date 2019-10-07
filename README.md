@@ -173,7 +173,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 
 #### day61
 1. 回顾 `http` `https` 若干概念
-2. 回顾 `bind` `call` `apply` `8种创建对象` `5种对象继承` `防抖` `节流` `深拷贝(及循环引用问题)` `函数柯里化` `set数组` 去重代码
+2. 回顾 `bind` `call` `apply` `8种创建对象` `5种对象继承` `防抖` `节流` `深拷贝(及循环引用问题)` `函数柯里化` `set数组去重` 代码
 
 #### day62
 1. 学习 `Array.sort()`
@@ -185,3 +185,5 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 
 #### day64
 1. 学习 `TCP三次握手四次挥手`
+2. 回顾 `call` `apply` `bind` `new` `object.create()` `创建对象*8` `对象继承*5` `防抖` `节流` `柯里化` `set数组去重` `深拷贝(及循环引用问题)` 代码
+3. 回顾 `Math` 的方法

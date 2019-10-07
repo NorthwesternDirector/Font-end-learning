@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /*圣杯*/
+    /* .container {
+        padding: 0px 200px 0px 300px;
+        min-width: 300px;
+    }
+    
+    .mid {
+        float: left;
+        width: 100%;
+        background-color: chartreuse;
+    }
+    
+    .left {
+        position: relative;
+        float: left;
+        width: 300px;
+        background-color: brown;
+        margin-left: -100%;
+        left: -300px;
+    }
+    
+    .right {
+        position: relative;
+        float: left;
+        width: 200px;
+        background-color: aquamarine;
+        margin-left: -200px;
+        right: -200px;
+    } */
+    /* 双飞翼 */
+    
+    .container {
+        min-width: 600px;
+    }
+    
+    .midd {
+        float: left;
+        width: 100%;
+    }
+    
+    .mid {
+        background-color: chartreuse;
+        margin: 0px 200px 0px 300px;
+    }
+    
+    .left {
+        float: left;
+        width: 300px;
+        background-color: brown;
+        margin-left: -100%;
+    }
+    
+    .right {
+        float: left;
+        width: 200px;
+        background-color: aquamarine;
+        margin-left: -200px;
+    }
+</style>
+
+<body>
+    <!-- 圣杯 -->
+    <!-- <div class="container">
+        <div class="mid">m m m m m m m m m m m </div>
+        <div class="left">l l l l l l l l </div>
+        <div class="right"> r r rr r r r r </div>
+    </div> -->
+    <!-- 双飞翼 -->
+    <!-- <div class="container">
+        <div class="midd">
+            <div class="mid">m m m m m m m m m m m </div>
+        </div>
+        <div class="left">l l l l l l l l </div>
+        <div class="right"> r r rr r r r r </div>
+    </div> -->
+    <div id="td"></div>
+</body>
+<script>
+    // call
+    Function.prototype.call2 = function(context, ...arg) {
+        var context = context || window;
+        context.fn = this;
+        var result = context.fn(...arg);
+        delete context.fn;
+        return result;
+    };
+    //apply
+    Function.prototype.apply2 = function(context, arr) {
+        var context = context || window;
+        context.fn = this;
+        var result = context.fn(...arg);
+        delete context.fn;
+        return result;
+    };
+    //bind
+    Function.prototype.bind2 = function(context) {
+        var self = this;
+        var args = Array.prototype.slice.call(arguments, 1);
+        var fbind = function() {
+            var bindargs = Array.prototype.slice.call(arguments);
+            return self.apply(this instanceof fbind ? this : context, args.concat(bindargs))
+        };
+        return fbind;
+    };
+    // 对象字面量
+    // var person = {
+    //     name: "Tom",
+    //     age: 14
+    // };
+    // // 创建Object实例
+    // var person = new Object();
+    // person.name = "Tom";
+    // person.age = 14;
+    // //工厂模式
+    // function create(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     return o;
+    // };
+    // var b = create("Tom", 14);
+    // //构造函数模式
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sayHi = function() {
+    //         console.log(this.age + " " + this.name)
+    //     };
+    // };
+    // var person = new Person("dt", 17)
+    // //原型模式
+    // function Person() {};
+    // Person.prototype.name = "dt";
+    // Person.prototype.age = 14;
+    // var person = new Person()
+    // //组合模式
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // };
+    // Person.prototype.sayHi = function() {
+    //     console.log(this.age + " " + this.name)
+    // };
+    //寄生构造函数模式
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     return o;
+    // };
+    // var person = new Person("dt", 14)
+    // console.log(person)
+    // //稳妥构造函数模式
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.sayHi = function() {
+    //         console.log(name);
+    //     };
+    //     return o;
+    // }
+    // var person = Person("dt", 15);
+    // person.sayHi()
+
+    function Person(name, age) {
+        this.age = age;
+        this.name = name;
+    };
+    Person.prototype.sayHi = function() {
+        console.log(this.name + " " + this.age + "sayHi")
+    };
+
+    // function Student(score) {
+    //     this.score = score;
+    // };
+    // Student.prototype = new Person("Dt", 14);
+    // Student.prototype.study = function() {
+    //     console.log(this.score + "studying" + this.name)
+    // };
+    // var stu = new Student(10);
+    // stu.study();
+    // stu.sayHi();
+
+    // function Student(score, name, age) {
+    //     this.score = score;
+    //     Person.call(this, name, age)
+    // }
+
+    // function Student(score, name, age) {
+    //     this.score = score;
+    //     Person.call(this, name, age)
+    // };
+    // Student.prototype = new Person();
+
+    // function create(obj) {
+    //     var clone = Object.create(obj);
+    //     clone.sayHi = function() {
+    //         console.log(this.age)
+    //     };
+    //     return clone;
+    // };
+    // var a = {
+    //     age: 1000
+    // }
+    // var b = create(a);
+    // b.sayHi();
+
+    // Object.create2 = function(obj) {
+    //     function F() {};
+    //     F.prototype = obj;
+    //     return new F()
+    // }
+
+    // function inherit(person, student) {
+    //     var prototype = Object.create2(person.prototype);
+    //     prototype.constructor = student;
+    //     student.prototype = prototype;
+    // };
+
+    // function Student(score, name, age) {
+    //     this.score = score;
+    //     Person.call(this, name, age);
+    // }
+    // inherit(Person, Student);
+
+    // var stu = new Student("de", 18, 100);
+    // stu.sayHi();
+
+    // function debounce(fn, delay) {
+    //     var timeout = null;
+    //     return function() {
+    //         var context = this;
+    //         var args = arguments;
+    //         if (timeout != null) {
+    //             clearTimeout(timeout)
+    //         };
+    //         timeout = setTimeout(function() {
+    //             fn.apply(context, args)
+    //         }, delay)
+    //     };
+    // };
+
+    // function throttle(fn, wait) {
+    //     var canrun = true;
+    //     return function() {
+    //         var context = this;
+    //         var args = arguments;
+    //         if (!canrun) return;
+    //         canrun = false;
+    //         setTimeout(function() {
+    //             fn.apply(context, args);
+    //             canrun = true;
+    //         }, wait)
+    //     }
+    // };
+
+    // function handle() {
+    //     console.log(parseInt(Math.random() * 10))
+    // };
+
+    // window.addEventListener("click", throttle(handle, 1000));
+    // var a = [1, '1', 2, 3, 4, '4', 1]
+    // var b = [...new Set(a)];
+    // console.log(b);
+
+    // function sum(...arg) {
+    //     if ([...arg].length == 1) {
+    //         var sum2 = [...arg][0];
+    //         var summ = function(y) {
+    //             sum2 += y;
+    //             return summ;
+    //         }
+    //         summ.valueOf = function() {
+    //             return sum2;
+    //         }
+    //         return summ;
+
+    //     } else {
+    //         var sum1 = 0;
+    //         for (var i = 0; i < [...arg].length; i++) {
+    //             sum1 += [...arg][i]
+    //         };
+    //         return sum1;
+    //     }
+    // };
+    // console.log(sum(1)(2))
+    // console.log(sum(1, 2))
+
+    // function isobj(obj) {
+    //     return typeof obj == "object"
+    // };
+
+    // function deepCopy(obj, hash = new WeakMap()) {
+    //     if (hash.has(obj)) return hash.get(obj)
+    //     var tmpObj = Array.isArray(obj) ? [] : {};
+    //     hash.set(obj, tmpObj)
+    //     for (var key in obj) {
+    //         tmpObj[key] = isobj(obj[key]) ? deepCopy(obj[key], hash) : obj[key]
+    //     };
+    //     return tmpObj
+    // };
+
+    // var a = {
+    //     1: 1,
+    //     2: 2,
+    // };
+    // a.x = a;
+    // console.log(b = deepCopy(a))
+
+    // var div = document.createElement("div");
+    // div.innerText = "我是DIV"
+    // var td = document.querySelector("#td");
+    // td.appendChild(div);
+
+    // var div2 = document.createElement("div");
+    // div2.innerText = "我是DIV2";
+    // td.insertBefore(div2, div);
+
+    // console.log(td.childNodes)
+    // console.log(td.parentNode)
+</script>
+
+</html>
