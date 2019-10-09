@@ -185,9 +185,16 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 
 #### day64
 1. 学习 `TCP三次握手四次挥手`
-2. 回顾 `call` `apply` `bind` `new` `object.create()` `创建对象*8` `对象继承*5` `防抖` `节流` `柯里化` `set数组去重` `深拷贝(及循环引用问题)` 代码
+2. 回顾 `call` `apply` `bind` `new` `object.create()` `创建对象`*8 `对象继承`*5 `防抖` `节流` `柯里化` `set数组去重` `深拷贝(及循环引用问题)` 代码
 3. 回顾 `Math` 的方法
 
 #### day65
 1. 回顾 `原生AJAX` 代码
 2. 回顾 `HTTP头部字段` `HTTPS` `HTTP缓存相关`
+
+#### day66
+1. 回顾 `TCP` `UDP`
+2. 回顾 `event loop` 细节
+3. 学习数组的 `reduce` `map`
+4. 树的`前序``中序``后序`遍历递归写法 及 `前序`遍历的非递归写法
+5. 回顾 `函数柯里化` 代码

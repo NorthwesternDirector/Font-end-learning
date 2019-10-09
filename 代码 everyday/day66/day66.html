@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* .space a {
+        display: inline-block; 
+    
+    padding: .5em 1em;
+    background-color: #cad5eb;
+}
+*/
+    
+    .father {
+        width: 200px;
+        height: 200px;
+        background-color: springgreen;
+    }
+    
+    .son {
+        background-color: salmon;
+    }
+</style>
+
+<body>
+    <!-- <div class="space">
+        <a href=" ">今日头条</a> <a href="##">抖音</a><a href="##">懂车帝</a>
+    </div> -->
+    <!-- 给一个div设置他的父级宽度是100px，然后再设置他的paddin-top：20%。 -->
+    <!-- 问现在div有多高？如果父级元素是absolute呢？ -->
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+<script>
+    // async function abc() {
+    //     await console.log(11);
+    //     console.log(22);
+    // };
+    // setTimeout(function() {
+    //     console.log("timeout1");
+    //     new Promise(function(resolve, reject) {
+    //         resolve(3)
+    //     }).then(function(val) {
+    //         console.log(val);
+    //     })
+    // }, 0);
+    // setTimeout(() => {
+    //     console.log("timeout2");
+    // }, 0);
+    // abc();
+
+    // console.log(33);
+
+    // console.log(1)
+    // new Promise((resolve, reject) => {
+    //     console.log(2)
+    // })
+    // console.log(3)
+
+    // const a = Object.freeze({
+    //     a: 1,
+    //     2: 2,
+    //     3: 3,
+    //     4: 4
+    // });
+    // a.a = 2;
+    // var b = Object.create(a);
+    // console.log(b);
+
+    // TODO: 输入 'ab-cd-ef', 输出 'abCdEf'
+    // function camelcase(str) {
+
+    //     var tmpArr = str.split("-");
+    //     for (var i = 0; i < tmpArr.length; i++) {
+    //         if (i == 0) continue;
+    //         console.log(tmpArr[i][0]);
+    //         tmpArr[i] = tmpArr[i].replace(tmpArr[i][0], tmpArr[i][0].toUpperCase());
+    //     };
+    //     return tmpArr.join("")
+    // }
+    // console.log(camelcase('ab-cd-ef'))
+
+
+    // Array.prototype.map2 = function(callback) {
+    //     var arr = this;
+    //     return arr.reduce((acc, cur, i) => {
+    //         acc.push(callback(cur, i, arr));
+    //         return acc
+    //     }, []);
+    // }
+
+
+    /*叠加器基础用法*/
+    // var arr = [1, 2, 3, 4, 5];
+    // sum = arr.reduce(function(acc, cur, index, arr) {
+    //     console.log(acc, cur, index);
+    //     acc[index] = cur;
+    //     return acc;
+    // }, {})
+    // console.log(arr, sum);
+
+    /*reduce实现map*/
+    // Array.prototype.map2 = function(fn) {
+    //     var arr = this;
+    //     return arr.reduce(function(acc, cur, i, arr) {
+    //         acc.push(fn(cur, i, arr));
+    //         return acc;
+    //     }, [])
+    // };
+    // var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+    //     return v * v
+    // });
+    // console.log(m)
+
+    // setTimeout(() => {
+    //     console.log(1)
+    // }, 1000)
+    // setTimeout(() => {
+    //     console.log(2)
+    // }, 1000)
+    // setTimeout(() => {
+    //     console.log(3)
+    // }, 1000)
+
+
+
+
+    // function treeNode(val) {
+    //     this.val = val;
+    //     this.left = null;
+    //     this.right = null;
+    // }
+
+    // function vist(root) {
+    //     if (root) {
+    //         vist(root.left);
+    //         vist(root.right);
+    //         console.log(root.val);
+    //     }
+    // };
+
+    // // 非递归方式的先序遍历方法
+    // var preOrder = function(TreeNode) {
+    //         var list = [];
+    //         let stack = [TreeNode];
+    //         while (stack.length !== 0) {
+    //             const cur = stack.pop();
+    //             const right = cur.right;
+    //             const left = cur.left;
+    //             list.push(cur.val);
+
+    //             if (right) {
+    //                 stack.push(right);
+    //             }
+    //             if (left) {
+    //                 stack.push(left);
+    //             }
+    //         }
+    //         return list;
+
+
+
+    //         function vist(root) {
+    //             if (root) {
+    //                 console.log(root.val);
+    //                 vist(root.left);
+    //                 vist(root.right);
+    //             }
+    //         };
+
+    //         function vist(root) {
+    //             if (root) {
+    //                 vist(root.left);
+    //                 console.log(root.val);
+    //                 vist(root.right);
+    //             }
+    //         };
+
+
+
+
+    const TreeNode = {
+        val: 1,
+        left: {
+            val: 2,
+            left: {
+                val: 4,
+            },
+            right: {
+                val: 5
+            }
+        },
+        right: {
+            val: 3,
+            left: {
+                val: 6,
+            },
+            right: {
+                val: 7
+            }
+        }
+    };
+    // 递归方式的先序遍历方法
+    var preOrderRecur = function(root) {
+        var list = [];
+        var preOrder = function(root) {
+            if (root === undefined) {
+                return root;
+            }
+            list.push(root.val)
+            preOrder(root.left);
+            preOrder(root.right);
+
+        }
+        preOrder(root);
+        return list;
+    };
+
+    console.log(preOrderRecur(TreeNode))
+
+    // 非递归方式的先序遍历方法
+    // var preOrder = function(TreeNode) {
+    //     var list = [];
+    //     let stack = [TreeNode];
+    //     while (stack.length !== 0) {
+    //         const cur = stack.pop();
+    //         const right = cur.right;
+    //         const left = cur.left;
+    //         list.push(cur.val);
+    //         if (right) {
+    //             stack.push(right);
+    //         }
+    //         if (left) {
+    //             stack.push(left);
+    //         }
+    //     }
+    //     return list;
+    // };
+    // console.log(preOrder(TreeNode))
+
+    // var a = {
+
+    // };
+    // var flag = false;
+    // for (var key in a) {
+    //     flag = true;
+    // };
+    // console.log(Object.keys(a).length)
+
+
+    function sum(...arg) {
+        if ([...arg].length == 1) {
+            var sum2 = [...arg][0];
+            var summ = function(y) {
+                sum2 += y;
+                return summ;
+            };
+            summ.valueOf = function() {
+                return sum2;
+            };
+            return summ;
+
+        } else {
+            var sum1 = 0;
+            for (var i = 0; i < [...arg].length; i++) {
+                sum1 += [...arg][i]
+            };
+            return sum1;
+        }
+    };
+    console.log(sum(1)(2)(3).valueOf());
+    console.log(sum(1, 2, 3))
+
+    function foo(something) {
+        this.a = something;
+    }
+
+    var obj1 = {
+        foo: foo
+    };
+
+    var obj2 = {};
+
+    obj1.foo(2);
+    console.log(obj1.a); // 2
+
+    obj1.foo.call(obj2, 3);
+    console.log(obj2.a); // 3
+
+    console.log(obj2)
+</script>
+
+</html>
