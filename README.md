@@ -214,3 +214,4 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 
 #### day70
 1. 学习`浮点数计算误差` 问题，用number.EPSILON设置误差范围解决
+1. 了解 `函数式编程` `纯函数`
