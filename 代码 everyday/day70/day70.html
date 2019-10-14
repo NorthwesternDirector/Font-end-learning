@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function swap(arr, i, j) {
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    };
+
+    function partition(arr, left, right) {
+        var pivot = left;
+        var index = pivot + 1;
+        for (var i = index; i <= right; i++) {
+            if (arr[i] < arr[pivot]) {
+                swap(arr, i, index);
+                index++;
+            }
+        };
+        swap(arr, pivot, index - 1);
+        return index - 1
+    };
+
+    function quickSort(arr, left, right) {
+        var len = arr.length;
+        var partitionIndex;
+        var left = typeof left != 'number' ? 0 : left;
+        var right = typeof right != 'number' ? len - 1 : right;
+        if (left < right) {
+            partitionIndex = partition(arr, left, right);
+            quickSort(arr, left, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, right);
+        };
+        return arr;
+    };
+    console.log(quickSort([8, 1, 4, 5, 6, 3, 2, 1]));
+
+    /*冻结obj*/
+    var a = Object.freeze({
+        a: 1,
+        b: 2
+    });
+    a.a = 10;
+    console.log(0.1 + 0.2 === 0.3);
+
+    function withinErrorMargin(left, right) {
+        return Math.abs(left - right) < Number.EPSILON * Math.pow(2, -50);
+    };
+
+    console.log(withinErrorMargin(1.1 + 1.2, 2.3));
+
+    //1,2,5,3,4
+    console.log(1);
+    new Promise((resolve, reject) => {
+        reject();
+        resolve();
+        console.log(2)
+    }).then(() => {
+        console.log(3)
+    }, () => {
+        console.log(3.1)
+    });
+    setTimeout(() => {
+        console.log(4)
+    }, 0)
+    console.log(5)
+</script>
+
+</html>
