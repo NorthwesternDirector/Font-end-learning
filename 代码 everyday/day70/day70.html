@@ -73,7 +73,12 @@
     setTimeout(() => {
         console.log(4)
     }, 0)
-    console.log(5)
+    console.log(5);
+
+    Array.prototype.call = function(context, ...arg) {
+        var context = context;
+        context.fn = this;
+    }
 </script>
 
 </html>
