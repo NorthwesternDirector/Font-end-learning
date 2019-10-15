@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>x</title>
+</head>
+<style>
+    .father {
+        position: relative;
+        height: 500px;
+    }
+    
+    .rec {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0px 100px 100px 100px;
+        border-color: transparent transparent blue transparent;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -100px;
+        margin-top: -50px;
+        animation-name: ani;
+        animation-duration: 5s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    
+    @keyframes ani {
+        from {
+            border-color: transparent transparent red transparent;
+        }
+        to {
+            border-color: transparent transparent black transparent;
+        }
+    }
+</style>
+
+<body>
+    <div class="father">
+        <div class="rec"></div>
+    </div>
+</body>
+<script>
+</script>
+<script>
+    //console.log(result);
+
+    // const func = async() => {   
+    //     console.log('start');   
+    //     const result = await Fetch(‘xxxxxxx’);   
+    //     console.log(`The result is ${result}`);
+    // }
+
+    // const func = function() {
+    //     new Promise(function() {
+    //         console.log('start');   
+    //     }).then(function(result) {
+    //         console.log(`The result is ${result}`);
+    //     })
+    // }
+
+    // var lengthOfLongestSubstring = function(s) {
+    //     var len = s.length;
+    //     var map = new Map();
+    //     var sArr = s.split("");
+    //     var result = 0;
+
+    //     for (var start = 0, end = 0; end < len; end++) {
+    //         if (map.get(sArr[end])) {
+    //             start = Math.max(map.get(sArr[end]), start)
+    //         };
+    //         map.set(sArr[end], end + 1);
+    //         result = Math.max(result, end - start + 1)
+
+    //     }
+    //     return result;
+    // };
+    // console.log(lengthOfLongestSubstring("Welcome to Beijing SF Intra-city Technology Co., Ltd"))
+</script>
+
+</html>
