@@ -217,4 +217,8 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 2. 了解 `函数式编程` `纯函数`
 
 #### day71
-1. 学习 git 指令 reflog reset 
+1. 学习 git 指令 reflog reset rebase
+
+#### day72
+1. 回顾 `树的前中后序遍历`求导关系
+2. 回顾 `事件监听`及存在子元素情况代码 `深拷贝循环引用`代码 `数字千分位`代码 `函数柯里化`代码 `自增函数`代码

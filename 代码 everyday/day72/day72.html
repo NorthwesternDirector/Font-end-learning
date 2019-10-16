@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* body,
+    div {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .left,
+    .right {
+        height: 200px;
+    }
+    
+    .left {
+        float: left;
+        width: 200px;
+        background-color: skyblue;
+    }
+     .right {
+        margin-left: 200px;
+        background-color: greenyellow;
+    } 
+    
+    .right {
+        overflow: hidden;
+        background-color: greenyellow;
+    } */
+    
+    body,
+    div {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .wrap {
+        display: flex;
+    }
+    
+    .right {
+        height: 200px;
+    }
+    
+    .left {
+        background-color: skyblue;
+    }
+    
+    .right {
+        flex: 2;
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <!-- <div></div> -->
+    <!-- <div class="left">left</div>
+    <div class="right">right</div> -->
+    <!-- <div class="wrap">
+        <div class="left">我是left</div>
+        <div class="right">我是right</div>
+    </div> -->
+    <!-- <div id="father">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <div>
+            <li>10</li>
+        </div>
+
+    </div> -->
+</body>
+
+<script>
+    // var div = document.querySelector("div");
+    // var xhr = new XMLHttpRequest();
+    // xhr.open("get", "http://jsonplaceholder.typicode.com/posts/1");
+    // xhr.send();
+    // xhr.onreadystatechange = function() {
+    //     if (this.readyState != 4) return;
+    //     div.innerHTML = this.responseText;
+    //     console.log(this.responseText);
+    // };
+    // setTimeout(function() {
+    //     console.log("setTimeout");
+    // }, 0)
+
+    // var div = document.getElementById("father");
+    // div.addEventListener("click", function(e) {
+    //     var node = getNode(e.target);
+    //     console.log(node.innerHTML)
+    // });
+
+    // function getNode(node) {
+    //     if (node.nodeName.toLowerCase() == 'li') {
+    //         return node
+    //     } else {
+    //         getNode(node.parentNode)
+    //     }
+    // };
+
+    // function debounce(fn, delay) {
+    //     var timeout = null;
+    //     return function() {
+    //         var context = this;
+    //         var args = arguments;
+    //         if (timeout != null) {
+    //             clearTimeout(timeout)
+    //         };
+    //         timeout = setTimeout(function() {
+    //             fn.apply(context, args)
+    //         }, delay);
+    //     }
+    // };
+    function throttle(fn, wait) {
+        var canrun = true;
+        return function() {
+            var context = this;
+            var args = arguments;
+            if (!canrun) return;
+            canrun = false;
+            timeout = setTimeout(function() {
+                fn.apply(context, args);
+                canrun = true;
+            }, wait)
+        }
+    }
+
+    function handle() {
+        console.log(Math.random())
+    };
+    window.addEventListener('click', throttle(handle, 1000));
+
+    function isObj(obj) {
+        return typeof obj == 'object'
+    }
+
+    function deepCopy(obj, hash = WeakMap()) {
+        if (hash.has(obj)) return hash.get(obj);
+        var tmpObj = Array.isArray(obj) ? [] : {};
+        hash.set(obj, tmpObj);
+        for (var key in obj) {
+            tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key], hash) : obj[key]
+        };
+        return tmpObj;
+    }
+
+    function thousandP(num) {
+        var str = num.toString();
+        var result = '';
+        while (str.length > 3) {
+            result += "," + str.slice(-3);
+            str = str.slice(0, str.length - 3);
+        };
+        if (str) {
+            result = str + result;
+        };
+        return result;
+    };
+    console.log(thousandP(10000000))
+    var a = 10000000;
+    console.log(a.toLocaleString())
+
+    function thousandP1(num) {
+        var nums = num.toString();
+        var nums1 = nums.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+        return nums1;
+    };
+    console.log(thousandP1(10000000))
+
+    function currying(...arg) {
+        if ([...arg].length == 1) {
+            var sum1 = [...arg][0];
+            var summ = function(y) {
+                sum1 += y;
+                return summ;
+            };
+            summ.valueOf = function() {
+                return sum1;
+            }
+            return summ;
+        } else {
+            var sum2 = 0;
+            for (var i = 0; i < [...arg].length; i++) {
+                sum2 += [...arg][i];
+            };
+            return sum2
+        }
+    };
+    console.log(currying(1)(2)(3).valueOf());
+    console.log(currying(1, 2, 3).valueOf());
+
+    var add1 = (function() {
+        var i = 0;
+        return function() {
+            return i++;
+        }
+    })();
+    console.log(add1());
+    console.log(add1());
+    console.log(add1());
+
+    var removeItems = function(arr) {
+        return [...new Set(arr)]
+    };
+    var arr = [42, 'foo', '42', 'foo', true, true];
+    console.log(removeItems(arr));
+</script>
+
+
+
+</html>
