@@ -222,3 +222,8 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 #### day72
 1. 回顾 `树的前中后序遍历`求导关系
 2. 回顾 `事件监听`及存在子元素情况代码 `深拷贝循环引用`代码 `数字千分位`代码 `函数柯里化`代码 `自增函数`代码
+
+#### day73
+1. 回顾 `http2.0` `TCP``UDP`相关概念 
+2. 回顾 快速排序代码 reduce实现map 数组扁平化的多种写法 二分查找代码 [单链表反转代码](https://blog.csdn.net/lizhengxv/article/details/81669248) 
+3. 学习`promise.all`

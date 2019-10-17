@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 工厂模式
+    // function create(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     return o;
+    // };
+
+    //组合模式
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // };
+    // Person.prototype.sayHi = function() {}
+
+    //寄生构造函数
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     return o;
+    // };
+
+    // var stu = new Person("dt", 18)
+
+    //稳妥构造函数
+    // function Person(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     return o;
+    // };
+
+    // var stu = Person("dt", 18)
+
+    // function Person(name, age) {
+    //     this.age = age;
+    //     this.name = name;
+    // };
+    // Person.prototype.sayHi = function() {
+    //     console.log(this.name + " " + this.age + "sayHi")
+    // };
+    // Object.create2 = function(o) {
+    //     function Fn() {};
+    //     Fn.prototype = o;
+    //     return new Fn();
+    // }
+
+    // function create(obj) {
+    //     var clone = Object.create2(obj);
+    //     clone.sayHi = function() {};
+    //     return clone;
+    // };
+
+    // function inherit(per, stu) {
+    //     var prototype = Object.create2(per.prototype);
+    //     prototype.constructor = stu;
+    //     stu.prototype = prototype;
+    // }
+
+    // var obj1 = new Object();
+    // obj1.__proto__ = father.prototype;
+    // father.call(obj1);
+    // return obj1;
+
+    function swap(arr, i, j) {
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    };
+
+    function partition(arr, left, right) {
+        var pivot = left;
+        var index = pivot + 1;
+        for (var i = index; i <= right; i++) {
+            if (arr[i] < arr[pivot]) {
+                swap(arr, i, index)
+                index++
+            };
+        };
+        swap(arr, pivot, index - 1);
+        return index - 1
+    };
+
+    function quickSort(arr, left, right) {
+        var len = arr.length;
+        var partitionIndex;
+        var left = typeof left != "number" ? 0 : left;
+        var right = typeof right != "number" ? len - 1 : right;
+        if (left < right) {
+            partitionIndex = partition(arr, left, right);
+            quickSort(arr, left, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, right)
+        };
+        return arr
+    };
+
+    console.log(quickSort([5, 1, 2, 4, 3, 2]))
+
+    const TreeNode = {
+        val: 1,
+        left: {
+            val: 2,
+            left: {
+                val: 4,
+            },
+            right: {
+                val: 5
+            }
+        },
+        right: {
+            val: 3,
+            left: {
+                val: 6,
+            },
+            right: {
+                val: 7
+            }
+        }
+    };
+
+    var preorderFn = function(root) {
+        var list = [];
+        var preOrder = function(root) {
+            if (root == undefined) return;
+            list.push(root.val);
+            preOrder(root.left);
+            preOrder(root.right);
+        };
+        preOrder(root);
+        return list;
+    };
+    console.log(preorderFn(TreeNode));
+
+    var preOrder1 = function(root) {
+        var list = [];
+        var stack = [root];
+        while (stack.length != 0) {
+            var cur = stack.pop();
+            var right = cur.right;
+            var left = cur.left;
+            list.push(cur.val);
+            if (right) {
+                stack.push(right)
+            };
+            if (left) {
+                stack.push(left)
+            };
+        };
+        return list;
+    };
+    console.log(preorderFn(TreeNode));
+
+    Array.prototype.map2 = function(fn) {
+        var arr = this;
+        return arr.reduce(function(acc, cur, i, arr) {
+            acc.push(fn(cur, i, arr));
+            return acc;
+        }, [])
+    };
+    var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+        return v * v
+    });
+    console.log(m);
+
+    // function flat(arr) {
+    //     return arr.reduce(function(acc, cur, i, arr) {
+    //         return Array.isArray(cur) ? [...acc, ...flat(cur)] : [...acc, cur]
+    //     }, [])
+    // };
+
+    // console.log(flat([1, 2, 3, [4, [5, 6]], 8, 9]));
+
+    var arr = [
+        [1, 2, 2],
+        [3, 4, 5, 5],
+        [6, 7, 8, 9, [11, 12, [12, 13, [14]]]], 10
+    ];
+
+    function flat2(arr) {
+        var tmpArr = arr.toString().split(",");
+        tmpArr = [...new Set(tmpArr)];
+        tmpArr.sort(function(a, b) {
+            return a - b
+        });
+        return tmpArr
+    }
+    console.log(flat2(arr))
+
+    function findPos(arr, item) {
+        var low = 0;
+        var high = arr.length - 1;
+        while (low <= high) {
+            var mid = parseInt((low + high) / 2)
+            if (item == arr[mid]) {
+                return mid;
+            } else if (item > arr[mid]) {
+                low = mid + 1;
+            } else if (item < arr[mid]) {
+                high = mid - 1;
+            }
+        }
+        return -1
+    };
+
+
+    function find(arr, item) {
+        var low = 0;
+        var high = arr.length - 1;
+        while (low <= high) {
+            var mid = parseInt((low + high) / 2);
+            if (item = arr[mid]) {
+                return mid;
+            } else if (item > arr[mid]) {
+                low = mid + 1;
+            } else if (item < arr[mid]) {
+                high = mid - 1;
+            }
+        }
+    };
+
+    /*单链表反转*/
+    // function reverse(linkedList) {
+    //     var head = linkedList.head;
+
+    //     // 如果只有一个节点 或者 是空链表
+    //     if (head === null || head.next === null) {
+    //         return;
+    //     }
+    //     var p = head;
+    //     var q = p.next;
+    //     // 反转后的头结点变成尾节点
+    //     head.next = null;
+    //     while (q) {
+    //         r = q.next;
+    //         q.next = p;
+    //         p = q;
+    //         q = r;
+    //     }
+    //     // 退出循环后 r = q.next = null, q.next = q; p=q; q=null;
+    //     // p指向原来节点的尾节点， 那么翻转后，尾节点变成头结点
+    //     linkedList.head = p;
+    // };
+
+    // var first = head;
+    // var second = first.next;
+
+    // head.next = null;
+    // while (second) {
+    //     third = second.next;
+    //     second.next = first;
+    //     first = second;
+    //     second = third;
+    // }
+</script>
+
+</html>
