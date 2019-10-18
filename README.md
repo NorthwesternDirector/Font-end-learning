@@ -217,7 +217,7 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 2. 了解 `函数式编程` `纯函数`
 
 #### day71
-1. 学习 git 指令 reflog reset rebase
+1. 学习 git 指令 `reflog` `reset` `rebase`
 
 #### day72
 1. 回顾 `树的前中后序遍历`求导关系
@@ -227,3 +227,9 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 1. 回顾 `http2.0` `TCP``UDP`相关概念 
 2. 回顾 快速排序代码 reduce实现map 数组扁平化的多种写法 二分查找代码 [单链表反转代码](https://blog.csdn.net/lizhengxv/article/details/81669248) 
 3. 学习`promise.all`
+
+#### day74
+1. 学习写一个简易的`promise.all`
+2. 学习 `generator函数``yield`相关概念
+3. 学习 `window.history` 及 `vue的路由模式`
+4. 回顾 vue `computed` `watch` 属性

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /*简易promise*/
+    Promise.all = arr => {
+        let aResult = []; //用于存放每次执行后返回结果
+        return new _Promise(function(resolve, reject) {
+            let i = 0;
+            next(); // 开始逐次执行数组中的函数(重要)
+            function next() {
+                arr[i].then(function(res) {
+                    aResult.push(res); // 存储每次得到的结果
+                    i++;
+                    if (i == arr.length) { // 如果函数数组中的函数都执行完，便resolve
+                        resolve(aResult);
+                    } else {
+                        next();
+                    }
+                })
+            }
+        })
+    };
+
+
+    let go = function*(x) {
+        console.log('x', x);
+        let a = yield x;
+        console.log('xx', x);
+        console.log('a', a);
+        let b = yield(x + 1) + a;
+        yield a + b;
+        console.log('a + b =', a + b);
+        return a + b;
+    }
+    go(10);
+    let g = go(10);
+    console.log(g.next())
+</script>
+
+</html>
