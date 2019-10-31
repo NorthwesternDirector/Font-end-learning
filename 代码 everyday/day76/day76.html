@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html,body{height:100%; margin:0;}
+  .father{
+    display: flex;
+    min-height:100%;
+    position: relative;
+  }
+
+  .son1{
+    background-color:chartreuse;
+    width: 100px;
+  }
+
+  .son2{
+    background-color:coral;
+    flex:1;
+  }
+
+  .son3{
+    position: absolute;
+    width: 40vw;
+    height: 30vw;
+    background-color: #fff;
+    left:150px;
+  }
+
+</style>
+<body>
+  <div class="father">
+    <div class="son1"></div>
+    <div class="son2"></div>
+    <div class="son3"></div>
+  </div>
+</body>
+
+<script>
+var a={
+  11:1,
+  22:2,
+  33:3,
+}
+console.log(Object.keys(a))
+
+var promise = new Promise((resolve, reject) => {/* executor函数 */
+    // ... some code
+    console.log(11)
+    reject();
+    // resolve();
+    console.log(111)
+   
+    
+   
+});
+promise.then((value) => {
+    console.log(1)
+}, (error) => {
+    //failure
+    console.log(2)
+})
+</script>
+</html>
