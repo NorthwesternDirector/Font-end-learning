@@ -98,7 +98,7 @@
     Function.prototype.apply2 = function(context, arr) {
         var context = context || window;
         context.fn = this;
-        var result = context.fn(...arg);
+        var result = context.fn(...arr);
         delete context.fn;
         return result;
     };

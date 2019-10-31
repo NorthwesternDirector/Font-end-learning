@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <span><li>4</li></span>
+    
+  </ul>
+</body>
+  <script>
+    //#region 事件委托
+    var ul=document.querySelector('ul')
+    ul.addEventListener('click',function(e){
+      console.log(getNode(e.target).innerHTML)
+    })
+
+    function getNode(node){
+      if(node.nodeName.toLowerCase()=='li'){
+        return node
+      }else{
+        return getNode(node.parentNode)
+      }
+    }
+    //#endregion
+
+    //#region 防抖
+    function debounce(fn,wait){
+      var timeout=null
+      return function(){
+        var context= this
+        var args=arguments
+        if(timeout!==null){
+          clearTimeout(timeout)
+        }
+        timeout=setTimeout(function(){
+          fn.apply(context,args)
+        },wait)
+      }
+    }
+    // function handle(){
+    //   console.log(Math.random())
+    // }
+    // window.addEventListener('click',debounce(handle,1000))
+    //#endregion
+
+    //#region 节流
+    function throttle(fn,delay){
+      var canrun=true
+      return function(){
+        var context= this
+        var args=arguments
+      
+        if(!canrun) return 
+        canrun=false
+        setTimeout(function(){
+          fn.apply(context,args)
+          canrun=true
+        },delay)
+      }
+    }
+
+    function handle(){
+      console.log(Math.random())
+    }
+    window.addEventListener('click',throttle(handle,1000))
+    //#endregion
+
+    //#region 深拷贝
+    function isObj(obj){
+      return typeof obj == "object"
+    }
+    function deepCopy(obj,hash=new WeakMap()){
+      if(hash.has(obj))return hash.get(obj)
+      var tempObj= Array.isArray(obj)?[]:{}
+      hash.set(obj,tempObj)
+      for(var key in obj){
+        tempObj[key]=isObj(obj[key])?deepCopy(obj[key],hash):obj[key]
+      }
+      return tempObj
+    }
+
+    var a={
+      b:1,
+      c:3
+    }
+    a.z=a  
+    var b=deepCopy(a)
+    console.log(b)
+    //#endregion
+
+    //#region new
+    // function Base(name,age){
+
+    // }
+    // var obj1=new Object()
+    // obj1.__proto__=Base.prototype
+    // Base.call(obj1)
+    // return obj1
+    //#endregion
+
+    //#region object.create
+    Object.create1=function(obj){
+      function Fn(){}
+      Fn.prototype=obj
+      return new Fn()
+    }
+    //#endregion
+
+    //#region 继承
+    function Person(name,age){
+      this.name=name
+      this.age=age
+    }
+    Person.prototype.eat=function(){
+      console.log(this.name+'----'+'eat')
+    }
+
+    // function Student(score){
+    //   this.score=score
+    // }
+    // Student.prototype=new Person("dt",10)
+    // var stu= new Student();
+    // stu.eat()
+
+    // function Student(name,age,score){
+    //   this.score=score
+    //   Person.call(this,name,age)
+    // }
+
+    // function Student(name,age,score){
+    //   this.score=score
+    //   Person.call(this,name,age)
+    // }
+    // Student.prototype=new Person()
+    // var stu = new Student("fs",10,10)
+    // stu.eat()
+
+    // function create(obj){
+    //   var clone= Object.create(obj)
+    //   clone.sayHi=function(){
+    //   }
+    //   return clone
+    // }
+
+    // function inherit(father,son){
+    //   var prototype=Object.create(father.prototype)
+    //   prototype.consturctor=son
+    //   son.prototype=prototype
+    // }
+    // function Student(score,name,age){
+    //   this.score=score
+    //   Person.call(this,name,age)
+    // }
+    // inherit(Person, Student)
+    //#endregion
+
+    //#region reduce实现map
+    Array.prototype.map2=function(fn){
+      var arr=this;
+      return arr.reduce(function(acc,cur,i,arr){
+        acc.push(fn(cur,i,arr));
+        return acc;
+      },[])
+    }
+    var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+        return v * v
+    });
+    console.log(m)
+    //#endregion
+
+    //#region call apply bind
+    Function.prototype.call2=function(context,...arg){
+      var context=context || window
+      context.fn=this
+      var result= context.fn(...arg)
+      delete context.fn
+      return result
+    }
+
+    Function.prototype.apply2=function(context,arr){
+      var context=context || window
+      context.fn=this
+      var result= context.fn(...arr)
+      delete context.fn
+      return result
+    }
+
+    Function.prototype.bind2=function(context){
+      var self=this
+      var args=Array.prototype.slice.call(arguments,1)
+      var bindfn=function(){
+        var bindargs=Array.prototype.slice.call(arguments)
+        return self.apply(this instanceof bindfn ? this : context, args.concat(bindargs))
+      }
+      return bindfn
+    }
+    //#endregion
+
+    //#region 自增1函数
+    var addOne=(function (){
+      var i=0;
+      return function(){
+        return ++i
+      }
+    })();
+    console.log(addOne());
+    console.log(addOne());
+    console.log(addOne());
+    //#endregion
+
+    //#region 函数柯里化
+  function add(...args){
+    if([...args].length==1){
+      var sum1=[...args][0]
+      var summ=function(y){
+        sum1+=y
+        return summ
+      }
+      summ.valueOf=function(){
+        return sum1
+      }
+      return summ
+    }else{
+      var sum2=0
+      for(var i=0;i<[...args].length;i++){
+        sum2+=[...args][i]
+      }
+      return sum2
+    }
+  }
+  console.log(add(1,2,3))
+  console.log(add(1)(2)(3).valueOf())
+  //#endregion
+
+    //#region 数组去重
+  function removeItem(arr){
+    var tmpArr= [...new Set(arr)]
+    tmpArr.sort(function(a,b){
+      return a-b
+    })
+    return tmpArr
+  }
+  console.log(removeItem([5,4,3,6,3,1]))
+//#endregion
+
+    //#region promise.all
+    Promise.all=arr=>{
+      let res=[]
+      return new Promise(function(resolve,reject){
+        let i=0;
+        next();
+        function next(){
+          arr[i].then(function(res){
+            res.push(res)
+            i++
+            if(i==arr.length){
+              resolve(res)
+            }else{
+              next()
+            }
+          })
+        }
+      })
+    }
+    //#endregion
+
+    //#region 树的前序遍历
+    var preOrderFn=function(root){
+      var list=[]
+      var preOder=function(root){
+        if(root==undefined)return root
+        list.push(root.val)
+        preOder(root.left)
+        preOder(root.right)
+      }
+      return list
+    }
+
+    var preOrderFn=function(root){
+      var list=[];
+      var stack=[root];
+      while(stack.length!=0){
+        var cur= stack.pop()
+        var right=cur.right
+        var left= cur.left
+        list.push(cur.val)
+        if(right){
+          stack.push(right)
+        }
+        if(left){
+          stack.push(left)
+        }
+      }
+      return list
+    }
+    //#endregion
+
+    //#region 快速排序
+    function swap(arr,i,j){
+      var tmp=arr[i];
+      arr[i]=arr[j];
+      arr[j]=tmp;
+    };
+
+    function partition(arr,left,right){
+      var pivot=left;
+      var index=pivot+1;
+      for(var i=index;i<=right;i++){
+        if(arr[i]<arr[pivot]){
+          swap(arr,i,index)
+          index++
+        }
+      };
+      swap(arr,index-1,pivot)
+      return index-1
+    }
+
+    function quickSort(arr,left,right){
+      var len=arr.length;
+      var partitonIndex;
+      var left=typeof left !='number'? 0 :left;
+      var right=typeof right !='number'? len-1 :right;
+      if(left<right){
+        partitonIndex=partition(arr,left,right)
+        quickSort(arr,left,partitonIndex-1)
+        quickSort(arr,partitonIndex+1,right)
+      };
+      return arr
+    }
+    //#endregion
+
+    //#region 单链表反转
+    function reverse( linkedList ){
+    var head = linkedList.head;
+
+    // 如果只有一个节点 或者 是空链表
+    if( head === null || head.next === null ){
+          return;
+      }
+      var p = head;
+      var q = p.next;
+      // 反转后的头结点变成尾节点
+      head.next = null;
+      while(q){
+          r = q.next;
+          q.next = p;
+          p = q;
+          q = r;
+      }
+      // 退出循环后 r = q.next = null, q.next = q; p=q; q=null;
+      // p指向原来节点的尾节点， 那么翻转后，尾节点变成头结点
+      linkedList.head = p;
+    }
+    //#endregion
+
+    
+  </script>
+</html>

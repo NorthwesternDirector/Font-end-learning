@@ -238,3 +238,9 @@ Tips：脑图格式为 `.xmind` 需下载 [XMind](https://www.xmind.cn)。</b>�
 1. 学习 `CSS3变量` 使用
 2. `parcel` 打包工具学习
 3. 学习 `组件封装`
+
+#### day76
+1. 学习react
+
+#### day77
+1. 回顾 `事件机制` `事件委托`代码 `节流防抖`代码 `深拷贝(循环引用)`代码 `new` `object.created`原理 `对象继承`*5 `reduce实现map`代码 `call` `apply` `bind`代码 `自增函数`代码 `函数柯里化`代码 `数组去重`代码 `promise.all`代码 `快速排序`代码 `单链表反转`代码
