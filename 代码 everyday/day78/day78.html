@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function getMonth1(startMonth,endMonth){
+    var res=[]
+    var start=new Date(startMonth)
+    var end= new Date(endMonth)
+    var nextMonth = new Date(start.setMonth(start.getMonth()+1))
+    while(nextMonth.getMonth()!= end.getMonth()){
+      
+      res.push(`${nextMonth.getFullYear()}-${nextMonth.getMonth()+1}`) 
+      nextMonth=new Date(start.setMonth(start.getMonth()+1))
+    }
+    console.log(res) 
+  }
+  getMonth1('2018-09', '2019-01')
+
+
+  
+
+</script>
+</html>
