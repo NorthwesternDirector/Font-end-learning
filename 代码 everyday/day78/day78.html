@@ -6,8 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+<style>
+  #div1{
+    float:left;
+    width: 10vh;
+    height: 300px;
+    background-color:blue;
+  }
+  #div2{
+    height:400px;
+    background-color:chartreuse;
+    /* overflow: hidden; */
+    margin-left: 100px;
+    min-inline-size: 100%;
+  } 
+</style>
 <body>
-  
+  <div id="div1"></div>
+  <div id="div2">a a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a aa a a a a a a a a a a a a a a</div>
 </body>
 <script>
   function getMonth1(startMonth,endMonth){
@@ -24,8 +40,9 @@
   }
   getMonth1('2018-09', '2019-01')
 
+  sessionStorage.setItem('GG', 'CBA');
 
-  
+
 
 </script>
 </html>
