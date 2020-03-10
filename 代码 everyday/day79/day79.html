@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li style="background-color: blue;" id='li1'>
+      <span>123</span>
+    </li>
+    <li style="background-color: red;" id='li2'>234</li>
+  </ul>
+</body>
+<script>
+  //#region 生成给定范围内随机数
+  function randomNum(Num1,Num2){
+    switch (arguments.length){
+      case 1:
+        return parseInt(Num1*Math.random()+1,10)
+      case 2:
+        return parseInt(Num1+Math.random()*(Num2-Num1)+1,10)
+        break;
+      default:
+        return 0
+        break;
+    }
+  }
+  console.log(randomNum(6))
+  //#endregion
+
+  //#endregion 向上向下取整
+  function integer(num){
+    console.log(num.toFixed(3)) //四舍五入
+    console.log(Math.floor(num*1000)/1000) //不四舍五入
+    console.log(Math.ceil(num*1000)/1000) //四舍五入
+    console.log(parseInt(num,10)) // 取整数部分，效果和Math.floor效果相同
+  }
+  integer(1.626578)
+  //#endregion 事件委托
+
+  //#region 
+  var ul=document.querySelector('ul')
+  ul.addEventListener('click',e =>{
+    console.log(getNode(e.target))
+  },true)
+  function getNode(node){
+    if(node.nodeName.toLowerCase()=='li'){
+      return node.nodeName
+    }else{
+      return getNode(node.parentNode)
+    }
+  }
+  //#endregion 
+
+  //#region 防抖
+  function debounce(fn,wait){
+    var timeout = null
+    return function(){
+      var context = this
+      var args = arguments
+      if(timeout!==null){
+        clearTimeout(timeout)
+      }
+      timeout=setTimeout(function(){
+        // 改变作用域是为了：可以给 debounce 返回的那个函数传递参数
+        fn.apply(context,args)
+      },wait)
+    }
+  }
+
+  // function handle(){
+  //   console.log(arguments)
+  // }
+
+  // const debounceFn = debounce(handle,1000)
+  // window.addEventListener('click',()=>debounceFn(1000))
+
+  //加入立即执行版本(通常的版本为在周期结束执行，此版本加入在周期的初始执行的情况)
+  function debouncePlus(fn,wait,immediate){
+    var timeout = null
+    console.log(timeout)
+    return function(){
+      var context = this 
+      var args = arguments
+      if(timeout!==null){
+        clearTimeout(timeout)
+      } 
+      if(immediate){
+        var callNow = !timeout
+        if(callNow){
+          fn.apply(context,args)
+        }
+        timeout=setTimeout(function(){
+          timeout=null
+        },wait)
+        
+      }else{
+        timeout=setTimeout(function(){
+          fn.apply(context,args)
+        },wait)
+      }
+    }
+  }
+
+  
+   function handle(){
+    console.log(Math.random())
+  }
+  window.addEventListener('click',debouncePlus(handle,1000,false))
+//#endregion
+  
+  //#region 节流
+  function throttle(fn,delay){
+    var canRun = true
+    return function(){
+      var context = this
+      var arg = arguments
+    }
+    if(!canRun)return 
+    canRun = false
+    setTimeout(function(){
+      fn.apply(context,args)
+      canRun = true
+    })
+  }
+  </script>
+</html>
