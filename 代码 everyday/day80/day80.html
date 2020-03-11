@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //#region 节流
+  //节流计时器版
+  function throttle(fn,delay){
+    var canRun = true
+    return function(){
+      var context = this
+      var args =arguments
+      if(!canRun) return 
+      canRun = false
+      setTimeout(function(){
+        fn.apply(context,args)
+        canRun = true
+      },delay)
+    }
+  }
+
+  //节流时间戳版,会立即执行一次
+  function throttlePlus(fn,delay){
+    var pre = 0
+    return function(){
+      var now = new Date()
+      var context = this 
+      var args = arguments
+      if(now-pre > delay){
+        fn.apply(context,args)
+        pre = now
+      }
+    }
+  }
+  function handle(){
+    console.log(Math.random())
+  }
+  window.addEventListener('click',throttlePlus(handle,1000))
+  //#endregion
+
+  //#region 深拷贝
+  function isObj(obj){
+    return typeof isObj === "object"
+  }
+  function deepCopy(obj,hash=new WeakMap()){
+    if(hash.has(obj))return hash.get(obj)
+    var tmpObj = Array.isArray(obj)?[]:{} //var tmpObj = obj instansof Array?[]:{}
+    hash.set(obj,tmpObj)
+    for(var key in obj){
+      tmpObj[key]=isObj(obj[key])?deepCopy(obj[key],hash):obj[key]
+    }
+    return tmpObj
+  }
+  // var a={
+  //   1:1,
+  //   2:2,
+  // }
+  // a.z=a
+  // var b=deepCopy(a)
+  // console.log(b)
+  //#endregion
+
+  //#region new原理/Object.create原理
+  function Base(){}
+  //var obj = new Base()
+  // var obj= new Object()
+  // obj.__proto__ = Base.prototype
+  // Base.call(obj)
+  // return pbj
+
+  Object.create = function(obj){
+    function F(){ }
+    F.prototype = obj
+    return new F()
+  }
+  //#endregion
+
+  //#region 继承
+  function Person(name,age){
+    this.name=name
+    this.age=age
+  }
+  Person.prototype.eat=function(){
+    console.log(this.name+'---'+this.age+'---eat'+this.score)
+  }
+  //1.原型链继承
+  // function Student(score){
+  //   this.score=score
+  // }
+  // Student.prototype = new Person('dt',18)
+  // var stu = new Student(12)
+  // stu.eat()
+
+  //2.借用构造函数继承
+  // function Student(name,age,score){
+  //   this.score=score
+  //   Person.call(this,name,age)
+  // }
+
+  //3.组合继承
+  // function Student(name,age,score){
+  //   this.score=score
+  //   Person.call(this,name,age)
+  // }
+  // Student.prototype = new Person()
+
+  // var stu = new Student("fs",10,10)
+  // stu.eat()
+
+  //4.寄生式继承
+  // function create(obj){
+  //   var clone = Object.create(obj)
+  //   clone.sayHi=function(){
+  //     console.log(this.name+'--sayhi')
+  //   }
+  //   return clone
+  // }
+  // var son=create(Person('fs'))
+  // son.sayHi()
+
+  //5.组合寄生式继承
+  // function inherit(father,son){
+  //   var prototype=Object.create(father.prototype)
+  //   prototype.consturctor=son
+  //   son.prototype=prototype
+  // }
+  // function Student(score,name,age){
+  //   this.score=score
+  //   Person.call(this,name,age)
+  // }
+  // inherit(Person, Student)
+  // var stu = new Student(111,'fs',10)
+  // stu.eat()
+  //#endregion
+
+</script>
+</html>
