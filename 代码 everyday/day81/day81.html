@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //#region 1原型链继承 2借用构造函数继承 3组合继承 4寄生式继承 5组合寄生式继承 
+  function Person(name,age){
+    this.name=name
+    this.age=age
+  }
+  Person.prototype.eat=function(){
+    console.log(this.name+'---'+this.age+'---eat'+this.score)
+  }
+  //1
+  // function Student(score){
+  //   this.score=score
+  // }
+  // Student.prototype=new Person('dt',22)
+  // var stu = new Student(100)
+  // stu.eat()
+  //2
+  // function Student(name,age,score){
+  //   this.score=score
+  //   Person.call(this,name,age,score)
+  // }
+  //3
+  // function Student(name,age,score){
+  //   this.score=score
+  //   Person.call(this,name,age)
+  // }
+  // Student.prototype=new Person() // 这一步约等于Student.prototype.__proto__ = Base.prototype
+  // var stu =new Student('fs',11,100)
+  // stu.eat()
+  //4
+   function create(obj){
+      function F(){}
+      F.prototype=obj
+      return new F()
+   }
+  //  var son = create(Base1)
+  //  console.log(son)
+  //  function Copy(obj){
+  //    var clone = create(obj)
+  //    clone.sayHi=function(){
+  //      console.log('sayHi')
+  //    }
+  //    return clone
+  //  }
+  //  var stu = Copy(Person)
+  //  console.log(stu)
+
+  //5
+  // function inherit(father,son){
+  //   var prototype = create(father.prototype) //这一步约等于 son.prototype.__proto__ = father.prototype,和组合继承一样
+  //   prototype.constructor = son
+  //   son.prototype = prototype
+  // }
+  // function Student(score,name,age){
+  //   this.score = score
+  //   Person.call(this,name,age)
+  // }
+  // inherit(Person, Student)
+  // var stu = new Student(111,'fs',10)
+  // stu.eat()
+  //#endregion
+
+  //#region reduce实现map
+  Array.prototype.map2=function(fn){
+    var context=this
+    return this.reduce(function(acc,cur,i,arr){
+      acc.push(fn(cur,i,arr));
+      return acc
+    },[])
+  }
+  var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+      return v * v
+  });
+  console.log(m)
+  //#endregion
+
+  //#region call/apply/bind
+  // Function.prototype.call2=function(context,...arg){
+  //   var context=context || window
+  //   context.fn=this
+  //   console.log(this)
+  //   var result= context.fn(...arg)
+  //   delete context.fn
+  //   return result
+  // }
+  // Function.prototype.apply2=function(context,arr){
+  //   var context = context || window
+  //   context.fn = this
+  //   var result= context.fn(...arr)
+  //   delete context.fn
+  //   return result
+  // }
+  // function add(c, d) {
+  //   return this.a + this.b + c + d;
+  // }
+  // const obj = { a: 1, b: 2 };
+  // console.error(add.call2(obj, 3, 4)); // 10
+
+  // Function.prototype.bind2=function(context){
+  //   var self =this
+  //   var args = Array.prototype.slice.call(arguments,1)
+  //   var bindFn = function(){
+  //     var bindArgs =Array.prototype.slice.call(arguments)
+  //     return self.apply(this instanceof bindFn? this:context,args.concat(bindArgs))//为了给返回函数作为构造函数绑定this之用
+  //   }
+  //   fBound.prototype = this.prototype;
+  //   return bindFn
+  // }
+  //#endregion
+
+  //#region 自增1
+  var addOne=(function(){
+    var i=0
+    return function(){
+      return ++i
+    }
+  })()
+  console.log(addOne)
+  console.log(addOne())
+  console.log(addOne())
+  console.log(addOne())
+
+
+</script>
+</html>
