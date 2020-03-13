@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+//#region 函数柯里化
+// function add(){
+//   if([...arguments].length === 1){
+//     var sum1=[...arg][0]
+//     var summ =function(x){
+//       sum1+=x
+//       return summ
+//     }
+//     summ.toString = function(){
+//       return sum1
+//     }
+//     return summ
+
+//   }else{
+//     var sum=0
+//     for(var i=0;i<[...arg].length;i++){    
+//       sum+=[...arg][i]
+//     }
+//     return sum
+//   }
+// }
+// console.log(add(1,2,3))
+// console.log(add(1,2,3,4))//搞定不了
+// console.log(Object.prototype.toString.call(add(1)(2)(3)))
+// console.log(add(1)(2)(3)(4))
+   
+
+//改进柯里化
+function add(){
+  var _args = Array.prototype.slice.call(arguments)
+  var _adder = function(){
+    _args.push(...arguments)
+    return _adder
+  }
+  _adder.toString = function(){
+    return _args.reduce(function(acc,cur){
+      return acc*cur
+    })
+  }
+  return _adder
+}
+// console.log(add(1,2,3))
+// console.log(add(1,2,3)(2))
+// console.log(add(1)(2)(3))
+//#endregion
+
+//#region 数组去重
+function removeItem(arr){
+  var tmpArr = [...new Set(arr)]
+  tmpArr.sort((a,b)=> a-b)
+  return tmpArr
+}
+// console.log(removeItem([5,4,3,6,3,1]))
+
+//#region 快速排序
+function swap(arr,i,j){
+  var tmp = arr[i]
+  arr[i] = arr[j]
+  arr[j] = tmp
+}
+function partition(arr,left,right){
+  var pivot = left
+  var index = pivot + 1 
+  for(var i=index;i<=right;i++){
+    if(arr[i]<arr[pivot]){
+      swap(arr,i,index)
+      index++
+    }
+  }
+  swap(arr,index-1,pivot)
+  return index-1
+}
+function quickSort(arr,left,right){
+  var len=arr.length;
+  var partitonIndex;
+  var left=typeof left !='number'? 0 :left;
+  var right=typeof right !='number'? len-1 :right;
+  if(left<right){
+    partitonIndex=partition(arr,left,right)
+    quickSort(arr,left,partitonIndex-1)
+    quickSort(arr,partitonIndex+1,right)
+  }
+  return arr
+}
+// console.log(quickSort([3,2,6,43,2]))
+//#endregion
+
+//#region 冒泡排序
+function bubbleSort(arr){
+  var len = arr.length
+  for(var i=0;i<len-1;i++){// i<len也可 在i=len-1时不进入循环，故无意义
+    for(var j=0;j<len-1-i;j++){
+      if(arr[j]>arr[j+1]){
+        var tmp=arr[j+1]
+        arr[j+1]=arr[j]
+        arr[j]=tmp
+      }
+    }
+  }
+  return arr
+}
+// console.log(bubbleSort([3,2,6,43,7,33,12]))
+//#endregion
+
+//#region 选择排序
+function selectSort(arr){
+  var len = arr.length
+  var minIndex
+  var tmp
+  for(var i=0;i<len-1;i++){//i<len也可，在i=len-1时不进入循环，故无意义
+    minIndex=i
+    for(var j=i+1;j<len;j++){
+      if(arr[j]<arr[minIndex]){
+        minIndex=j
+      }
+    }
+    tmp = arr[i]
+    arr[i]=arr[minIndex]
+    arr[minIndex]=tmp
+  }
+  return arr
+}
+//console.log(selectSort([55,3,2,6,43,7,33,12]))
+//#endregion 
+
+//#region 插入排序
+function insertSort(arr){
+  var len = arr.length
+  var preIndex,current
+  for(var i =1;i<len;i++){
+    preIndex = i-1
+    current=arr[i]
+    while(preIndex>=0 && arr[preIndex]>current){
+      arr[preIndex+1]=arr[preIndex]
+      preIndex--
+    }
+    arr[preIndex+1]=current
+  }
+  return arr
+}
+console.log(insertSort([55,3,2,6,43,7,33,12]))
+//#endregion
+
+//#region 单链表反转
+function reverse(linkList){
+  var head = linkList.head
+  if(head===null || head.next===null){
+    return linkList 
+  } 
+  var pre = head
+  var cur = pre.next
+  pre.next = null
+  while(cur){
+    var tmp = cur.next
+    cur.next = pre
+    pre = cur
+    cur = tmp 
+  }
+  linkedList.head = pre;
+}
+</script>
+</html>
