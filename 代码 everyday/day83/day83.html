@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+</body>
+<script>
+  //#region 1冒泡2选择3插入4快速
+  //1
+  function bubbleSort(arr){
+    var len = arr.length
+    for(var i=0;i<len-1;i++){
+      for(var j=0;j<len-1-i;j++){
+        if(arr[j+1]<arr[j]){
+          var tmp = arr[j]
+          arr[j]=arr[j+1]
+          arr[j+1]=tmp
+        }
+      }
+    }
+    return arr
+  }
+  console.log(bubbleSort([9,5,7,3,2,8]))
+  //2
+  function selectSort(arr){
+    var len = arr.length
+    var minIndex,tmp
+    for(var i=0;i<len-1;i++){
+      minIndex=i
+      for(var j=i+1;j<len;j++){
+        if(arr[j]<arr[minIndex]){
+          minIndex=j
+        }
+      }
+      tmp=arr[minIndex]
+      arr[minIndex]=arr[i]
+      arr[i]=tmp
+    }
+    return arr
+  }
+  console.log(selectSort([9,5,7,3,2,8]))
+  //3
+  function insertSort(arr){
+    var len = arr.length
+    var preIndex,current
+    for(var i=1;i<len;i++){
+      preIndex=i-1
+      current=arr[i]
+      while(preIndex>=0 && arr[preIndex]>current){
+        arr[preIndex+1]=arr[preIndex]
+        preIndex--
+      }
+      arr[preIndex+1]=current
+    }
+    return arr
+  }
+  console.log(insertSort([11,9,5,7,3,2,8]))
+  //4
+  function swap(arr,i,j){
+    var tmp=arr[i]
+    arr[i]=arr[j]
+    arr[j]=tmp
+  }
+  function partition(arr,left,right){
+    var pivot = left
+    var index = pivot + 1
+    for(var i=index;i<=right;i++){
+      if(arr[i]<arr[pivot]){
+        swap(arr,i,index)
+        index++
+      }
+    }
+    swap(arr,index-1,pivot)
+    return index-1
+  }
+  function quickSort(arr,left,right){
+    var len=arr.length
+    var partitionIndex
+    var left = typeof left !=='number'?0:left
+    var right = typeof right !=='number'? len-1:right
+    if(left<right){
+      partitionIndex=partition(arr,left,right)
+      quickSort(arr,left,partitionIndex-1)
+      quickSort(arr,partitionIndex+1,right)
+    }
+    return arr
+  }
+  console.log(quickSort([11,9,5,7,3,2,8]))
+  //#endregion
+
+  //#region 
+  function reverse(linkList){
+    var head = linkList.head
+    if(head===null || head.next===null){
+      return linkList
+    }
+    var pre = head
+    var cur = head.next
+    pre.next = null
+    while(cur){
+      var tmp =cur.next
+      cur.next = pre
+      pre = cur
+      cur = tmp
+    }
+    linkList.head = pre
+  }
+</script>
+</html>
