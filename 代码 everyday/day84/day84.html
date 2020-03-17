@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //#region 自增函数
+  var add = (function(){
+    var index = 1
+    return function(){
+      return index++
+    }
+  })()
+  // console.log(add())
+  // console.log(add())
+  // console.log(add())
+  //#endregion
+
+  //#region 最长无重复子串
+  var lengthOfLongestSubstring = function(s) {
+    var len=s.length;
+    var map=new Map();
+    var sArr=s.split("");
+    var length=0;
+    var result
+    var index
+    
+    for(var start=0,end=0;end<len;end++){
+        if(map.get(sArr[end])){
+          start=Math.max(map.get(sArr[end]),start)
+        };
+        if(Math.max(length,end-start+1)!==length){
+            index=start
+            length=Math.max(length,end-start+1)
+            result=s.substr(index,length)
+          }
+        map.set(sArr[end],end+1);
+    }
+    return [result,length];
+  };
+  console.log(lengthOfLongestSubstring('qrwertrwrs'))
+  //#endregion
+
+  //#region 上台阶问题
+  //递归
+  function step(n){
+    if(n===1){
+      return 1
+    }
+    if(n===2){
+      return 2
+    }
+    return step(n-1)+step(n-2)
+  }
+  console.log(step(5))
+  //迭代
+  function sstep(n){
+    if(n===1)return 1
+    if(n===2) return 2
+    var step1=1
+    var step2=2
+    var res=0
+    for(var i=3;i<=n;i++){
+      res=step1+step2
+      step1=step2
+      step2=res
+    }
+    return res
+  }
+  console.log(sstep(5))
+  //#endregion
+</script>
+</html>
