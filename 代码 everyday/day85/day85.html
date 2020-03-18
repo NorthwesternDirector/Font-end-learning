@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex布局</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //#region 变量提升问题
+  //var a=12
+  // function fn(){
+  //   console.log(a)
+  //   var a=45
+  //   console.log(a)
+  // }
+  // fn()
+  // var a = 1;
+  // function fn() {
+  //     //var a = undefined
+  //     a = 2;
+  //     console.log(a) // 2
+  //     var a = 3;
+  //     console.log(a) // 3
+  // }
+  // fn();
+  // console.log(a);// 1
+  // function fn(){
+  //   console.log(a)// Cannot access 'a' before initialization
+  //   let a =3
+  // }
+  // fn()
+  //#endregion
+
+  //#region js数组去重 
+  // 大众版
+  // function removeItem(arr){
+  //   var res=[]
+  //   for(var i=0;i<arr.length;i++){
+  //     if(res.indexOf(arr[i])===-1){
+  //       res.push(arr[i])
+  //     }
+  //   }
+  //   return res
+  // }
+  // console.log(removeItem([1,4,6,3,2,5,3]))
+  // 奢华版
+  // function removeItem(arr){
+  //   var tmpArr = [...new Set(arr)]
+  //   tmpArr.sort((a,b)=>a-b)
+  //   return tmpArr
+  // }
+  // console.log(removeItem([1,4,6,3,2,5,3]))
+  //#endregion
+
+  //#region 快速排序
+    const quickSort= arr => arr.length<=1? arr :
+      [
+        ...quickSort(arr.filter(item => item<arr[0])),
+        ...arr.filter(item => item===arr[0]),
+        ...quickSort(arr.filter(item => item>arr[0]))
+      ]
+    console.log(quickSort([43,4,3,2,5,8,90,12,1]))
+</script>
+</html>
