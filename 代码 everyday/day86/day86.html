@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  //#region 函数柯里化
+  function currying(){
+    var _args = Array.prototype.slice.call(arguments)
+    var _adder = function(){
+      _args.push(...arguments)
+      return _adder
+    }
+    _adder.toString = function(){
+      return _args.reduce((acc,cur,i,arr)=>acc*cur)
+    }
+    return _adder
+  }
+  // console.log(currying(1)(2)(3))
+  // console.log(currying(1,2,3))
+  //#endregion
+
+  //#region a==1 && a==2 && a==3
+  var a = {
+    i: 1,
+    valueOf: function() {
+      return a.i++
+    }
+  }
+  console.log(a==1 && a==2 && a==3)
+  //#endregion
+
+  //#region promise.all
+  Promise.all = arr =>{
+    let res = []
+    return new Promise((resolve,reject)=>{
+      let i =0
+      function next(){
+        arr[i].then(function(suc){
+          res.push(suc)
+          i++
+          if(i==arr.length){
+            resolve(res)
+          }else{
+            next()
+          }
+        })
+      }
+      next()
+    })
+  }
+  //改良版
+  Promise.all = function(arr){
+    return new Promise((resolve,reject)=>{
+      let index=0
+      let res=[]
+      function processValue(i,data){
+        res[i]=data
+        if(++index===arr.length){
+          resolve(res)
+        }
+      }
+      for(var i=0;i<arr.length;i++){
+        Promise.resolve(arr[i]).then(
+          data =>{
+            processValue(i,data)
+          },err =>{
+            reject(err)
+            return 
+          }
+        )
+      }
+    })
+  }
+  // function promise1 () {
+  //   return new Promise(resolve => {
+  //     console.log('promise1 start');
+  //     setTimeout(() => {
+  //       console.log('promise1 over');
+  //       resolve();
+  //     }, 100);
+  //   })
+  // }
+  // function promise2 () {
+  //   return new Promise(resolve => {
+  //     console.log('promise2 start');
+  //     setTimeout(() => {
+  //       console.log('promise2 over');
+  //       resolve();
+  //     }, 90);
+  //   })
+  // }
+  // Promise.all([promise1(), promise2()])
+  //#endregion
+  var xx=1
+  console.log(xx++)
+  console.log(++xx)
+</script>
+</html>
