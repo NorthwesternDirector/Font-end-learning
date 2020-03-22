@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  
+  // function randomNum(min,max){
+  //   switch(arguments.length){
+  //     case 1 :
+  //       return  Math.floor(Math.random()*(min+1))
+  //       break;
+  //     case 2 :
+  //       return Math.floor(Math.random()*(max-min+1))+min
+  //       break;
+  //     default :
+  //       return 0
+  //       break;
+  //   }
+  // }
+  // console.log(randomNum(4,5))
+  
+  // function getNode(node){
+  //   if(node.nodeName.toLowerCase()==='li'){
+  //     return node
+  //   }else{
+  //     return getNode(node.parentNode)
+  //   }
+  // }
+  
+  // function debounce(fn,wait,immediate){
+  //   var timeout = null
+  //   return function(){
+  //     var constext = this
+  //     var args = arguments
+  //     if(timeout!==null){
+  //       clearTimeout(timeout)
+  //     }
+  //     if(immediate){
+  //       var callnow = !timeout
+  //       if(callnow){
+  //         fn.apply(context,args)
+  //       }
+  //       timeout = setTimeout(function(){
+  //         timeout = null
+  //       },wait)   
+  //     }else{
+  //       timeout = setTimeout(function(){
+  //         fn.apply(context,args)
+  //       },wait)
+  //     }
+  //   }
+  // }
+
+    // function throttle(fn,delay){
+    //   var canrun = true
+    //   return function(){
+    //     var context = this
+    //     var args = arguments
+    //     if(!canrun) return 
+    //     canrun = false
+    //     setTimeout(function(){
+    //       fn.apply(context,args)
+    //       canrun = true
+    //     },delay)
+    //   }
+    // }
+    // function throttle2(fn,delay){
+    //   var date = 0
+    //   return function(){
+    //     var context = this
+    //     var args = arguments
+    //     var now =new Date()
+    //     if(now-date>=delay){
+    //       fn.apply(context,args)
+    //       date = now
+    //     }
+    //   }
+    // }
+
+    // function currying(){
+    //   var args = Array.prototype.slice.call(arguments)
+    //   var add = function(){
+    //     args.push(...arguments)
+    //     return add
+    //   }
+    //   add.toString = function(){
+    //     return args.reduce((acc,cur)=>acc+cur)
+    //   }
+    //   return add
+    // }
+    // console.log(currying(1,3,4))
+    // console.log(currying(1)(2)(3,4,5))
+
+    // function isObj(obj){
+    //   return typeof obj ==='object'
+    // }
+    // function deepCopy(obj,hash=new WeakMap()){
+    //   if(hash.has(obj))return hash.get(obj)
+    //   var tmpobj = Array.isArray(obj) ? []:{}
+    //   hash.set(obj,tmpobj)
+    //   for(var key in obj){
+    //     tmpobj[key] = isObj(obj[key]) ? deepCopy(obj[key],hash) : obj[key]
+    //   }
+    //   return tmpobj
+    // }
+
+    //new
+    // var obj = new Base()
+    // var obj = new Object()
+    // obj.__proto__ = Base.prototype
+    // Base.call(obj)
+    // return obj
+    //create
+    // function create(obj){
+    //   function Fn(){}
+    //   Fn.prototype = obj
+    //   return new Fn()
+    // }
+
+    // Array.prototype.map2 = function(fn){
+    //   var arr = this
+    //   return arr.reduce(function(acc,cur,i,arr){
+    //     acc.push(fn(cur,i,arr))
+    //     return acc
+    //   },[])
+    // }
+
+    // var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+    //   return v * v
+    // });
+    // console.log(m)
+
+    // Function.prototype.call2 = function(con,...arg){
+    //   var context = con || window
+    //   context.fn = this
+    //   var result = context.fn(...arg)
+    //   delete context.fn
+    //   return result
+    // }
+
+    // Function.prototype.apply2 = function(con,arr){
+    //   var context = con || window
+    //   context.fn = this
+    //   var result = context.fn(...arr)
+    //   delete context.fn
+    //   return result
+    // }
+
+    // Function.prototype.bind2 = function(context){
+    //   var self = this
+    //   var args = Array.prototype.slice.call(arguments,1)
+    //   var bindFn = function(){
+    //     var bindArgs = Array.prototype.slice.call(arguments)
+    //     return self.call(this instanceof bindArgs ? this: context,...args.concat(bindArgs))
+    //   }
+    //   return bindFn
+    // }
+
+    // var add1 = (function(){
+    //   var index = 1
+    //   return function(){
+    //     console.log(index++)
+    //   }
+    // })()
+      // add1()
+      // add1()
+
+    // var a= {
+    //   i:1,
+    //   valueOf: function(){
+    //     return a.i++
+    //   }
+    // }
+    // console.log(a==1 && a==2 && a==3)
+
+    // function currying(){
+    //   var args = Array.prototype.slice.call(arguments)
+    //   var adder = function(){
+    //     args.push(...arguments)
+    //     return adder
+    //   }
+    //   adder.toString = function(){
+    //     return args.reduce((acc,cur)=>acc+cur)
+    //   }
+    //   return adder
+    // }
+
+    // function removeitem(arr){
+    //   res = []
+    //   for(var i=0;i<arr.length;i++){
+    //     if(res.indexOf(arr[i])===-1){
+    //       res.push(arr[i])
+    //     }
+    //   }
+    //   return res
+    // }
+    // console.log(removeitem([1,2,3,4,5,5,6,6,7,7]))
+
+    // function removeitem(arr){
+    //   var res = [...new Set(arr)]
+    //   res.sort((a,b)=>b-a)
+    //   return res
+    // }
+    // console.log(removeitem([1,2,3,4,5,5,6,6,7,7]))
+
+    // Promise.all2 = function(arr){
+    //   return new Promise((resolve,reject)=>{
+    //     let res=[]
+    //     let index = 0
+    //     for(var i =0;i<arr.length;i++){
+    //       Promise.resolve(aar[i]).then(
+    //         data=>{
+    //           res[i] = data
+    //           if(++index===arr.length){
+    //             resolve(res)
+    //           }
+    //         },err=>{
+    //           reject(err)
+    //           return
+    //         }
+    //       )
+    //     }
+    //   })
+    // }
+
+    // var delay = function(time){
+    //   return new Promise(resolve=>setTimeout(resolve,time))
+    // }
+    // delay(10000).then(()=>console.log('11'))
+
+  // var fn = function(callback){
+  //   var a = {}
+  //   var value = 1
+  //   Object.defineProperty(a,'index',{
+  //     get: ()=>{
+  //       return value
+  //     },
+  //     set: val=>{
+  //       callback('当前值更新为---'+val)
+  //       value = val
+  //     }
+  //   })
+  //   return setInterval(()=>console.log(++a.index),1000)
+  // }
+//fn((aa)=>console.log(aa + 'A'))
+//  fn((aa)=>console.log(aa + 'B'))
+
+
+
+</script>
+</html>
