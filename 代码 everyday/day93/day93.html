@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* #div{
+    width: 100px;
+    height:200px;
+    border-radius: 50%;
+    background-color:red;
+  }
+  div{
+    width: 0;
+    height: 0;
+   border: 50px solid transparent
+  }
+  #div2{
+    border-left: 50px solid red;
+  } */
+  /* body{
+    display: flex;
+    align-items: stretch;
+  }
+  #div{
+    background-color:red;
+  } */
+
+  span{
+    background-color: yellow;
+    line-height: 100px;
+    width: 200px;
+    height:400px
+  }
+
+</style>
+<body>
+    <!-- <div id="div">hasha</div>
+    <div id="div2">haha</div> -->
+    <span>1231</span>
+</body>
+<script>
+  // var a=new Object()
+  // a.say = function(){
+  //   console.log(this)
+  // }
+  // a.say()
+  // let a = 1
+  // function aa(){
+  //   console.log(a)
+  // }
+  // aa()
+
+  // var num = 10;
+  // console.log(window.num)
+  // function fn() {
+  //   console.log(this)
+  //   console.log(this.num);
+  // }
+ 
+  // fn()
+  // let obj = {
+  //   num:5,
+  //   method: function(fn) {
+  //     fn();
+  //     arguments[0]();
+  //   }
+  // };
+  // obj.method(fn,1)
+  // function a(){
+  //   console.log(this)
+  // }
+  // function b(){
+  //   a()
+  // }
+  // b()
+
+  // let num = 10;
+  // function fn() {
+  //   console.log(this);
+  // }
+  // let obj = {
+  //   num:5,
+  //   method: function(fn) {
+  //     fn();
+  //     arguments[0]();
+  //   }
+  // };
+  // obj.method(fn)
+
+  //#region 上台阶问题
+  //递归
+  // function step(n){
+  //   if(n===1){
+  //     return 1
+  //   }
+  //   if(n===2){
+  //     return 2
+  //   }
+  //   return step(n-1)+step(n-2)
+  // }
+  // console.log(step(5))
+  //迭代
+  // function sstep(n){
+  //   if(n===1)return 1
+  //   if(n===2) return 2
+  //   var step1=1
+  //   var step2=2
+  //   var res=0
+  //   for(var i=3;i<=n;i++){
+  //     res=step1+step2
+  //     step1=step2
+  //     step2=res
+  //   }
+  //   return res
+  // }
+  // console.log(sstep(5))
+  //#endregion
+
+  //#region 最长回文字符串
+  function longStr(str){
+    var s = str.split("")
+    var set={}
+    var res = 0
+    for(var i=0;i<s.length;i++){
+      if(set[s[i]]!==undefined){
+        res+=2
+        delete set[s[i]]
+      }else{
+        set[s[i]] = s[i]
+      }
+    }
+    return Object.keys(set).length>0? res+1 : res
+  }
+  console.log(longStr('abccccdd'))
+  //#endregion
+</script>
+</html>
