@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* div{
+    width: 100px;
+    height: 100px;
+    border: 200px solid red;
+    border-radius: 50%;
+    
+  }
+  #div{
+    border-top: 200px solid red;
+
+  } */
+  .snip{
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: -10px;
+    left: 28px;
+    width: 0;
+    height: 0;
+    border-right: 57px solid transparent;/*100/√3*/
+    border-left: 57px solid transparent;
+    border-top: 100px solid yellow;
+    border-bottom: 100px solid transparent;
+    border-radius: 100%;
+}
+.warning .snip:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.warning .snip:nth-child(2) {
+    transform: rotate(120deg);
+}
+
+.warning .snip:nth-child(3) {
+    transform: rotate(240deg);
+}
+.warning{
+  height: 150px;
+  width:150px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+</style>
+<body>
+  <!-- <div id='div'></div> -->
+<div class="warning">
+    <div class="snip"></div>
+    <div class="snip"></div>
+    <div class="snip"></div>
+</div>
+</body>
+<script>
+  // var a=[
+  //   [1,2],
+  //   [3,4]
+  // ]
+  // a.slice(-1)[0].map(i=>console.log(i))
+
+  // function isObj(obj){
+  //   return typeof obj === 'object'
+  // }
+  // function deepCopy(obj,hash = new WeakMap()){
+  //   if(hash.has(obj))return hash.get(obj)
+  //   var tmpObj = Array.isArray(obj) ? []:{}
+  //   hash.set(obj,tmpObj)
+  //   for(var key in obj){
+  //     tmpObj[key]=isObj(obj[key]) ? deepCopy(obj[key],hash):obj[key]
+  //   }
+  //   return tmpObj
+  // }
+
+  //#region 树的层序遍历
+  function layerIterator(root){
+    var stack = [root]  
+    var res=[]
+    var index=0
+    while(stack.length!=0){
+      if(stack.length>1){
+        var layerStack =[]
+        var layerRes=[]
+        while(stack.length!=0){
+          var tmp = stack.pop()
+          layerRes.push(tmp.val)
+          tmp.right && layerStack.push(tmp.right)
+          tmp.left && layerStack.push(tmp.left)   
+        }     
+        stack=layerStack
+        res[index]=layerRes
+        index++
+      }else{
+        var tmp = stack.pop()
+        res[index] = [tmp.val]
+        tmp.right && stack.push(tmp.right)
+        tmp.left && stack.push(tmp.left)   
+        index++ 
+      }
+      
+    }
+    return res
+  }
+
+  // 树的测试数据
+  function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+  var e5 =new TreeNode(5)
+  var d2 =new TreeNode(2)
+  var c6 =new TreeNode(6)
+  c6.left = d2
+  c6.right = e5
+  var b4 =new TreeNode(4)
+  var a1 =new TreeNode(1)
+  a1.left = b4
+  a1.right = c6
+  console.log(layerIterator(a1))
+//#endregion
+
+
+// function fun(n,o){
+//   console.log(o)
+//   console.log(arguments)
+//   return {
+//     fun:function(m,n){
+//       return fun(m,n)
+//     }
+//   }
+// }
+// c = fun(0).fun(1,2) //undefined 
+// console.log()
+
+// c.fun(2)
+// c.fun(3)
+
+
+// var a = [NaN,NaN,{a:1},"{a:1}"]
+
+// function removeItem(arr){
+//   return [...new Set(arr)]
+// }
+// console.log(removeItem(a))
+
+
+new Promise((resolve,reject)=>{
+reject(1)
+}).catch(()=>{
+console.log(2)
+}).then(
+    ()=>console.log(3),
+    (v)=>console.log(v)
+)
+</script>
+</html>
