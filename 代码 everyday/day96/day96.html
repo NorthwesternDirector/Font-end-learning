@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+/* #div{
+  padding-bottom: 25%;
+  width: 50%;
+  background-color:sandybrown;
+  border:1px solid tomato;
+} */
+#div{
+  padding-bottom: 10vw;
+  width: 20vw;
+  background-color:sandybrown;
+  border:1px solid tomato;
+  transform: translate(100px,100px);
+  /* -webkit-animation: move 1s ease-in;
+  -o-animation: move 1s ease-in;
+  animation: move 1s ease-in; */
+}
+
+/* @keyframes move{
+  0%{transform: translateX(0px);}
+  100%{transform: translateX(500px);}
+}
+@-webkit-keyframes move{
+  0%{transform: translateX(0px);}
+  100%{transform: translateX(500px);}
+} */
+</style>
+
+<body>
+  <div style="height: 500px;width:500px;border:3px solid #000">
+    <div id='div'>aaaa</div>
+    <p>123455</p>
+
+  </div>
+</body>
+<script>
+  // var fn = function(){
+
+  // }
+  // console.log(Object.prototype)
+  //#region debounce throttle
+  // function debounce(fn,wait,immediate){
+  //   var timeout=null
+  //   return function(){
+  //     var context = this
+  //     var args = arguments
+  //     if(timeout!==null){
+  //       clearTimeout(timeout)
+  //     }
+  //     if(immediate){
+  //       var runNow = !timeout
+  //       if(runNow){
+  //         fn.apply(context,args)
+  //       }
+  //       timeout = setTimeout(function(){
+  //         timeout =null
+  //       },wait)
+  //     }else{
+  //       console.log(timeout)
+  //       timeout = setTimeout(function(){
+  //         fn.apply(context,args)
+  //       },wait)  
+  //     }
+  //   }
+  // }
+  //   function handle(){
+  //   console.log(Math.random())
+  // }
+  // window.addEventListener('click',debounce(handle,1000))
+
+  // function throttle(fn,delay){
+  //   var canrun =true
+  //   return function(){
+  //     var context = this
+  //     var args = arguments
+  //     if(!canrun) return 
+  //     canrun = false
+  //     setTimeout(function(){
+  //       fn.apply(context,args)
+  //       canrun = true
+  //     },delay)
+  //   }
+  // }
+  //   function handle(){
+  //   console.log(Math.random())
+  // }
+  // window.addEventListener('click',throttle(handle,1000))
+  //#endregion 
+
+  //#region reverse
+  function listReverse(list){
+    var head = list.head
+    if(head ==null || head.next ==null){
+      return
+    }
+    var one = head
+    var two = head.next
+    one.next = null
+    while(two){
+      var three = two.next
+      two.next = one
+      one = tow
+      two = three
+    }
+    list.head = one
+    return list
+  }
+  //#endregion
+
+  //#region reduce flat
+  // function flatArr(arr){
+  //   return arr.reduce((acc,cur)=>{
+  //     return Array.isArray(cur) ? [...acc,...flatArr(cur)] :[...acc,cur]
+  //   },[])
+  // }
+
+  // function flatArr(arr){
+  //   var res = []
+  //   var flatFn = function(arr){
+  //     arr.forEach(item=>Array.isArray(item)? flatFn(item):res.push(item) )
+  //   }
+  //   flatFn(arr)
+  //   return res
+  // }
+  // function flatArr(arr){
+  //   return arr.reduce((acc,cur)=>{
+  //     return Array.isArray(cur)?[...acc,...flatArr(cur)] : [...acc,cur]
+  //   },[])
+  // }
+  // console.log(flatArr([1, 2, 3, [4, [5, 6]], 8, 9]));
+
+  //#region map
+  // Array.prototype.map2 = function(fn){
+  //   var arr = this
+  //   var res= arr.reduce((acc,cur,i,arr)=>{
+  //     acc.push(fn(cur,i,arr))
+  //     return acc
+  //   },[])
+  //   return res
+  // }
+  // console.log([1,2,3].map2(cur=>cur+cur))
+  //#endregion
+
+  //#region deepcopy
+  // function isObj(item){
+  //   return typeof item == 'object'
+  // }
+  // function deepCopy(obj,hash=new WeakMap()){
+  //   if(hash.has(obj))return hash.get(obj)
+  //   var tmpObj = Array.isArray(obj)?[]:{}
+  //   hash.set(obj,tmpObj)
+  //   for(var key in obj){
+  //     tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key],hash) : obj[key]
+  //   }
+  //   return tmpObj
+  // }
+  // var a={
+  //   b:1,
+  //   c:3
+  // }
+  // a.z=a  
+  // var b=deepCopy(a)
+  // console.log(b)
+ //#endregion
+
+  //#region 
+  // function swap(arr,i,j){
+  //   var tmp = arr[i]
+  //   arr[i] = arr[j]
+  //   arr[j] = tmp
+  // }
+  // function partition(arr,left,right){
+  //   var pivot = left
+  //   var index = pivot + 1
+  //   for(var i=index;i<arr.length;i++){
+  //     if(arr[i]<arr[pivot]){
+  //       swap(arr,i,index)
+  //       index++
+  //     }
+  //   }
+  //   swap(arr,pivot,index-1)
+  //   return index-1
+  // }
+  // function quickSort(arr,left,right){
+  //   var left = typeof left =='number' ? left : 0
+  //   var right = typeof right =='number' ? right : arr.length-1
+  //   var partitionIndex
+  //   if(left<right){
+  //     partitionIndex = partition(arr,left,right)
+  //     quickSort(arr,left,partitionIndex-1)
+  //     quickSort(arr,partitionIndex+1,right)
+  //   }
+  //   return arr
+  // }
+
+  // function bubbleSort(arr){
+  //   for(var i=0;i<arr.length;i++){
+  //     for(var j=0;j<arr.length-i-1;j++){
+  //       if(arr[j]>arr[j+1]){
+  //         var tmp = arr[j]
+  //         arr[j] = arr[j+1]
+  //         arr[j+1] = tmp
+  //       }
+  //     }
+  //   }
+  //   return arr
+  // }
+  // function insertSort(arr){
+  //   var len = arr.length
+  //   var current,preIndex
+  //   for(var i=1;i<len;i++){
+  //     preIndex =i-1
+  //     current = arr[i]
+  //     while(preIndex>=0 &&arr[preIndex]>current){
+  //       arr[preIndex+1] = arr[preIndex]
+  //       preIndex--
+  //     }
+  //     arr[preIndex+1]=current
+  //   }
+  //   return arr
+  // }
+  // console.log(insertSort([43,4,3,2,5,8,90,12,1]))
+  //#endregion
+  //#region 回文字符串
+  // function longStr(s){
+  //   var sArr = s.split('')
+  //   var res=0
+  //   var set={}
+  //   for(var i=0;i<sArr.length;i++){
+  //     if(set[sArr[i]]!==undefined){
+  //       res+=2
+  //       delete set[sArr[i]]
+  //     }else{
+  //       set[sArr[i]]=sArr[i]
+  //     }
+  //   }
+  //   return Object.keys(set).length>0 ? res+1:res
+  // }
+  // console.log(longStr('abccccdd'))
+  //#region 
+
+  //#region 
+  // function longStr(s){
+  //   var sArr = s.split('')
+  //   var maxLen = 0 , index = 0,maxStr
+  //   var map = new Map()
+  //   for(var start=0,end=0;end<sArr.length;end++){
+  //     if(map.get(sArr[end])){
+  //       start=Math.max(start,map.get(sArr[end]))
+  //     }
+  //     if(Math.max(maxLen,end-start+1)!==maxLen){
+  //       maxLen = Math.max(maxLen,end-start+1)
+  //       index = start
+  //       maxStr = s.substr(index,maxLen)
+  //     }
+  //     map.set(sArr[end],end+1)
+  //   }
+  //   return [maxLen,maxStr]
+  // }
+  // console.log(longStr('qrwertrwrs'))
+  //#endregion 
+
+//#region 监视器
+// var fn = function(callback){
+//   var a = {}
+//   var value = 0
+//   Object.defineProperty(a,'index',{
+//     get:()=>{
+//       callback('a.index被访问了')
+//       return value
+//     },
+//     set:(newVal)=>{
+//       callback('a.index被更新了---'+newVal)
+//       value=newVal
+//     }
+//   })
+//   setInterval(()=>++a.index,2000)
+// }
+// fn((aa)=>console.log(aa+'我是监视器1'))
+//#endregion
+
+//#region random array
+// function randomArr(arr){
+//   var res=[]
+//   while(arr.length!==0){
+//     var index = Math.floor(arr.length*Math.random())
+//     res.push(arr[index])
+//     arr.splice(index,1)
+//   }
+//   return res
+// }
+// console.log(randomArr([1,2,3,4,5,6]))
+//#endregion
+
+//#region promise.all
+// Promise.all2 = function(arr){
+//   return new Promise((resolve,reject)=>{
+//     var res =[]
+//     for(var i=0;i<arr.length;i++){
+//     Promise.resolve(arr).then(function(data){
+//       res.push(data)
+//       if(i+1==arr.length){
+//         resolve(res)
+//       }
+//     },function(err){
+//       reject(err)
+//       return 
+//     })
+//     }
+//   })
+// }
+//#endregion
+
+//#region currying
+// function currying(){
+//   var args = Array.prototype.slice.call(arguments)
+//   var add = function(){
+//     args.push(...arguments)
+//     return add
+//   }
+//   add.toString = function(){
+//     return args.reduce((acc,cur)=>acc+cur)
+//   }
+//   return add
+// }
+// console.log(currying(1)(2)(3))
+//   console.log(currying(1,2,3))
+//#endregion
+
+//#region call
+// Function.prototype.call2 = function(con,...arg){
+//   var context = con
+//   context.fn = this
+//   var res = context.fn(...arg)
+//   delete context.fn
+//   return res
+// }
+// Function.prototype.apply2 = function(con,arr){
+//   var context = con
+//   context.fn = this
+//   var res = context.fn(...arr)
+//   delete context.fn
+//   return res
+// }
+// Function.prototype.bind2 = function(context){
+//   var self = this
+//   var args = Array.prototype.slice.call(arguments,1)
+//   var bindFn =function(){
+//     var bindArgs = Array.prototype.slice.call(arguments)
+//     return self.apply(this instanceof bindFn ? this : context,args.concat(bindArgs))
+//   }
+//   return bindFn
+//#endregion
+
+//#region 
+//  var preOder = function(root){
+//    var res = []
+//    var stack=[root]
+//    while(stack.length!==0){
+//       var item =stack.pop()
+//       var left = item.left
+//       var right = item.right
+//       res.push(item.val)
+//       if(right){
+//         stack.push(left)
+//       }
+//       if(left){
+//         stack.push(left)
+//       }
+//    }
+//    return res
+//  }
+//  var preOder = function(root){
+//    var res = []
+//    var preOderFn = function(root){
+//      res.push(root.val)
+//      preOderFn(root.left)
+//      preOderFn(root.right)
+//    }
+//    return res
+//  }
+
+</script>
+
+</html>
