@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  span{
+    background-color:coral;
+    padding: 100px;
+    margin: 100px;
+  }
+</style>
+<body>
+  <span>123</span>
+  <div>1222</div>
+</body>
+<script>
+  // var a={
+  //   1:2,
+  //   2:3
+  // }
+  // for(var key in a){
+  //   console.log(key)
+  // }
+
+  // var obj = new Object()
+  // obj.__proto__ = Base.prototype
+  // Base.call(obj)
+  // return obj
+  // Object.create = function(obj){
+  //   function Fn(){}
+  //   Fn.prototype = obj
+  //   return new Fn()
+  // }
+
+  // function Person(age,name){
+  //   this.age = age
+  //   this.name = name
+  // }
+  // Person.prototype.eat = function(){
+  //   console.log(this.age+'-'+this.name+'哈哈')
+  // }
+
+  // function inherit(father,son){
+  //   var prototype = Object.create(father.prototype)
+  //   prototype.constructor = son
+  //   son.prototype = prototype
+  // }
+
+  // function Student(score,age,name){
+  //   this.score = score
+  //   Person.call(this,age,name)
+  // }
+  // inherit(Person,Student)
+
+  // 'qwe-ert-yui-op'.replace(/-[a-z]/g,c=>{
+  //   console.log(c)
+  //   c[1].toUpperCase()})
+
+//   function sum(...nums) {
+//     console.log(...nums)
+//     console.log(nums)
+//   let total = 0;  
+//   for(const num of nums) {
+//     total += num;
+//   }
+//   return total;
+// }
+// console.log(sum(1,2,3,4,5))
+
+// var event ={}
+// event['213'] = []
+// console.log(event)
+// event['213'].push(function(){})
+
+//#region  eventEmitter
+function Event(){
+  this.events = {}
+}
+Event.prototype.on = function(type,fn){
+  if(this.events[type]){
+    this.events[type] = []
+  }
+  this.events[type].push(fn)
+}
+Event.prototype.emit = function(type,fn){
+  if(!this.events[type]){
+    return 
+  }
+  this.events[type].forEach(fn=>fn())
+}
+Event.prototype.off = function(type,fn){
+  if (!this.events[type]) {
+    return
+  }
+  if(!fn){
+    this.events[type] = undefined
+    return 
+  }
+  var index = this.events[type].indexOf(fn)
+  this.events[type].splice(index,1)
+}
+Event.prototype.once = function(type,fn){
+  var _ = this
+  var fn = ()=>{
+    fn.apply(_,arguments)
+    this.off(type)
+  }
+  this.on(type,fn)
+}
+//#endregion
+
+// function aa(a,b){
+//   var fn=()=>{
+//     console.log(arguments)
+//   }
+//   fn()
+// }
+function addZero(num){
+  if(num.toString.length ===1){
+    return '0'+num.toString()
+  }else{
+    return num.toString()
+  }
+}
+var start = '2020-04-01 00:00:00'
+var startTime = new Date(start)
+var nowTime = new Date(start)
+var year = nowTime.getFullYear()
+var month = addZero(nowTime.getMonth()+1)
+var date = addZero(nowTime.getDate())
+var hour = addZero(nowTime.getHours())
+var minute = addZero(nowTime.getMinutes())
+var second = addZero(nowTime.getSeconds())
+var now = `${year}-${month}-${date} ${hour}:${minute}:${second}`
+console.log(now)
+//console.log(endTime)
+
+//#region BFS
+function levelOrder(node){
+  var res = []
+  var level = 0
+  var stack = [node]
+  while(stack.length!==0){
+    res[level] = []
+    var levelLen = stack.length
+    while(levelLen!==0){
+      var cur = stack.shift()
+      res[level].push(cur.val)
+      if(cur.left){
+        stack.push(cur.left)
+      }
+      if(cur.right){
+        stack.push(cur.right)
+      }
+      levelLen--
+    }
+    level++
+  }
+  return res
+}
+function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+var e5 =new TreeNode(5)
+var d2 =new TreeNode(2)
+var c6 =new TreeNode(6)
+c6.left = d2
+c6.right = e5
+var b4 =new TreeNode(4)
+var a1 =new TreeNode(1)
+a1.left = b4
+a1.right = c6
+console.log(levelOrder(a1))
+//#endregion
+</script>
+</html>
