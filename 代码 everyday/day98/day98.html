@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div style="height: 1000px;"></div>
+</body>
+<script>
+  //#region debouce/throttle
+  function debouce(fn,wait,immediate){
+    var timeout = null
+    return function(){
+      var context = this
+      var args = arguments
+      if(timeout!==null){
+        clearTimeout(timeout)
+      }
+      if(immediate){
+        var callNow = !timeout
+        if(callNow){
+          fn.apply(context,args)
+        }
+        setTimeout(function(){
+          timeout = null
+        },wait)
+      }else{
+        timeout = setTimeout(function(){
+        fn.apply(context,args)
+      },wait)
+      }
+     
+    }
+  }
+  function throttle(fn,delay){
+    var canrun = true
+    return function(){
+      var context = this
+      var args = arguments 
+      if(!canrun){
+        return 
+      }
+      canrun = false
+      setTimeout(function(){
+        fn.apply(context,args)
+        canrun = true
+      },delay)
+    }
+  }
+  //#endregion
+
+  //#region currying
+  function currying(){
+    var args = Array.prototype.slice.call(arguments)
+    var fn = function(){
+      args.push(...arguments)
+      return fn
+    }
+    fn.toString = function(){
+      return args.reduce((acc,cur)=>acc+cur)
+    }
+    return fn
+  }
+  console.log(currying(1,2,3)(4))
+  //#endregion
+
+  //#region tree
+  function preOrder(node){
+    var res = []
+    var stack = [node]
+    while(stack.length!==0){
+      var cur = stack.pop()
+      res.push(cur.val)
+      var left = cur.left
+      var right = cur.right
+      if(right){
+        stack.push(right)
+      }
+      if(left){
+        stack.push(left)
+      }
+    }
+    return res
+  }
+  function preOrder(node){
+    var res = []
+    var fn = function(node){
+      if(!node) return
+      res.push(node.val)
+      fn(node.left)
+      fn(node.right)
+    }
+  }
+  function levelOrder(node){
+    var res = []
+    var stack = [node]
+    var level = 0
+    while(stack.length!==0){
+      res[level] = []
+      var curLevel = stack.length
+      while(curLevel!==0){
+        var cur = stack.shift()
+        res[level].push(curNode.val)
+        if(cur.left){
+          stack.push(cur.left)
+        }
+        if(cur.right){
+          stack.push(cur.right)
+        }
+        curLevel--
+      }
+      level++
+    }
+    return res
+  }
+
+  var hasPathSum = function(node,sum){
+    if(node==null)return false
+    var stack = [node]
+    var sumStack = [sum - node.val]
+    while(stack.length!==0){
+      var cur = stack.pop()
+      var curSum = sumStack.pop()
+      if(cur.left === null && cur.right === null && curSum === 0){
+        return true
+      }
+      if(cur.right!=null){
+        stack.push(cur.right)
+        sumStack.push(curSum-cur.right.val)
+      }
+      if(cur.left!=null){
+        stack.push(cur.left)
+        sumStack.push(curSum-cur.left.val)
+      }
+    }
+    return false
+  }
+  //#endregion
+
+  //#region promise
+  Promise.all2 = function(arr){
+    return new Promise(function(resolve,reject){
+      var res = []
+      for(var i = 0; i<arr.length; i++){
+        Promise.resolve(arr[i]).then(data=>{
+          res.push(data)
+          if(i+1==arr.length){
+            resolve(res)
+          }
+        },err=>{
+          reject(err)
+          return 
+        })
+      }
+    })
+  }
+
+  var delay = function(time){
+    return new Promise((resolve,reject)=>setTimeout(()=>resolve(),time))
+  }
+  delay(2000).then(()=>console.log('haha'))
+  //#endregion
+
+  //#region addone
+  // var a = {
+  //   i:0,
+  //   valueOf:function(){
+  //     return ++a.i
+  //   }
+  // }
+  // console.log(a==1 && a==2 && a==3)
+
+  // var addOne = (function(){
+  //   var index = 0
+  //   var fn =function(){
+  //     return index++
+  //   }
+  //   return fn
+  // })()
+  // console.log(addOne())
+  // console.log(addOne())
+  // console.log(addOne())
+  //#endregion
+
+  //#region new/create
+  // var obj = new Base()
+  // var tmpObj = new Object()
+  // tmpObj.__proto__ = Base.prototype
+  // Base.call(tmpObj)
+  // return tmpObj
+
+  function create(obj){
+    function Fn(){}
+    Fn.prototype = obj
+    return new Fn()
+  }
+  //#endregion
+
+  //#region 
+  function swap(arr,i,j){
+    var tmp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tmp
+  }
+  function partiton(arr,left,right){
+    var pivot = left
+    var index=pivot+1
+    for(var i= index;i<arr.length;i++){
+      if(arr[i]<arr[pivot]){
+        swap(arr,i,index)
+        index++
+      }
+    }
+    swap(arr,index-1,pivot)
+    return index-1
+  }
+  function quickSort(arr,left,right){
+    var left = typeof left =='number' ? left : 0
+    var right = typeof right =='number' ? right : arr.length-1
+    var partitonIndex
+    if(left<right){
+      partitonIndex = partiton(arr,left,right)
+      quickSort(arr,left,partitonIndex-1)
+      quickSort(arr,partitonIndex+1,right)
+    }
+    return arr
+  }
+
+  function bubbleSort(arr){
+    for(var i=0;i<arr.length;i++){
+      for(var j=0;j<arr.length-i-1;j++){
+        if(arr[j+1]<arr[j]){
+          var tmp = arr[j+1]
+          arr[j+1] = arr[j]
+          arr[j] = tmp
+        }
+      }
+    }
+    return arr
+  }
+
+  function selectSort(arr){
+    var minIndex 
+    for(var i=0; i<arr.length; i++){
+      minIndex = i
+      for(var j=i+1; j<arr.length; j++){
+        if(arr[j]<arr[minIndex]){
+          minIndex = j
+        }
+      }
+      var tmp = arr[i]
+      arr[i] = arr[minIndex] 
+      arr[minIndex] = tmp  
+    }
+    return arr
+  }
+
+  function insertSort(arr){
+    var preIndex,cur
+    for(var i=1;i<arr.length;i++){
+      preIndex = i -1
+      cur = arr[i]
+      while(preIndex>=0 &&arr[preIndex]>cur){
+        arr[preIndex+1] = arr[preIndex]
+        preIndex--
+      }
+      arr[preIndex+1] = cur
+    }
+    return arr
+  }
+  console.log(quickSort([6,5,3,9,1,2,6]))
+  console.log(bubbleSort([6,5,3,9,1,2,6]))
+  console.log(selectSort([6,5,3,9,1,2,6]))
+  console.log(insertSort([6,5,3,9,1,2,6]))
+  //#endregion
+
+  //#region list reverse
+  function reverse(list){
+    var head = list.head
+    if(head == null || head.next == null) return 
+
+    var one = head
+    var two = head.next
+    head.next = null
+    while(two){
+      var three = two.next
+      two.next = one
+      one = two
+      two = three
+    }
+    list.head = one
+  }
+  //#endregion 
+
+  //#region objListener/eventEmitter
+  function listener(callback){
+    var a={}
+    var val = 0
+    Object.defineProperty(a,'index',{
+      get:function(){
+        callback('读取了a.index值--'+val)
+        return val
+      },
+      set:function(newVal){
+        callback('a.index值被更新为--'+newVal)
+      } 
+    })
+    setTimeout(function(){
+      a.index++
+    },3000)
+  }
+  listener((val)=>console.log('我是监听器1--'+val))
+  listener((val)=>console.log('我是监听器2--'+val))
+
+  function Event(){
+    this.event = {}
+  }
+  Event.prototype.on = function(type,fn){
+    if(!this.event[type]){
+      this.event[type] = []
+    }
+    this.event[type].push(fn)
+  }
+  Event.prototype.emit = function(type,fn){
+    if(!this.event[type]){
+      return 
+    }
+    this.event[type].forEach(fn=>fn())
+  }
+  Event.prototype.off = function(type,fn){
+    if(!this.event[type]){
+      return 
+    }
+    if(!fn){
+      this.event[type] = undefined
+    }
+    var index = this.event[type].indexOf(fn)
+    this.event[type].splice(index,1)
+  }
+  Event.prototype.once = function(type,fn){
+    var _ = this
+    var fnn =()=>{
+      fn.apply(_,arguments)
+      this.off(type)
+    }
+    this.on(type,fnn)
+    
+  }
+  //#endregion
+
+  //#region 最长无重复子串
+  var lengthOfLongestSubstring = function(s) {
+    var sArr = s.split('')
+    var map = new Map()
+    var length = 0 
+    var index
+    var res 
+    for(var start=0,end=0; end<sArr.length;end++){
+      if(map.get(sArr[end])){
+        start = Math.max(start,map.get(sArr[end]))
+      }
+      map.set(sArr[end],end+1)
+      // if(Math.max(length,end-start+1)!==length){
+       // index = start
+        length = Math.max(length,end-start+1)
+        //res = s.substr(index,length)
+     // }
+    }
+    return length
+  }
+  console.log(lengthOfLongestSubstring('qrwertrwrs'))
+  //#endregion
+
+  //#region 最长回文字符串
+  function longStr(s){
+    var sArr = s.split('')
+    var set = {}
+    var res = 0
+    for(var i=0; i<sArr.length; i++){
+      if(set[sArr[i]]){
+        res += 2
+        delete set[sArr[i]]
+      }else{
+        set[sArr[i]] = sArr[i]
+      }
+    }
+    return Object.keys(set).length>0? res+1 : res
+  }
+  console.log(longStr('abccccdd'))
+  //#endregion
+
+  //#region deepCopy
+   function isObj(obj){
+     return typeof obj === ' object'
+   }
+   function deepCopy(obj,hash=new WeakMap()){
+      if(hash.has(obj)) return hash.get(obj)
+      var tmpObj =Array.isArray(obj)? [] : {}
+      hash.set(obj, tmpObj)
+      for(var key in obj){
+        tmpObj[key] = isObj(obj[key]) ? deepCopy(obj[key],hash) : obj[key]
+      }
+      return tmpObj
+   }
+    var a={
+      b:1,
+      c:3
+    }
+    a.z=a  
+    var b=deepCopy(a)
+    //onsole.log(b)
+  //#endregion
+
+  //#region map
+  Array.prototype.map2 = function(fn){
+    var arr = this
+    return arr.reduce((acc,cur,i,arr)=>{
+      acc.push(fn(cur,i,arr))
+      return acc
+    },[])
+  }
+  var m = [1, 2, 3, 4, 54].map2(function(v, i, arr) {
+      return v * v
+  });
+  console.log(m)
+  //#endregion
+
+  //#region call/apply/bind
+  Function.prototype.call2 = function(con,...args){
+    var context = con
+    context.fn = this
+    var res = context.fn(...args)
+    delete context.fn
+    return res
+  }
+  Function.prototype.apply2 = function(con,arr){
+    var context = con
+    context.fn = this
+    var res = context.fn(...arr)
+    delete context.fn
+    return res
+  }
+  Function.prototype.bind2 = function(context){
+    var self = this
+    var args = Array.prototype.slice.call(arguments,1)
+    var fn = function(){
+      var fnArgs = Array.prototype.slice.call(arguments)
+      return self.call(this instanceof fn ? this : context, ...args.concat(fnArgs))
+    }
+    return fn
+  }
+  //#endregion
+
+  // function aa(...arg){b
+  //   console.log(...arg) //1 2 3 4
+  //   console.log(arg) //[1, 2, 3, 4]
+  // }
+  // aa(1,2,3,4)
+
+  //#region inherit
+  function Person(name,age){
+    this.name=name
+    this.age=age
+  }
+  Person.prototype.eat=function(){
+    console.log(this.name+'----'+'eat')
+  }
+
+  // function Student(name,age,score){
+  //   this.score = score
+  //   Person.call(this,name,age)
+  // }
+  // Student.prototype = new Person()
+  
+  function inherit(father,son){
+    var prototype = Object.create(father.prototype)
+    prototype.constructor = son
+    son.prototype = prototype
+  }
+
+  function Student(name,age,score){
+    this.score = score
+    Person.call(this,name,age)
+  }
+  inherit(Person,Student)
+  //#endregion
+
+  //#region array
+  // function removeItem(arr){
+  //   return [...new Set(arr)]
+  // }
+  function removeItem(arr){
+    var res = []
+    for(var i=0; i<arr.length; i++){
+      if(res.indexOf(arr[i])==-1){
+        res.push(arr[i])
+      }
+    }
+    return res
+  }
+  //console.log(removeItem([5,4,3,6,3,1]))
+
+  //flat
+  // function flat(arr){
+  //   var res = []
+  //   var fn = function(arr){
+  //     arr.forEach(i=>Array.isArray(i) ? fn(i) : res.push(i))
+  //   }
+  //   fn(arr)
+  //   return res
+  // }
+  // function flat(arr){
+  //   return arr.reduce((acc,cur)=>{
+  //     return Array.isArray(cur) ? [...acc,...flat(cur)] : [...acc,cur]
+  //   },[])
+  // }
+  // console.log(flat([1, 2, 3, [4, [5, 6]], 8, 9]));
+  //#endregion
+
+  var a= '123456'
+  console.log([a.substr(0,4),a])
+  console.log([a.substring(0,4),a])
+  var b =[1]
+  var c=[2]
+  console.log([b.concat(c),b,c])
+
+  document.addEventListener('scroll',function(){
+    console.log(1)
+  })
+
+  
+</script>
+</html>
