@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // var aa = function(){
+  //   console.log(3)
+  // }
+  // function aa(){
+  //   console.log(1)
+  // }
+  // console.log(aa)
+
+  // new console.log(1)
+
+  Promise.all2 = function(arr){    
+    return new Promise((resolve,reject)=>{
+      let res = []
+      let index = 0
+      for(var i = 0;i<arr.length;i++){
+        Promise.resolve(arr[i]).then(
+          data=>{
+            res[i] = data
+            if(++index === arr.length){
+              resolve(res)
+            }
+          },err=>{
+            reject(err)
+            return 
+          }
+        )
+      }
+    })
+  }
+  function promise1 () {
+    return new Promise((resolve,reject) => {
+      console.log('promise1 start');
+      setTimeout(() => {
+        console.log('promise1 over');
+        reject('haha');
+      }, 100);
+    })
+  }
+  function promise2 () {
+    return new Promise((resolve,reject) => {
+      console.log('promise2 start');
+      setTimeout(() => {
+        console.log('promise2 over');
+        resolve('对了');
+      }, 90);
+    })
+  }
+ // Promise.all2([promise1(), promise2()]).then(data=>console.log('对了--'+data),err=>console.log('错了--'+err))
+
+ function Foo() {
+    getName = function() {
+        console.log(1);
+    };
+    return this;
+  }
+  Foo.getName = function() {
+      console.log(2);
+  };
+  Foo.prototype.getName = function() {
+      console.log(3);
+  };
+  var getName = function() {
+      console.log(4);
+  };
+
+  function getName() {
+      console.log(5);
+  }
+// 输出结果
+//请写出以下输出结果：
+// Foo.getName();//2 调用构造函数的静态方法
+// getName();//4 变量getName变量提升但值为undefined，函数声明式函数getName也变量提升，最终被4覆盖
+// Foo().getName(); //1 Foo()函数执行后改变了全局变量getName的值为1，同时返回window，window.getName访问全局变量即为1
+// getName();// 1 被上一个操作更新为了1
+// new Foo.getName();//2  当Foo没有括号时，new 的运算优先级要小于.的运算优先级，先计算Foo.getName()
+// new Foo().getName(); //3 先new Foo(),后new Foo().getName(),即访问构造函数原型上的方法
+
+// function Foo() {
+//     getName = function() {
+//         console.log(1);
+//     };
+//     return this;
+// }
+// Foo.getName = function() {
+//   console.log(2);
+// };
+// console.log(a = new Foo.getName())
+
+//#region ajax
+var url = '/请求的路径'
+var params = [
+  'id=123',
+  'limit=10'
+]
+function getDate(url){
+  return new Promise((resolve,reject)=>{
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if((xhr.status>=200 && xhr.status<300) || xhr.status==304){
+          try{
+            var response = JSON.parse(xml.responseText)
+            resolve(response)
+          }catch(e){
+            reject(e)
+          }
+        }else{
+          reject(new Error("request fails:"+ xhr.statusText))
+        }
+      }
+    }
+    xhr.open('GET',url+'?'+params.join('&'),true)
+    xhr.send(null)
+  })
+}
+//#endregion
+
+console.log(/^1[3456789]\d{9}$/.test('11223231212'))
+
+
+</script>
+</html>
