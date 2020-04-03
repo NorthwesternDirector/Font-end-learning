@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    width:100px;
+    height:100px;
+    background-color:coral;
+    border: 1px solid #000;
+    border-radius: 50px;
+  }
+</style>
+
+<body>
+  <div></div>
+</body>
+<script>
+  //#region tree
+  //BFS
+  function levelOrder(node){
+    var res = []
+    var level = 0
+    var stack = [node]
+    while(stack.length!==0){
+      res[level] = []
+      var levelLen = stack.length
+      while(levelLen!==0){
+        var tmp = stack.shift()
+        res[level].push(tmp.val)
+        if(tmp.left){
+          stack.push(tmp.left)
+        }
+        if(tmp.right){
+          stack.push(tmp.right)
+        }
+        levelLen--
+      }
+      level++
+    }
+    return res
+  }
+
+  function preOrder(node){
+    var res = []
+    var stack = [node]
+    while(stack.length!==0){
+      var cur = stack.pop()
+      res.push(cur.val)
+      if(cur.right){
+        stack.push(cur.right)
+      }
+      if(cur.left){
+        stack.push(cur.left)
+      }
+    }
+    return res
+  }
+
+  function hasPathSum(node,sum){
+    if(node ==null) return false
+    var stack = [node]
+    var sumStack = [sum-node.val]
+    while(stack.length!==0){
+      var cur = stack.pop()
+      var curSum = sumStack.pop()
+      if(cur.left==null && cur.right==null && curSum === 0){
+        return true
+      }
+      if(cur.left!==null){
+        stack.push(cur.left)
+        sumStack.push(curSum - cur.left.val)
+      }
+      if(cur.right!==null){
+        stack.push(cur.right)
+        sumStack.push(curSum - cur.right.val)
+      }
+    }
+    return false
+  }
+
+  function TreeNode(val) {
+      this.val = val;
+      this.left = null;
+      this.right = null;
+    }
+  var e5 =new TreeNode(5)
+  var d2 =new TreeNode(2)
+  var c6 =new TreeNode(6)
+  c6.left = d2
+  c6.right = e5
+  var b4 =new TreeNode(4)
+  var a1 =new TreeNode(1)
+  a1.left = b4
+  a1.right = c6
+  console.log(hasPathSum(a1,12))
+  //#endregion
+
+  function sstep(n){
+    if(n===1)return 1
+    if(n===2) return 2
+    var step1=1
+    var step2=2
+    var res=0
+    for(var i=3;i<=n;i++){
+      res=step1+step2
+      step1=step2
+      step2=res
+    }
+    return res
+  }
+  console.log(sstep(5))
+
+
+// console.log('打印'+1); 
+
+// new Promise(function(resolve,reject){
+//   console.log('打印'+2)
+// }).then(()=>console.log('打印'+3))
+
+// console.log('打印'+4);
+
+
+</script>
+</html>
